@@ -1,37 +1,36 @@
 ---
-order: 0.2
-title: language
+order: 2
+title: programming
 description: 프로그래밍 언어
 summary:
 keywords:
-- program
+- programming
 - programming language
-- 프로그램
-- 프로그래밍 언어
+- language syntax
+- language hierarchy
 tags:
 - program
-- programming language
 created_time: 2024-09-12 06:36
-modified_time: 2024-10-26 22:16
+modified_time: 2025-02-26 03:23
 ---
 
 # Programming Language
-: 사용자의 의도를 압축-추상화하여 컴퓨터에게 전달하는 명령 집합  
-: 프로그램을 작성하기 위한 구문과 규칙 체계  
+: 프로그램을 작성하기 위한 특정 규칙을 따르는 구문과 의미론  
+: 사용자와 컴퓨터 간 의사소통을 위한 도구로 사용자의 의도를 전달할 수 있도록 문법과 규칙을 제공  
 
-**구성 요소**
 - [Language Concept](./concept/index.md)
   - Type System
+  - Data Type
+  - Variable
   - Scope
   - Memory Management
   - Error Handling
-  - Module System
-  - Binding & Linking 
 - [Language Syntax](./syntax/index.md)
   - Lexical Structure
+  - Operator
   - Control Flow
   - Data Structure
-  - Procedures
+  - Procedure
 
 
 
@@ -40,7 +39,7 @@ modified_time: 2024-10-26 22:16
 : 언어는 특정 요구 사항과 목적을 위해 만들어지고 시간이 지나면서 다른 패러다임을 받아들이고 기능이 확장됨  
 : 때문에 언어는 하나의 분류에 속하는게 아니라 다중 분류를 가짐  
 
-> 기계어 > 어셈블리어 > 고급 언어 > 시각적 언어
+> 저수준 언어 > 고수준 언어 > 시각적 언어
 
 
 **history**
@@ -53,7 +52,6 @@ modified_time: 2024-10-26 22:16
 
 1960년대 소스 코드를 한 줄씩 해석하고 즉시 실행하는 인터프리터가 개발됨
 ```
-
 
 - **[저수준 언어](./low-level-language.md)**
   - 기계어
@@ -99,7 +97,6 @@ modified_time: 2024-10-26 22:16
 
 ```
 프로그래밍 언어는 데이터를 변환하는 반면
-
 마크업 언어는 데이터를 표현하므로 마크업 언어가 프로그래밍 언어의 하위 집합에 속하지는 않음
 메타 언어와 스키마 언어는 프로그래밍 언어를 정의하거나 데이터 구조를 정의하는 도구에 가까움
 ```
