@@ -1,23 +1,23 @@
 ---
 order: 1
-title: web api
+title: Web API
 description: Web API - Sanitizer API
 summary:
 keywords:
-- web
 - web api
 - sanitizer
 tags:
+- web
 - web api
 created_time: 2025-02-24 00:19
-modified_time: 2025-02-24 00:34
+modified_time: 2025-02-26 12:02
 ---
 
 # Sanitizer API
 : 웹 브라우저에서 안전하게 HTML 콘텐츠를 삽입하기 위한 API  
 : 임의 문자열이 안전하게 웹 페이지에 삽입될 수 있게 유해 문자열(HTML 요소 및 속성)을 제거함  
 : Sanitizer를 통해 XSS같은 보안 취약점을 예방함  
-: 현재 실험 기술이며 표준 기술이 아님  
+: 현재 실험적 기술이며 표준 기술이 아님  
 
 개념 | 설명
 ---|---

@@ -1,17 +1,16 @@
 ---
 order: 1
-title: web
-description: Web API - Console
+title: Web API
+description: Web API - Console API
 summary:
 keywords:
-- web
 - web api
 - console
 tags:
 - web
 - web api
 created_time: 2024-11-05 22:34
-modified_time: 2025-02-04 19:33
+modified_time: 2025-02-26 12:02
 ---
 
 # Console API
