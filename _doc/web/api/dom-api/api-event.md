@@ -1,24 +1,23 @@
 ---
-order: 1
-title: web
+order: 7
+title: Web API
 description: Web API - Event
 summary:
 keywords:
-- web
 - web api
-- dom
+- dom api
 - event
 tags:
 - web
 - web api
 created_time: 2025-02-03 08:50
-modified_time: 2025-02-04 19:23
+modified_time: 2025-02-26 11:36
 ---
 
 # Event
-: [DOM 이벤트](../../dom/dom-event.md) 처리를 위해 이벤트의 속성과 메소드가 정의된 인터페이스
+: [DOM 이벤트](../../dom/dom-event.md) 처리를 위한 속성과 메소드가 정의된 인터페이스
 
-**스펙**
+**스펙**  
 https://dom.spec.whatwg.org/#interface-event
 
 

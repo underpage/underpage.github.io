@@ -1,18 +1,17 @@
 ---
-order: 1
-title: web
+order: 7.1
+title: Web API
 description: Web API - CustomEvent
 summary:
 keywords:
-- web
 - web api
-- dom
-- customevent
+- dom api
+- custom event
 tags:
 - web
 - web api
 created_time: 2025-02-03 10:19
-modified_time: 2025-02-04 11:13
+modified_time: 2025-02-26 11:37
 ---
 
 # CustomEvent

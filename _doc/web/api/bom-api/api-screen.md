@@ -1,19 +1,18 @@
 ---
 order: 3
-title: web
+title: Web API
 description: Web API - Screen
 summary:
 keywords:
-- web
 - web api
-- bom
+- bom api
 - screen
 - screenorientation
 tags:
 - web
 - web api
 created_time: 2024-11-06 01:00
-modified_time: 2025-02-03 11:49
+modified_time: 2025-02-26 11:28
 ---
 
 # Screen API
@@ -52,6 +51,8 @@ https://www.w3.org/TR/screen-orientation/#screenorientation-interface
 type   | 화면의 방향 유형을 반환하거나 지정
 angle  | 화면의 방향 각도를 반환하거나 지정 (0, 90, 180, 270)
 
+
+**type**
 ```js
 // 화면이 모든 방향으로 자유롭게 회전할 수 있도록 허용
 screen.orientation.type = 'any';
@@ -76,9 +77,12 @@ screen.orientation.type = 'landscape-primary';
 
 // 보조 화면 + 가로 모드로 잠금 설정
 screen.orientation.type = 'landscape-secondary';
+```
 
 
-screen.orientation.addEventListener('change', function() {
+**event type**
+```js
+screen.addEventListener('change', () => {
   console.log(screen.orientation.type);
   console.log(screen.orientation.angle);
 });
@@ -86,7 +90,7 @@ screen.orientation.addEventListener('change', function() {
 
 
 **lock()**   
-: 화면의 방향을 주어진 값으로 잠금  
+: 주어진 값으로 화면의 방향을 잠금  
 : Promise를 반환하는 메소드로 async/await 구문 사용 권장
 
 ```js

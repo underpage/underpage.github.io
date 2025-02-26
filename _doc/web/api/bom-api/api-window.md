@@ -1,18 +1,17 @@
 ---
 order: 1
-title: web
+title: Web API
 description: Web API - Window
 summary:
 keywords:
-- web
 - web api
-- bom
+- bom api
 - window
 tags:
 - web
 - web api
 created_time: 2024-11-06 01:00
-modified_time: 2025-02-03 11:48
+modified_time: 2025-02-26 11:29
 ---
 
 # Window API

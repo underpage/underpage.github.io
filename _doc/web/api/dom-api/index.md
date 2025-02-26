@@ -1,21 +1,26 @@
 ---
 order: 2
-title: web
-description: Web API - DOM
+title: Web API
+description: Web API - 문서 객체 모델 API
 summary:
 keywords:
-- web
 - web api
-- dom
+- dom api
+- node
+- document
+- element
+- event
 tags:
 - web
 - web api
 created_time: 2024-11-02 02:06
-modified_time: 2025-02-04 19:24
+modified_time: 2025-02-26 11:38
 ---
 
-# DOM
-: DOM 트리를 동적으로 탐색하고 조작하기 위한 인터페이스  
+# DOM API
+Document Object Model  
+: 웹 문서를 트리 구조로 표현하고 이를 동적으로 탐색하고 조작하기 위한 인터페이스 집합  
+: 요소를 생성, 삭제, 변경할 수 있으며 상호작용을 위한 이벤트 처리를 지원함  
 
 - [Node](./api-node.md)
   - [Document](./api-document.md)

@@ -1,25 +1,25 @@
 ---
-order: 1
-title: web
+order: 8
+title: Web API
 description: Web API - Abort
 summary:
 keywords:
-- web
 - web api
-- dom
+- dom api
 - abortcontroller
 - abortsignal
 tags:
 - web
 - web api
 created_time: 2025-02-03 08:38
-modified_time: 2025-02-04 06:58
+modified_time: 2025-02-26 11:35
 ---
 
 # Abort
 : 작업을 중단(abort)하기 위한 인터페이스 집합  
-: Event, Promise, Fetch 등 일부 기능에서 작업을 중단하기 위해 도입된 기능  
+: Event, Promise, Fetch 등 일부 기능에서 작업을 중단하기 위해 도입됨  
 
+**인터페이스**
 - [AbortController](#abortcontroller)
 - [AbortSignal](#abortsignal)
 

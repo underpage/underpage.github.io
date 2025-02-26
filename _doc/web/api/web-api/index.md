@@ -1,20 +1,24 @@
 ---
 order: 5
-title: web
-description: Web API
+title: Web API
+description: Web API - 웹 기능 API
 summary:
 keywords:
-- web
 - web api
+- console
+- file
+- fetch
+- websocket
 tags:
 - web
 - web api
 created_time: 2025-02-03 08:20
-modified_time: 2025-02-04 19:28
+modified_time: 2025-02-26 11:52
 ---
 
 # Web API
-: 웹 애플리케이션 개발을 위해 제공하는 인터페이스 집합  
+: 웹 애플리케이션 개발을 위한 다양한 기능을 제공하는 인터페이스 집합  
+: 데이터 저장, 데이터 통신, 미디어 처리 등 다양한 기능을 제공함  
 
 **데이터**
 - [Console API](./api-console.md)
@@ -50,6 +54,7 @@ modified_time: 2025-02-04 19:28
 - [Drag and Drop API](./api-drag-and-drop.md)
 - [Notifications API](./api-notification.md)
 - [Fullscreen API](./api-fullscreen.md)
+- [Page Visibility API](./api-visibility.md)
 - [Mutation Observer API](./api-mutation-observer.md)
 - [Intersection Observer API](./api-intersection-observer.md)
 - [Resize Observer API](./api-resize-observer.md)
@@ -70,7 +75,7 @@ modified_time: 2025-02-04 19:28
 - [Device API](./api-device.md)
 - [Pointer Events API](./api-pointer-event.md)
 - Web MIDI API
-- [Generic Sensor API](./api-sensor.md)
+- Generic Sensor API
 - Web Bluetooth API
 - WebUSB API
 
@@ -89,7 +94,7 @@ modified_time: 2025-02-04 19:28
 **비디오**
 - [WebRTC API](./api-web-rtc.md)
 - [Media Source API](./api-media-source.md)
-- Media Capture and Streams API
+- [Media Capture and Streams API](./api-media-stream.md)
 - Media Session API
 - WebCodecs API
 
@@ -106,6 +111,7 @@ modified_time: 2025-02-04 19:28
 - [Credential Management API](./api-credential-management.md)
 - [Payment Request API](./api-payment-request.md)
 - [Web Authentication API](./api-web-auth.md)
+- [Sanitizer API](./api-sanitizer.md)
 
 
 **성능**
