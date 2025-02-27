@@ -1,17 +1,16 @@
 ---
-order: 0.3
-title: algorithm
+order: 3
+title: Algorithm
 description: 알고리즘
 summary:
 keywords:
 - program
+- programming
 - algorithm
-- 알고리즘
 tags:
-- program
 - algorithm
 created_time: 2024-09-10 03:09
-modified_time: 2024-11-24 23:19
+modified_time: 2025-02-27 10:20
 ---
 
 # Algorithm
@@ -27,10 +26,10 @@ modified_time: 2024-11-24 23:19
 ```
 
 - [알고리즘 설계](./algorithm-design.md)
-  - [알고리즘 접근 전략](./algorithm-design-pattern.md)
+  - [알고리즘 전략](./algorithm-design-strategy.md)
   - [알고리즘 방법론](./algorithm-design-methodology.md)
-- [알고리즘 분석](./algorithm-analysis.md)
-- [알고리즘 종류](./algorithm-classification.md)
+  - [알고리즘 분석](./algorithm-analysis.md)
+- [알고리즘 분류](./algorithm-classification.md)
 
 
 **알고리즘 조건**
@@ -46,7 +45,7 @@ modified_time: 2024-11-24 23:19
 
 **알고리즘 특징**
 - 정확성 : 올바른 입력을 하면 올바른 결과를 출력
-- 효율성 : 시간과 메모리 등 자원 최적화
+- 효율성 : 시간, 메모리 등 자원 최적화
 - 유연성 : 다양한 문제에 적용 가능
 
 
