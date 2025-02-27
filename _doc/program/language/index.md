@@ -1,17 +1,17 @@
 ---
-order: 2
-title: programming
-description: 프로그래밍 언어
+order: 1
+title: Programming Language
+description: 프로그래밍 언어 개념과 분류
 summary:
 keywords:
 - programming
 - programming language
-- language syntax
-- language hierarchy
+- language classification
+- syntax
 tags:
 - program
 created_time: 2024-09-12 06:36
-modified_time: 2025-02-26 03:23
+modified_time: 2025-02-27 10:31
 ---
 
 # Programming Language
@@ -34,7 +34,7 @@ modified_time: 2025-02-26 03:23
 
 
 
-## Programming Language Hierarchy
+## Programming Language Classification
 : 프로그래밍 언어는 추상화 수준, 실행 방식, 패러다임, 사용 목적 등 다양한 기준으로 분류됨  
 : 언어는 특정 요구 사항과 목적을 위해 만들어지고 시간이 지나면서 다른 패러다임을 받아들이고 기능이 확장됨  
 : 때문에 언어는 하나의 분류에 속하는게 아니라 다중 분류를 가짐  
