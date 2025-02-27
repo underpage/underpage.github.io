@@ -1,18 +1,21 @@
 ---
 order: 5
-title: program
+title: Program
 description: 프로그램 (인덱스)
 summary:
 keywords:
 - program
 - program execution
-- program component
-- programming
+- execution model
+- programming language
+- paradigm
+- algorithm
+- optimization
 tags:
 - index
 - program
 created_time: 2023-06-25 05:18
-modified_time: 2025-02-26 03:27
+modified_time: 2025-02-27 10:18
 ---
 
 # Program
@@ -21,16 +24,18 @@ modified_time: 2025-02-26 03:27
 : 프로그램은 [프로그래밍 언어](../language/index.md)를 사용해 작성되며 [자료구조](../data/data-structure/index.md)와 알고리즘을 사용해 데이터를 처리함  
 : 프로그램 실행이란 컴퓨터가 명령어를 읽고 해석하고 실행하는 단계를 반복하는 것  
 
+- [Program Structure](./program-structure.md)
 - [Program Execution](./program-execution.md)
-  - [Execution Environment](./program-execution-env.md)
-  - [Execution Model](./program-execution-model.md)
+  - [Execution Environment](./execution-environment.md)
+  - [Execution Model](./execution-model.md)
   - [Program Code State](./program-code-state.md)
-  - [Program Structure](./structure/index.md)
+- [Program Semantics](./program-semantics.md)
+- [Program Analysis](./program-analysis.md)
 - Program Components
   - [Programming Language](./language/index.md)
   - [Programming Paradigm](./paradigm/index.md)
   - [Programming Algorithm](./algorithm/index.md)
-  - [Programming Optimization](./optimization/index.md)
+- [Program Optimization](./optimization/index.md)
 
 
 **program**  
