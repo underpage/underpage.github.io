@@ -12,7 +12,7 @@ keywords:
 tags:
 - script
 created_time: 2024-09-21 20:31
-modified_time: 2025-03-01 12:48
+modified_time: 2025-03-01 12:50
 ---
 
 # OS Script
@@ -32,8 +32,8 @@ Windows | CMD  | 배치 스크립트
 Windows | PowerShell | PowerShell 스크립트
 
 
-**쉘**  
-: 명령을 해석하여 커널에 전달하는 프로그램 (명령어 인터프리터)  
+**쉘** (= 명령어 인터프리터)  
+: 명령을 해석하여 커널에 전달하는 프로그램   
 
 **쉘 환경**  
 : 사용자와 운영체제가 상호작용하는 인터페이스를 제공하는 환경  
