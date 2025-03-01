@@ -1,15 +1,17 @@
 ---
 order: 1
-title: foundation
+title: Foundation
 description: 리눅스 재단
 summary:
 keywords:
 - foundation
 - linux foundation
+- cncf
+- openssf
 tags:
 - foundation
 created_time: 2024-09-09 01:27
-modified_time: 2025-02-11 21:17
+modified_time: 2025-03-01 15:59
 ---
 
 # Linux Foundation
@@ -23,11 +25,12 @@ modified_time: 2025-02-11 21:17
 - OpenJS Foundation
   - Node
   - Electron
+- LF Decentralized Trust
+- LF AI & Data Foundation
 - LF Networking
 - LF Edge
-- LF AI & Data Foundation
 - LF Public Health
-- Hyperledger Foundation
+- LF Energy
 - CHAOSS Project
 
 **Projects**
@@ -36,6 +39,7 @@ modified_time: 2025-02-11 21:17
 - OPNFV
 
 
+**운영 구조**
 ```markdown
 # Sub-foundation 
 리눅스 재단 하위에서 독립적으로 운영되는 조직으로 고유한 목표와 기술 스택을 갖고 있음

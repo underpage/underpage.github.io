@@ -1,6 +1,6 @@
 ---
 order: 1
-title: foundation
+title: Foundation
 description: OpenAPI 재단 (OAI)
 summary:
 keywords:
@@ -9,11 +9,10 @@ keywords:
 - openapi initiative
 - oai
 - oas
-- openapi.tools
 tags:
 - foundation
 created_time: 2025-02-11 13:41
-modified_time: 2025-02-11 21:07
+modified_time: 2025-03-01 16:00
 ---
 
 # OAI
@@ -140,7 +139,7 @@ externalDocs:
 
 
 
-# OpenAPITools
+# OpenAPI Tools
 : OpenAPI 사양을 구현하는 도구들을 개발하는 오픈소스 커뮤니티 조직  
 
 https://openapi.tools

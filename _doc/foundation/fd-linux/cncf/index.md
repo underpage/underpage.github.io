@@ -1,17 +1,16 @@
 ---
 order: 1
-title: foundation
+title: Foundation
 description: 클라우드 네이티브 재단 (CNCF)
 summary:
 keywords:
-- foundation
 - linux foundation
-- cloud native
+- cloud native computing foundation
 - cncf
 tags:
 - foundation
 created_time: 2024-08-30 01:03
-modified_time: 2025-02-11 21:27
+modified_time: 2025-03-01 15:47
 ---
 
 # CNCF

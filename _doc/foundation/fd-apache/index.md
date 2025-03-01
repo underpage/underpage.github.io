@@ -1,6 +1,6 @@
 ---
 order: 2
-title: foundation
+title: Foundation
 description: 아파치 재단 (ASF)
 summary:
 keywords:
@@ -12,7 +12,7 @@ keywords:
 tags:
 - foundation
 created_time: 2024-09-09 01:24
-modified_time: 2025-02-11 21:44
+modified_time: 2025-02-26 12:01
 ---
 
 # Apache Software Foundation
