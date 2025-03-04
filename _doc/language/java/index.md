@@ -1,37 +1,40 @@
 ---
 order: 1
-title: java
+title: Java
 description: 자바 플랫폼
 summary:
 keywords:
-- java
+- programming language
 - java platform
+- java
 - jcp
 - jsr
 - jep
 tags:
-- language
 - java
+- language
 created_time: 2024-09-09 22:51
-modified_time: 2025-01-19 17:08
+modified_time: 2025-03-04 23:02
 ---
 
 # Java Platform
-: 자바 프로그램 개발을 위한 프로그래밍 언어와 개발 도구 및 실행 환경  
+: 자바 프로그램 개발을 위한 프로그래밍 언어와 개발 도구 및 실행 환경(플랫폼)  
 
 - [Java Platform](#java-platform)
   - [JDK](./jdk.md)
     - [JVM](./jvm.md)
     - [JVM Implementation](./jvm-implement.md)
-  - [Java Tools](./java-tool/index.md)
 - [Java Version](./java-version.md)
-- [Java Project](./java-project.md)
+- [Java OpenJDK Project](./java-project.md)
   - [Java Module System](./java-module-system.md)
 - [Java Program](./java-program.md)
-- [Java Compilation Process](./java-compilation-process.md)
+  - [Java Program Execution](./java-program.md#java-program-execution)
+  - [Java Compilation Process](./java-compilation-process.md)
+- [Java Deployment](./java-deployment.md)
 - [Java Programming Language](./java-lang/index.md)
 - [Java SE API](./java-api-se/index.md)
 - [Java EE API](./java-api-ee/index.md)
+- [Java Standard Tool](./java-tool/index.md)
 - [Java Ecosystem](./java-ecosystem.md)
   - [Java Framework](./java-framework/index.md)
   - [Java Library](./java-lib/index.md)
@@ -42,14 +45,14 @@ modified_time: 2025-01-19 17:08
 1991년 Green 팀에서 기기 간 커뮤니케이션을 가능하게 해주는 기술 고려 (컨버전스, 네트워크, 분산, 보안) 
 당시에는 제품마다 다른 CPU가 존재해 특정 CPU에 종속하지 않기 위해 가상 컴퓨터 개념 도입 (JVM, JRE)
 이를 위해 C++를 확장하려 했으나 메모리 문제로 Oak라는 프로그래밍 언어를 만듬 (GC, 객체지향)
-개발된 기술을 시연했으나 거래가 무산되며 초점을 웹에 맞춰 웹에 적합하게 구현한 Java 언어를 만듬
+개발된 기술을 시연했으나 거래가 무산되며 초점을 웹에 맞추며 웹에 적합하게 구현한 Java 언어를 만듬
 
-1995년 Java 1.0 공식 출시
-1998년 다른 조직에서 표준화에 참여할 수 있도록 JCP를 설립
-2010년 Oracle이 Sun을 인수하여 Java 소유권 획득
-
-2017년 Oracle이 Java EE를 Eclipse Foundation으로 이관
-2019년 Java EE가 Jakarta EE로 변경
+1995년  Java 1.0 공식 출시
+1998년  다른 조직에서 표준화에 참여할 수 있도록 JCP를 설립
+2006년  Sun이 Java를 오픈소스로 전환함 (OpenJDK 프로젝트)
+2010년  Oracle이 Sun을 인수하여 Java 소유권 획득
+2017년  Oracle이 Java EE를 Eclipse Foundation으로 이관
+2019년  Java EE가 Jakarta EE로 변경됨
 ```
 
 
@@ -60,16 +63,17 @@ modified_time: 2025-01-19 17:08
 
 플랫폼 사양 | 특징 | 패키지
 ---|---|---
-Java SE (Standard Edition)      | 기본 핵심 기능, 범용 애플리케이션 | [JDK](./jdk.md)
-Jakarta EE (Enterprise Edition) | 엔터프라이즈 애플리케이션 | -
+Java SE (Standard Edition)      | 핵심 기능, 범용 애플리케이션 | [JDK](./jdk.md)
+Jakarta EE (Enterprise Edition) | 엔터프라이즈 애플리케이션 | Jakarta EE SDK
 Java ME (Micro Edition)         | 모바일, 임베디드, IoT | Java ME SDK
 Java ME Embedded                | 경량화된 Java ME | Java Embedded Suite
+Java Card                       | 스마트카드 및 보안 장치 | Java Card SDK
 
 ```
-1995년 Java 1.0 (Java SE)
-1998년 대규모 환경에 적합한 기술이 필요해지며 이를 반영한 Java EE 도입
-1999년 모바일과 임베디드 장치가 대중화되며 이를 위해 Java ME 도입
-       Java ME는 제한된 자원을 사용하는 장치에서 작동하기 위해 설계된 경량화 버전
+1995년  Java 1.0 (Java SE)
+1998년  대규모 환경에 적합한 기술이 필요해지며 이를 반영한 Java를 SE와 EE로 분리
+1999년  모바일과 임베디드 장치가 대중화되며 이를 위해 Java ME 도입
+         Java ME는 제한된 자원을 사용하는 장치에서 작동하기 위해 설계된 경량화 버전
 ```
 
 
@@ -93,7 +97,6 @@ Java Specification Requests
 
 JSR-ID  | 기술
 ---|---
-366 | Java SE 8
 384 | Java SE 11
 392 | Java SE 17
 397 | Java SE 22

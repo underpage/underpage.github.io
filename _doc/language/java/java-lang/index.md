@@ -1,32 +1,34 @@
 ---
 order: 2
-title: java
-description: 자바 프로그래밍 언어
+title: Java
+description: 자바 언어
 summary:
 keywords:
 - java
-- java programming language
+- java language
 tags:
-- language
 - java
+- language
 created_time: 2024-10-07 06:21
-modified_time: 2025-01-19 20:06
+modified_time: 2025-03-04 23:06
 ---
 
 # Java Programming Language
 : 클래스 기반 객체 지향 프로그래밍 언어  
 : 강력한 정적 타입 언어로 데이터 타입이 컴파일시 확정됨  
-: Java 8 부터 람다식 도입으로 함수형 프로그래밍을 부분 지원  
+: Java 8 부터 람다식 도입으로 함수형 프로그래밍을 부분적으로 지원함  
 
 - [Java Lexical Structure](./java-lexical-structure.md)
   - [Java Keyword](./java-lexical-structure.md#keyword)
+  - [Java Operator](./java-operator.md)
 - Java Core Concepts
   - [Java Data Type](./java-data-type.md)
   - [Java Type Conversion](./java-type-conversion.md)
-  - [Java Operator](./java-operator.md)
+  - [Java Expression](./java-expression.md)
+  - [Java Expression Context](./java-expression.md)
   - [Java Statement](./java-statement.md)
-  - [Java String](./java-string.md)
   - [Java Array](./java-array.md)
+  - [Java String](./java-string.md)
   - [Java Exception](./java-error-exception.md)
   - [Java Generic](./java-generic.md)
   - [Java Annotation](./java-annotation.md)
@@ -37,7 +39,7 @@ modified_time: 2025-01-19 20:06
   - [Java Method](./java-method.md)
   - [Java Modifier](./java-modifier.md)
 - [Java OOP Programming](./java-oop-programming.md)
-  - [Java Object Characteristics](./java-object-characteristics.md)
+  - [Java Object Type](./java-object-type.md)
 - [Java Functional Programming](./java-functional-programming.md)
 
 
