@@ -1,6 +1,6 @@
 ---
 order: 8
-title: software engineering
+title: SE
 description: 소프트웨어 공학 (인덱스)
 summary:
 keywords:
@@ -10,14 +10,13 @@ tags:
 - index
 - software engineering
 created_time: 2024-09-28 11:43
-modified_time: 2025-02-02 02:06
+modified_time: 2025-03-06 21:58
 ---
 
 # Software Engineering
 : 소프트웨어 시스템 설계, 개발, 유지보수를 위한 체계적인 프로세스와 방법론  
 : 이를 통해 생산성, 효율성, 신뢰성이 높은 소프트웨어 시스템 개발을 가능하게 함  
-: 소프트웨어 품질, 일정, 비용 등을 관리하면서 사용자의 요구사항을 충족시키는 것이 목표  
-
+: 소프트웨어 품질, 일정, 비용 등을 관리하면서 사용자의 요구사항을 충족시키는 것을 목표로 함  
 
 표준 및 지침
 - [Software Engineering Framework](./se-framework/index.md)
@@ -25,14 +24,17 @@ modified_time: 2025-02-02 02:06
   - [ISO/IEC/IEEE 12207](./se-framework/iso12207.md)
 
 프로세스
-- [Software Process Life Cycle](./software-process-life-cycle.md)
-  - Software Process Model
+- [Software Process Life Cycle](./sw-process-lifecycle.md)
+  - [Software Process Model](./sw-process-model.md)
+  - [Software Development Methodology](./sw-development-methodology.md)
+- [Software Process Modeling](./sw-architecture/architecture-modeling.md)
 
 프로젝트 관리
-- Software Project Management
-- Software Quality Assurance
+- [Software Project Management](./sw-project-management.md)
+- [Software Quality Assurance](./sw-quality/index.md)
+- [Requirements Engineering](./requirements-engineering.md)
 
-아키텍처 및 설계
+소프트웨어 설계
 - [Software Architecture](./sw-architecture/index.md)
   - [Architecture Principle](./sw-architecture/architecture-principle.md) 
   - [Architecture Style](./sw-architecture/architecture-style/index.md)
@@ -46,10 +48,13 @@ modified_time: 2025-02-02 02:06
 - Software Development
 - Software Testing
 
-운영
+배포 및 유지보수
 - Software Configuration Management
 - Software Deployment
 - Software Maintenance
+
+도구
+- [Software Engineering Tool](./sw-tool/index.md)
 
 
 **history**
