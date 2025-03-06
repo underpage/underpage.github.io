@@ -1,21 +1,22 @@
 ---
 order: 1
-title: software engineering
+title: SE
 description: 소프트웨어 엔지니어링 프레임워크
 summary:
 keywords:
 - software engineering
 - software engineering framework
 - pmbok
+- swebok
 tags:
 - software engineering
 - framework
 created_time: 2024-09-22 12:45
-modified_time: 2025-02-02 02:11
+modified_time: 2025-03-06 22:00
 ---
 
 # Software Engineering Framework
-: 소프트웨어 개발을 위한 이론과 표준화된 가이드라인 제공  
+: 소프트웨어 개발을 위한 이론과 표준화된 가이드라인  
 
 **지식 체계**
 - [PMBOK](#pmbok)

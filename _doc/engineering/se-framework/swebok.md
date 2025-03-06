@@ -1,6 +1,6 @@
 ---
 order: 1
-title: software engineering
+title: SE
 description: 소프트웨어 공학 지식 체계 (SWEBOK)
 summary:
 keywords:
@@ -9,8 +9,9 @@ keywords:
 - swebok
 tags:
 - software engineering
+- framework
 created_time: 2024-09-22 12:47
-modified_time: 2025-02-02 02:49
+modified_time: 2025-03-06 22:01
 ---
 
 # SWEBOK
