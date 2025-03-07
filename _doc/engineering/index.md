@@ -5,12 +5,13 @@ description: 소프트웨어 공학 (인덱스)
 summary:
 keywords:
 - software engineering
-- software process life cycle
+- software process
+- software architecture
 tags:
 - index
 - software engineering
 created_time: 2024-09-28 11:43
-modified_time: 2025-03-06 21:58
+modified_time: 2025-03-07 19:49
 ---
 
 # Software Engineering
@@ -24,15 +25,15 @@ modified_time: 2025-03-06 21:58
   - [ISO/IEC/IEEE 12207](./se-framework/iso12207.md)
 
 프로세스
-- [Software Process Life Cycle](./sw-process-lifecycle.md)
+- [Software Process](./sw-process.md)
   - [Software Process Model](./sw-process-model.md)
-  - [Software Development Methodology](./sw-development-methodology.md)
-- [Software Process Modeling](./sw-architecture/architecture-modeling.md)
+  - [Software Process Modeling](./sw-process-modeling.md)
+  - [Software Development Methodology](./sw-development-method.md)
 
 프로젝트 관리
 - [Software Project Management](./sw-project-management.md)
-- [Software Quality Assurance](./sw-quality/index.md)
-- [Requirements Engineering](./requirements-engineering.md)
+  - [Software Requirements Management](./sw-requirements.md)
+  - [Software Quality Management](./sw-quality.md)
 
 소프트웨어 설계
 - [Software Architecture](./sw-architecture/index.md)
@@ -49,12 +50,17 @@ modified_time: 2025-03-06 21:58
 - Software Testing
 
 배포 및 유지보수
-- Software Configuration Management
+- Software Configuration
 - Software Deployment
 - Software Maintenance
 
 도구
 - [Software Engineering Tool](./sw-tool/index.md)
+
+
+**software**  
+: 넓은 의미의 소프트웨어란 프로그램과 관련된 데이터와 문서들 집합  
+: 문서란 요구사항 명세서, 설계 문서, 메뉴얼 문서, 가이드 문서 등 정보를 제공하는 문서를 의미함
 
 
 **history**
@@ -64,11 +70,11 @@ modified_time: 2025-03-06 21:58
 
 1970년대 구조적 프로그래밍 등장으로 워터폴 모델이 도입되고 요구사항 분석과 설계의 중요성이 대두됨
 
-1980년대 객체지향 프로그래밍이 등장하면서 소프트웨어 공학이 함께 발전
+1980년대 객체지향 프로그래밍 등장 및 발전으로 소프트웨어 공학이 함께 발전
          구조적 설계, 모듈화, 재사용성 등 개념이 개발 방법론과 도구로 발전함 
 ```
 
 
-**software crisis**  
-: 1960년대 등장한 소프트웨어 위기라는 용어  
-: 비용 초과, 일정 지연, 품질 저하로 대규모 소프트웨어 프로젝트가 실패하는 현상을 의미  
+**소프트웨어 위기** (software crisis)  
+: 1960년대 소프트웨어 공학 컨퍼런스에서 등장한 용어  
+: 개발 비용 초과, 일정 지연, 품질 저하 등 대규모 소프트웨어 프로젝트가 실패하는 현상을 의미  
