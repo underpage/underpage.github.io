@@ -1,27 +1,28 @@
 ---
-order: 0.5
-title: java
-description: Java Time API
+order: 1
+title: Java
+description: 자바 시간 API
 summary:
 keywords:
-- java
 - java api
-- java time api
+- java se
+- java time
 tags:
-- language
 - java
 created_time: 2024-10-28 01:15
-modified_time: 2024-10-29 22:48
+modified_time: 2025-03-08 19:46
 ---
 
 # Java Time API
-: Java 8부터 지원하는 ISO-8601 표준을 준수하는 시간과 날짜 관련 API ([JSR-310](https://jcp.org/en/jsr/detail?id=310))
-: 스레드 안전성, 객체 불변성 등 기존 Date, Calendar 클래스 단점 및 문제점 보완  
+: Java 8부터 지원하는 ISO-8601 표준을 준수하는 시간과 날짜 관련 API ([JSR-310](https://jcp.org/en/jsr/detail?id=310))  
+: 스레드 안전성, 객체 불변성 등 기존 Date나 Calendar 클래스 단점 및 문제점 보완함  
 : 모든 클래스는 불변이며 메소드 연산 결과로 새로운 객체를 반환함  
 
 
 **ThreeTen-Extra**  
-: java.time 확장 프로젝트    
+: JSR-310 명세를 개발한 개발자들이 만든 ThreeTen이라는 오픈 소스 프로젝트  
+: 이 프로젝트는 Java 8에 java.time 패키지로 통합되었으나 일부 기능은 포함되지 않았음  
+: 포함되지 않는 기능들을 유지한 프로젝트를 ThreeTen-Extra라고 함  
 
 https://www.threeten.org/threeten-extra/
 

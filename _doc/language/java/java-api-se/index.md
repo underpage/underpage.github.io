@@ -1,24 +1,24 @@
 ---
 order: 3
-title: java
+title: Java
 description: 자바 스탠다드 에디션
 summary:
 keywords:
 - java
+- java api
 - java standard edition
-- javase
+- java se
 tags:
-- language
 - java
 created_time: 2024-10-07 06:21
-modified_time: 2025-01-19 21:17
+modified_time: 2025-03-08 19:32
 ---
 
 # Java SE
 Java Standard Edition  
 : 자바의 핵심 기능을 정의하는 스펙  
 : 자바 애플리케이션 개발을 위한 기본적인 라이브러리와 API 제공  
-: Java EE에서 Java SE 스펙 일부를 상속해 기능을 확장하여 사용하는 스펙도 존재함  
+: Java EE에서 Java SE 스펙 일부를 상속해 기능을 확장하여 제공하는 스펙도 존재함  
 
 - [Java Beans](./java-beans.md)
 - [Java Reflection](./java-reflection.md)
