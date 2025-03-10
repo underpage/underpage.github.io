@@ -343,13 +343,16 @@ button:focus {color:#fff;background:#111;}
 .markdown dt:first-child {margin-top:0;}
 .markdown dd {margin-bottom:5px;}
 .markdown dd::before {content:": ";}
+
 /*
 .markdown dd {position:relative;}
 .markdown dd::before {content:": ";position:absolute;top:0;left:0;}
-*/
 
 .markdown dl + table,
 .markdown dl + .highlighter-rouge {margin-top:-15px;}
+*/
+
+.markdown dl + ul {margin-top:-15px;}
 
 .markdown ul {margin-left:18px;margin-bottom:25px;}
 .markdown ul ul {margin-left:18px;margin-bottom:0;}
