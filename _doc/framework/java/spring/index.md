@@ -9,13 +9,12 @@ keywords:
 tags:
 - framework
 - java
-created_time: 2025-02-17 23:11
-modified_time: 2025-02-26 12:01
+created_time: 2025-03-10 18:22
+modified_time: 2025-03-10 23:59
 ---
 
 # Spring Projects  
 : 웹, 시큐리티, 클라우드 등을 다양한 영역의 솔루션을 제공하는 종합적인 자바 생태계  
-: 처음에는 스프링 프레임워크로 시작했으나 현재는 여러 프로젝트로 확장됨
 : 일부 프로젝트는 독립적인 프레임워크이며 일부는 다른 프로젝트와 함께 연동되어 작동함  
 : 주로 자바 언어를 지원하나 코틀린, 그루비 등 JVM 기반 언어도 공식적으로 지원함  
 
@@ -27,9 +26,9 @@ https://github.com/spring-projects
 
 프로젝트 | 설명
 ---|---
-Spring Framework        | 엔터프라이즈 애플리케이션을 위한 핵심 모듈
+Spring Framework        | 엔터프라이즈 애플리케이션을 위한 핵심 모듈을 제공하는 프레임워크
 Spring Boot             | 독립 실행형 애플리케이션 또는 마이크로서비스를 위한 프레임워크
-Spring Web Flow         | 상태 기반 웹 애플리케이션의 데이터 흐름을 제어하는 프레임워크
+Spring Web Flow         | 상태 기반 웹 애플리케이션의 데이터 흐름을 제어하기 위한 프레임워크
 Spring Web Services     | 계약 기반 SOAP 웹 서비스 개발을 위한 프레임워크
 Spring REST Docs        | RESTful 문서 생성을 위한 도구
 Spring HATEOAS          | REST의 하이퍼미디어 링크 표현을 위한 라이브러리
