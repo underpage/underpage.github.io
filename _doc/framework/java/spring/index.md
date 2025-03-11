@@ -1,7 +1,7 @@
 ---
 order: 1
 title: Framework
-description: 프레임워크 - 스프링 프로젝트
+description: 스프링 프로젝트
 summary:
 keywords:
 - java framework
@@ -10,7 +10,7 @@ tags:
 - framework
 - java
 created_time: 2025-03-10 18:22
-modified_time: 2025-03-10 23:59
+modified_time: 2025-03-11 02:22
 ---
 
 # Spring Projects  
@@ -22,11 +22,16 @@ https://spring.io/projects
 https://github.com/spring-projects  
 
 
+- 대부분의 프로젝트는 스프링 핵심 모듈을 기반으로 구축됨
+- Spring REST Docs, Spring CLI 같은 도구를 제외한 프로젝트는 스프링 컨테이너를 지원함
+- 스프링 컨테이너를 통해 대부분 프로젝트는 서로 통합 및 확장이 가능함
+
+
 **웹**
 
 프로젝트 | 설명
 ---|---
-Spring Framework        | 엔터프라이즈 애플리케이션을 위한 핵심 모듈을 제공하는 프레임워크
+Spring Framework        | 스프링 프로젝트를 위한 핵심 모듈을 제공하는 프레임워크
 Spring Boot             | 독립 실행형 애플리케이션 또는 마이크로서비스를 위한 프레임워크
 Spring Web Flow         | 상태 기반 웹 애플리케이션의 데이터 흐름을 제어하기 위한 프레임워크
 Spring Web Services     | 계약 기반 SOAP 웹 서비스 개발을 위한 프레임워크
