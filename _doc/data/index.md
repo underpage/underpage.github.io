@@ -1,18 +1,17 @@
 ---
 order: 3
-title: data
+title: Data
 description: 데이터 (인덱스)
 summary:
 keywords:
 - data
-- data fundamentals
-- data design
+- data architecture
 - data processing
 tags:
 - index
 - data
 created_time: 2024-09-28 11:43
-modified_time: 2025-02-10 23:12
+modified_time: 2025-03-12 23:14
 ---
 
 # Data
@@ -39,6 +38,7 @@ modified_time: 2025-02-10 23:12
   - [Metadata](./metadata.md)
   - [Data Quality](./data-quality.md)
   - [Data Management Framework](./data-management-framework.md)
+- [Data Reliability](./data-reliability.md)
 
 
 **데이터 처리 과정**
@@ -46,22 +46,22 @@ modified_time: 2025-02-10 23:12
 데이터 수집/변환  =>  데이터 통합/전처리  =>  데이터 처리/저장  =>  데이터 분석
 ```
 
-- [Data Collection](./data-collection/index.md)
-- [Data Conversion](./data-conversion/index.md)
-  - [Data Format](./data-conversion/format/index.md)
-  - [Data Encoding](./data-conversion/encoding/index.md)
-- [Data Preprocessing](./data-preprocessing/index.md)
-  - [Data Cleaning](./data-preprocessing/data-cleaning.md)
-  - [Data Transformation](./data-preprocessing/data-transformation.md)
-  - [Data Integration](./data-preprocessing/data-integration.md)
-- [Data Storage](./data-storage/index.md)
-  - [Database](./data-storage/database/index.md)
-    - [Database Management System](../dbms/index.md)
-    - [Query Language](../dbms/query-language/index.md)
-  - [Data Warehouse](./data-storage/data-warehouse.md)
 - [Data Processing](./data-processing/index.md)
-  - [Search Engine](./data-processing/search-engine.md)
-- [Data Analysis](./data-analysis/index.md)
-  - [Statistical Analysis](./data-analysis/statistical/index.md)
-  - [Data Mining](./data-analysis/mining/index.md)
-  - [Data Visualization](./data-analysis/visualization/index.md)
+  - [Data Collection](./data-collection/index.md)
+  - [Data Conversion](./data-conversion/index.md)
+    - [Data Format](./data-conversion/format/index.md)
+    - [Data Encoding](./data-conversion/encoding/index.md)
+  - [Data Preprocessing](./data-preprocessing/index.md)
+    - [Data Cleaning](./data-preprocessing/data-cleaning.md)
+    - [Data Transformation](./data-preprocessing/data-transformation.md)
+    - [Data Integration](./data-preprocessing/data-integration.md)
+  - [Data Manipulation](./data-manipulation/index.md)
+  - [Data Storage](./data-storage/index.md)
+    - [Database](./data-storage/database/index.md)
+      - [Database Management System](../dbms/index.md)
+      - [Query Language](../dbms/query-language/index.md)
+    - [Data Warehouse](./data-storage/data-warehouse.md)
+  - [Data Analysis](./data-analysis/index.md)
+    - [Statistical Analysis](./data-analysis/statistical/index.md)
+    - [Data Mining](./data-analysis/mining/index.md)
+    - [Data Visualization](./data-analysis/visualization/index.md)
