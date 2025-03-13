@@ -1,15 +1,17 @@
 ---
 order: 2
-title: editor
+title: Tool
 description: 에디터
 summary:
 keywords:
 - tool
 - editor
+- vim
+- emacs
 tags:
 - tool
 created_time: 2024-10-05 02:49
-modified_time: 2025-01-19 15:09
+modified_time: 2025-03-13 20:57
 ---
 
 # Editor

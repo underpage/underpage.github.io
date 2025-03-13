@@ -1,29 +1,29 @@
 ---
 order: 3
-title: vcs
+title: Tool
 description: 버전 제어 시스템 (VCS)
 summary:
 keywords:
 - tool
 - version control system
 - vcs
-- cvcs
-- dvcs
+- scm
+- svn
 tags:
 - tool
 created_time: 2024-09-24 00:09
-modified_time: 2025-01-19 15:28
+modified_time: 2025-03-13 20:59
 ---
 
 # Version Control System
-≒ SCM (Software Configuration Management)  
-: 버전 제어/소스 제어 관리 시스템 (= Source Code Management)  
+= Source Code Management ≒ SCM  
+: 버전 제어/소스 제어 관리 시스템  
 : 파일(이진 파일, 소스 코드, 데이터 파일 등)의 변경 사항을 추적하고 관리하는 시스템  
 : 파일을 특정 시점으로 되돌리거나 삭제된 파일을 복구하는 기능을 지원함  
 
-**SCM**  
+**SCM** (Software Configuration Management)  
 : 소프트웨어 구성 관리  
-: 설정, 개발, 배포, 버그 추적 등 소프트웨어의 모든 변경 사항을 관리  
+: 설정, 개발, 배포, 버그 추적 등 소프트웨어의 모든 변경 사항을 관리함  
 : 버전 관리 시스템은 소프트웨어 구성 관리의 구성 요소 (SCM > VCS)
 
 

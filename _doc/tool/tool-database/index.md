@@ -1,18 +1,22 @@
 ---
-order: 5
-title: tool
-description: 데이터베이스 관리 도구
+order: 6
+title: Tool
+description: 데이터베이스 관련 도구
 summary:
 keywords:
 - tool
+- database tool
 - database management
+- database backup
+- database modeling
 tags:
 - tool
+- database
 created_time: 2025-01-07 08:57
-modified_time: 2025-01-19 15:51
+modified_time: 2025-03-13 21:04
 ---
 
-# Database Management Tool
+# Database Tool
 : 데이터베이스 설계, 백업, 복구 등 데이터베이스 관리 도구  
   
 **Database Client Tool**
