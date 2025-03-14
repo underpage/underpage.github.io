@@ -1,6 +1,6 @@
 ---
 order: 20
-title: infra
+title: Infra
 description: 인프라 (인덱스)
 summary:
 keywords:
@@ -11,33 +11,21 @@ tags:
 - index
 - infra
 created_time: 2024-09-29 18:56
-modified_time: 2025-01-31 13:28
+modified_time: 2025-03-14 23:17
 ---
 
 # Infrastructure
 : 사전적으로 인프라란 생활이나 활동을 지탱하는 기반 시설을 의미  
 : IT 인프라란 IT 환경을 운영하고 관리하기 위한 모든 구성 요소 집합을 의미  
 
+- [인프라 구성 요소](./infra-component.md)
 - [인프라 유형](./infra-type.md)
-- [인프라 아키텍처](./infra-architecture.md)
 - [인프라 구조](./infra-topology.md)
+- [인프라 아키텍처](./infra-architecture.md)
 - [인프라 구축](./infra-deployment.md)
-- [인프라 기술](./infra-technology.md)
-- [인프라 관리](./infra-management.md)
-- [인프라 보안](./infra-security.md)
-
-
-**인프라 구성 요소**  
-: 물리적 요소와 기술적 요소만 아니라 인적 자원도 포함됨
-
-- 데이터 센터 (건물, 전력, 냉각 등)
-- 하드웨어 (서버, 스토리지)
-- 소프트웨어 (운영체제, 미들웨어)
-- 네트워크
-- 가상화
-- 컨테이너
-- 클라우드 리소스
-- 보안 (보안 장치, 정책)
+- [인프라 기술](./infra-technology/index.md)
+- [인프라 관리](./infra-management/index.md)
+- [인프라 보안](./infra-security/index.md)
 
 
 
