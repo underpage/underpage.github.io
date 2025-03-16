@@ -7,24 +7,45 @@ keywords:
 - software engineering
 - software process
 - software architecture
+- software crisis
 tags:
 - index
 - software engineering
 created_time: 2024-09-28 11:43
-modified_time: 2025-03-07 19:49
+modified_time: 2025-03-16 23:28
 ---
 
 # Software Engineering
 : 소프트웨어 시스템 설계, 개발, 유지보수를 위한 체계적인 프로세스와 방법론  
-: 이를 통해 생산성, 효율성, 신뢰성이 높은 소프트웨어 시스템 개발을 가능하게 함  
+: 체계적인 접근 방식을 통해 생산성, 효율성, 신뢰성 높은 소프트웨어 개발을 가능하게 함  
 : 소프트웨어 품질, 일정, 비용 등을 관리하면서 사용자의 요구사항을 충족시키는 것을 목표로 함  
 
-표준 및 지침
+**engineering**  
+: 수학적 원리와 과학적 지식을 활용해 실용적인 문제를 해결하는 학문  
+: 공학은 기계, 전기, 화학 등 분야에서 사용되어 효율적이고 안전성있는 설계와 구현을 목표로 함  
+
+**project**  
+: 특정 목표를 달성하기 위해 한정된 시간과 자원을 가지고 소프트웨어를 만들어내는 과정  
+: 소프트웨어는 프로젝트의 결과물이며 프로젝트가 종료되어도 소프트웨어는 지속적으로 존재함  
+: 하나의 프로젝트에서 여러 소프트웨어를 만들 수 있고 하나의 소프트웨어가 여러 프로젝트를 통해 개발될 수 있음  
+
+**software**  
+: 넓은 의미의 소프트웨어란 프로그램과 관련된 데이터와 문서들 집합  
+: 문서란 요구사항 명세서, 설계서, 매뉴얼, 가이드 문서 등 프로그램 관련 정보를 제공하는 모든 것을 의미함  
+
+
+**표준 및 프레임워크**  
+: 소프트웨어 엔지니어링를 체계적으로 지원하는 표준과 가이드라인  
+
 - [Software Engineering Framework](./se-framework/index.md)
   - [SWEBOK](./se-framework/swebok.md)
   - [ISO/IEC/IEEE 12207](./se-framework/iso12207.md)
 
-프로세스
+
+**주요 구성 요소**  
+: 소프트웨어 엔지니어링을 이루는 필수적인 요소들  
+
+소프트웨어 프로세스
 - [Software Process](./sw-process.md)
   - [Software Process Model](./sw-process-model.md)
   - [Software Process Modeling](./sw-process-modeling.md)
@@ -47,31 +68,41 @@ modified_time: 2025-03-07 19:49
 
 개발 및 검증
 - Software Development
-- Software Testing
+- [Software Testing](./sw-testing.md)
 
 배포 및 유지보수
-- Software Configuration
+- [Software Configuration](./sw-configuration.md)
 - Software Deployment
-- Software Maintenance
+- [Software Maintenance](./sw-maintenance.md)
 
 도구
 - [Software Engineering Tool](./sw-tool/index.md)
 
 
-**software**  
-: 넓은 의미의 소프트웨어란 프로그램과 관련된 데이터와 문서들 집합  
-: 문서란 요구사항 명세서, 설계 문서, 메뉴얼 문서, 가이드 문서 등 정보를 제공하는 문서를 의미함
+**최신 개발 및 운영 방식**  
+: 소프트웨어의 개발, 배포, 운영을 효율적으로 수행하기 위한 최신 기술과 방법론
+
+- DevOps
+- DevSecOps
+- SRE
+- Chaos Engineering
+- Platform Engineering
 
 
 **history**
 ```
-1960년대 소프트웨어 개발의 복잡성이 급격히 증가하며 소프트웨어 개발의 실패율도 증가
-         소프트웨어의 체계적인 개발 방식이 필요해지며 소프트웨어 공학이라는 용어가 등장
+1960년대  소프트웨어 시스템 복잡성이 급격히 증가하며 소프트웨어 개발의 실패율도 증가함
+          소프트웨어의 체계적인 개발 방식이 필요해지며 소프트웨어 공학이라는 용어가 등장
 
-1970년대 구조적 프로그래밍 등장으로 워터폴 모델이 도입되고 요구사항 분석과 설계의 중요성이 대두됨
+1970년대  구조적 프로그래밍이 등장하고 확산되면서 체계적인 개발 방법이 필요해짐
+          이를 위해 워터폴 모델이 도입되어 소프트웨어 개발의 단계적 접근 방식이 확립됨
+          이 과정에서 요구사항 분석과 설계의 중요성이 대두되고 소프트웨어 메트릭(측정) 개념이 등장함
 
-1980년대 객체지향 프로그래밍 등장 및 발전으로 소프트웨어 공학이 함께 발전
-         구조적 설계, 모듈화, 재사용성 등 개념이 개발 방법론과 도구로 발전함 
+1980년대  객체지향 프로그래밍이 등장하면서 모듈화, 캡슐화, 상속 등 개념이 설계 방식에 영향을 미치며
+          구조적 설계, 모듈화, 재사용성이 개발 방법론과 도구로 발전하며 소프트웨어 공학이 함께 발전함
+
+1990년대  객체지향 분석 및 설계 방법론이 보편화되면서 이를 표현하기 위한 UML 도구가 등장함
+          인터넷과 웹의 발전으로 분산 시스템과 클라이언트-서버 아키텍처에 대한 공학적 접근이 중요해짐
 ```
 
 
