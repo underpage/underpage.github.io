@@ -11,7 +11,7 @@ tags:
 - program
 - language
 created_time: 2024-10-25 22:51
-modified_time: 2025-03-21 22:43
+modified_time: 2025-03-22 01:39
 ---
 
 # Contract-Oriented Programming Language

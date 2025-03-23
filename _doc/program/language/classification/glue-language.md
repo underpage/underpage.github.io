@@ -10,7 +10,7 @@ tags:
 - program
 - language
 created_time: 2024-10-05 07:25
-modified_time: 2025-03-21 22:43
+modified_time: 2025-03-22 01:39
 ---
 
 # Glue Language
