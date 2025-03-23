@@ -1,5 +1,5 @@
 ---
-order: 3
+order: 1
 title: Programming
 description: 프로그래밍 언어 분류
 summary:
@@ -10,7 +10,7 @@ tags:
 - program
 - language
 created_time: 2025-03-22 04:33
-modified_time: 2025-03-22 04:34
+modified_time: 2025-03-23 22:37
 ---
 
 # Programming Language Classification
