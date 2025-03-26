@@ -1,36 +1,50 @@
 ---
 order: 3
 title: Java
-description: 자바 스탠다드 에디션
+description: 자바 스탠다드 라이브러리
 summary:
 keywords:
 - java
 - java api
-- java standard edition
+- java standard library
 - java se
 tags:
 - java
 created_time: 2024-10-07 06:21
-modified_time: 2025-03-08 19:32
+modified_time: 2025-03-26 22:30
 ---
 
-# Java SE
-Java Standard Edition  
-: 자바의 핵심 기능을 정의하는 스펙  
-: 자바 애플리케이션 개발을 위한 기본적인 라이브러리와 API 제공  
-: Java EE에서 Java SE 스펙 일부를 상속해 기능을 확장하여 제공하는 스펙도 존재함  
+# Java SE API
+Java Standard Library  
+: 자바 애플리케이션 개발을 위한 표준 라이브러리  
+: 네트워크, 데이터베이스, 보안 등 핵심 기능을 지원하며 Java EE에서 일부 기능을 확장해 제공함
+: 자바 표준 라이브러리 스펙은 [JCP](https://jcp.org)를 통해 정의 및 관리됨  
 
+**기본**
 - [Java Beans](./java-beans.md)
 - [Java Reflection](./java-reflection.md)
+
+**유틸리티**
+- [Java Service Provider Interface](./spi.md)
+- [Java Compression API](./java-compression.md)
+- [Java Logging API](./java-logging.md)
+- [Java Preferences API](./java-prefs.md)
 
 **데이터 처리**
 - [Java Collections Framework](./jcf.md)
 - [Java Stream API](./java-stream.md)
 - [Java Time API](./java-time.md)
+- Java API for XML Processing (JAXP)
+- Java Architecture for XML Binding (JAXB)
+
+**국제화 및 지역화**
+- Java Internationalization (i18n)
+- Java Localization (l10n)
 
 **입출력 시스템**
-- [Java IO API](./java-io.md)
-- [Java NIO API](./java-io.md#nio)
+- [Java IO](./java-io.md)
+  - Serializable API
+- [Java NIO](./java-io.md#nio)
 
 **데이터 통신**
 - [Java Networking API](./java-network.md)
@@ -40,12 +54,13 @@ Java Standard Edition
 
 **보안**
 - [Java Security API](./java-security.md)
-- [Java Authentication and Authorization Service](./jaas.md)
-- [Java Cryptography Architecture](./jca.md)
-- [Java Cryptography Extension](./jce.md)
-- [Java Secure Socket Extension](./jsse.md)
-- [Java Generic Security Services](./jgss.md)
-- [Java Cryptography Extension KeyStore](./jceks.md)
+  - [Java Authentication and Authorization Service (JAAS)](./jaas.md)
+  - [Simple Authentication and Security Layer (SASL)](./sasl.md)
+  - [Java Cryptography Architecture (JCA)](./jca.md)
+  - [Java Cryptography Extension (JCE)](./jce.md)
+  - [Java Cryptography Extension KeyStore (JCEK)](./jcek.md)
+  - [Java Secure Socket Extension (JSSE)](./jsse.md)
+  - [Java Generic Security Services (JGSS)](./jgss.md)
 
 **동시성**
 - [Java Thread](./java-thread.md)
