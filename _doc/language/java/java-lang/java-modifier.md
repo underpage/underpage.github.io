@@ -14,7 +14,7 @@ keywords:
 tags:
 - java
 created_time: 2024-10-14 18:52
-modified_time: 2025-03-08 20:10
+modified_time: 2025-03-26 22:24
 ---
 
 # Java Modifier
@@ -85,7 +85,7 @@ volatile     | 변수
 : 모든 인스턴스가 공유하는 멤버를 정의하기 위해 사용함  
 
 ```java
-// 최상위 클래스는 static 키워드 사용 불가
+// 일반 클래스는 static 키워드 사용 불가
 public class Example {
     
     static String VARIABLE;
@@ -121,13 +121,16 @@ public final class Example {
     // final 변수는 선언과 동시에 초기화하거나 생성자에 의해 한 번만 초기화가 가능함
     final String variable = "";
     
-    // final 메소드는 오버라이딩이 불가능하나 안정성이 향상됨 (객체의 동작을 보장함)
+    // final 메소드는 오버라이딩이 불가능하나 안정성이 향상됨 (객체의 동작을 보장하므로)
     final void getVariable () {
         System.out.println(this.variable);
     }
 
     // final 매개 변수도 메소드 내에서 재할당이 불가능함
-    void setVariable(final String vriable) {}
+    void setVariable(final String vriable) {
+        // 불가능
+        // vriable = "";
+    }
 
     public static void main([] args) {
         // final 참조 변수는 참조를 고정하여 다른 객체 참조가 불가능함
@@ -143,7 +146,22 @@ public final class Example {
 
 **effectively final variable**  
 : final 키워드를 사용하지 않았지만 한 번 초기화된 후 변경이 불가능 한 변수  
-: 익명 클래스나 람다식에서 사용하는 지역 변수에 적용됨  
+: 익명 클래스나 람다식에서 사용하는 지역 변수에 적용되어 값을 변경하지 못하게 함  
+: 데이터를 불변으로 만들어 안전성을 높이고 예기치 않은 부작용을 방지하는 자바 메커니즘  
+: 초기화된 후 값이 변경되지 않는 변수도 effectively final 변수로 취급됨  
+
+```java
+int i = 0;
+int[] arr = {0};
+
+Consumer<Void> f = (v) -> {
+    // 불가능
+    // i = 1;
+
+    // 참조 변수는 가능
+    arr[0] = 1;
+};
+```
 
 
 
@@ -243,13 +261,13 @@ public class Example {
 
 ### volatile
 : 멀티 스레드 환경에서 변수의 가시성을 보장함  
-: volatile 변수는 변수를 메인 메모리에 저장해 여러 스레드가 동일한 변수를 참조하게 함  
-: 멀티 스레드 환경에서 메인 메모리를 통해 동일한 변수를 참조해 데이터 불일치 문제를 해결함  
+: volatile 키워드를 선언한 변수는 메인 메모리에 저장되어 여러 스레드가 동일한 변수를 참조함  
+: 멀티 스레드 환경에서 메인 메모리를 통해 동일한 변수를 참조하게 하여 데이터 불일치 문제를 해결함  
 : 복잡한 연산의 원자성을 보장하지 않으므로 java.util.concurrent.atomic 패키지를 사용해야 함
 
 ```
 멀티 스레드 환경에서 스레드는 자신만의 CPU 캐시에 변수의 값을 복사해 사용하는데
-다른 스레드가 해당 변수를 수정하는 경우 스레드에서 그 변경을 즉시 알 수 없어 문제가 생길 수 있음
+다른 스레드가 해당 변수(원본값)를 수정하는 경우 스레드에서 그 변경을 즉시 알 수 없어 문제가 생길 수 있음
 ```
 
 

@@ -1,16 +1,18 @@
 ---
 order: 4.1
 title: Java
-description: 자바 객체 종류
+description: 자바 객체 특성 분류
 summary:
 keywords:
 - java
 - java object type
+- mutable
 - immutable
+- serializable
 tags:
 - java
 created_time: 2025-01-19 18:42
-modified_time: 2025-03-05 00:18
+modified_time: 2025-03-26 22:21
 ---
 
 # Java Object Type
@@ -30,14 +32,30 @@ modified_time: 2025-03-05 00:18
 ## Value Object
 : 객체의 상태를 나타내는 값 자체  
 : 동일한 값이면 동일한 것으로 취급되며 보통 불변성을 가짐  
-: equals()와 hashCode()를 오버라이딩하여 값의 동등성을 비교함  
+: equals()와 hashCode()를 오버라이드하여 값의 동등성을 비교를 구현해야 함  
+
+```java
+String str1 = new String("String");
+String str2 = new String("String");
+
+// 값 비교
+(str1.equals(str2)) == true
+```
 
 
 
 ## Reference Object
 : 메모리 주소(참조)를 통해 식별되는 객체  
-: 동일한 상태를 가지더라도 메모리 주소가 다르면 다른 객체로 구분됨  
-: == 연산자를 통해 객체의 동등성을 비교함
+: 동일한 상태를 가지더라도 참조가 다르면 다른 객체로 구분됨  
+: == 연산자를 통해 객체의 참조를 비교함  
+
+```java
+String str1 = new String("String");
+String str2 = new String("String");
+
+// 참조 비교
+(str1 == str2) == false
+```
 
 
 
@@ -50,9 +68,9 @@ modified_time: 2025-03-05 00:18
 : 일부 상태만 변경 가능한 객체  
 
 ```java
-public class User {
-    private final String id;
-    private String status;
+public class Example {
+    private final String finalVariable;
+    private String variable;
 }
 ```
 
@@ -62,8 +80,8 @@ public class User {
 : 객체가 생성된 후 상태가 절대로 변하지 않는 객체  
 : 힙 영역에 할당된 후 객체의 모든 필드가 읽기 전용으로 유지되어 외부에서 상태를 변경할 수 없음  
 : 여러 스레드에서 동시에 불변 객체에 접근해도 객체의 상태가 불변이므로 동기화가 필요하지 않음  
-: 상태 변경이 필요할 경우 새로운 객체를 생성해 상태를 변경하고 기존 객체와 참조가 끊어짐  
-: 예외적으로 리플렉션을 통해 불변 객체의 상태를 변경할 수 있음  
+: 상태 변경이 필요할 경우 새로운 객체를 생성해 상태를 변경하고 기존 객체와의 참조가 끊어짐  
+: 예외적으로 [리플렉션](../java-api-se/java-reflection.md)을 통해 불변 객체의 상태를 변경할 수 있음  
 
 **생성자 구현**
 ```java
@@ -167,10 +185,10 @@ public final class Example {
 : 한 번 사용 후에는 바로 메모리에서 제거됨  
 
 ```java
-int num = 0;
+int i = 0;
 
 List<Integer> list = new ArrayList<>();
-// new Integer(num) 임시 객체가 생성됨
+// new Integer(num) 형태의 임시 객체가 생성됨
 list.add(num);
 ```
 
@@ -185,17 +203,16 @@ list.add(num);
 : 바이트 데이터를 객체 형태로 복원하는 것은 역직렬화라고 함  
 
 ```java
-public class User implements Serializable {
+public class Example implements Serializable {
     private static final long serialVersionUID = 1L;
-    private final String id;
-    private String status;
+    private String variable;
 }
 ```
 
 
 
 ## Synchronized Object
-: 멀티 스레드 환경에서 동기화를 지원하여 스레드 간 안전한 동시 접근을 보장하는 객체  
+: 멀티스레드 환경에서 동기화를 지원하여 스레드 간 안전한 동시 접근을 보장하는 객체  
 
 **스레드 안전 객체**  
 : 내부적으로 동기화 메커니즘이 가지고 있어 여러 스레드에서 동시에 접근해도 안전한 객체  

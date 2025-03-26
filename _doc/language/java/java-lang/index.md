@@ -1,7 +1,7 @@
 ---
 order: 2
 title: Java
-description: 자바 언어
+description: 자바 프로그래밍 언어
 summary:
 keywords:
 - java
@@ -10,7 +10,7 @@ tags:
 - java
 - language
 created_time: 2024-10-07 06:21
-modified_time: 2025-03-04 23:06
+modified_time: 2025-03-26 22:19
 ---
 
 # Java Programming Language
@@ -27,9 +27,9 @@ modified_time: 2025-03-04 23:06
   - [Java Expression](./java-expression.md)
   - [Java Expression Context](./java-expression.md)
   - [Java Statement](./java-statement.md)
+  - [Java Exception](./java-error-exception.md)
   - [Java Array](./java-array.md)
   - [Java String](./java-string.md)
-  - [Java Exception](./java-error-exception.md)
   - [Java Generic](./java-generic.md)
   - [Java Annotation](./java-annotation.md)
  - [Java Program Structure](./java-program-structure.md)
@@ -38,7 +38,8 @@ modified_time: 2025-03-04 23:06
   - [Java Variable](./java-variable.md)
   - [Java Method](./java-method.md)
   - [Java Modifier](./java-modifier.md)
-- [Java OOP Programming](./java-oop-programming.md)
+- [Java OOP Programming](./java-oo-programming.md)
+  - [Java Interface](./java-oo-programming.md#interface)
   - [Java Object Type](./java-object-type.md)
 - [Java Functional Programming](./java-functional-programming.md)
 

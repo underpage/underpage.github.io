@@ -12,7 +12,7 @@ keywords:
 tags:
 - java
 created_time: 2024-10-09 08:59
-modified_time: 2025-03-08 20:11
+modified_time: 2025-03-26 22:25
 ---
 
 # Java Program Structure
@@ -101,11 +101,11 @@ public class Example {
 
 ```java
 // 단일 패키지 선언
-package a;
+package x;
 public class Example {}
 
 // 중첩 패키지 선언
-package a.b.c;
+package x.y.z;
 public class Example {}
 ```
 
