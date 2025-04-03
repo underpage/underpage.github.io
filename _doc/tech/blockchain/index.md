@@ -12,8 +12,8 @@ tags:
 - index
 - blockchain
 - tech
-created_time: 2024-12-10 23:56
-modified_time: 2025-03-18 22:19
+created_time: 2025-04-04 01:19
+modified_time: 2025-04-04 01:19
 ---
 
 # Blockchain
