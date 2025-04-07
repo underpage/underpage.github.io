@@ -8,8 +8,11 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
-  - _doc.rb
-  - _order.*
+  - _order.rb
+  - _order.txt
+  - _setorder.rb
+  - _url.rb
+  - _url.csv
 
 include:
   - _doc
@@ -17,8 +20,8 @@ include:
 production:
   build:
     parallel: true
-  incremental: true
-  cache: true
+    incremental: true
+    cache: true
 
 plugins:
   - jekyll-cache
@@ -35,7 +38,7 @@ date_format: '%Y-%m-%d'
 lang: 'ko'
 title: 'underpage'
 description: 'underpage blog'
-keyword: 'underpage, underPage, underpage github, github blog, dev blog, 깃허브 블로그, 깃허브 페이지'
+keyword: 'underpage, underPage, underpage github, github blog, dev blog'
 
 url: ''
 baseurl: ''

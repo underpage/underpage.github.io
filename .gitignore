@@ -1,5 +1,7 @@
 .env
 .jekyll-cache
 .jekyll-metadata
+.bundle
 _site
+_url.csv
 _order.txt

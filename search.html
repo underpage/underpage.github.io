@@ -1,22 +1,24 @@
 ---
 layout: layout-page
-title: search
 permalink: /search
+title: search
+description: 블로그 포스트를 검색해서 원하는 정보를 빠르게 찾아보세요.
+keywords: search, search form, post search, 검색, 포스트 검색
 ---
 
-<section class="layout-page-wrap search-page-wrap">
+<section class="layout-page-wrap">
   <div class="page-title-wrap">
-    <h2 class="page-title">Search</h2>
+    <h2>Search</h2>
   </div>
 
-  <div class="page-content-wrap">
+  <div class="page-content-wrap search-content">
     
-    <form class="search-post-form" id="searchForm" method="get">
+    <form class="search-post-form" method="get" id="searchPostForm">
       <fieldset>
         <legend class="hide">포스트 검색 양식</legend>
 
-        <label for="searchPost" class="hide">검색어 입력</label>
-        <input type="text" id="searchPost" name="q" autocomplete="off" placeholder="search" aria-label="검색어 입력">
+        <label for="searchPostInput" class="hide">검색어 입력</label>
+        <input type="text" id="searchPostInput" name="q" autocomplete="off" placeholder="search" aria-label="검색어 입력" autofocus>
 
         <button type="submit" aria-label="검색">
           {% octicon search height:26 %}
@@ -24,117 +26,7 @@ permalink: /search
       </fieldset>
     </form>
 
-    <ul class="page-search-list" id="searchPostList"></ul>
+    <ul class="default-post-list" id="searchPostList"></ul>
 
   </div>
 </section>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const jsonDataPath = '/assets/data/doc_items.json';
-  const urlParams = new URLSearchParams(window.location.search);
-  const query = urlParams.get('q');
-
-  if(query) {
-    document.getElementById('searchPost').value = query;
-    
-    loadJSON().then(data => {
-      if(data) {
-        displayResults(searchPosts(data, query));
-      }
-    });
-  }
-
-  function loadJSON() {
-    return fetch(jsonDataPath)
-      .then(response => {
-        if(response.ok) {
-          return response.json();
-        } else {
-          throw new Error('[ERROR] response was not ok');
-        }
-      })
-      .then(data => {
-        return data;
-      })
-      .catch(error => {
-        console.error('[Fetch ERROR] ', error);
-      });
-  }
-
-  function filterPosts(posts, lowerCaseQuery) {
-    const filteredPosts = [];
-
-    posts.forEach(post => {
-      const title = post.title ? post.title.toLowerCase() : '';
-      const description = post.description ? post.description.toLowerCase() : '';
-
-      if(title.includes(lowerCaseQuery) || description.includes(lowerCaseQuery)) {
-        filteredPosts.push(post);
-      }
-
-      if(post.posts && post.posts.length > 0) {
-        const nestedPosts = filterPosts(post.posts, lowerCaseQuery);
-        filteredPosts.push(...nestedPosts);
-      }
-    });
-
-    return filteredPosts;
-  }
-    
-  function searchPosts(items, query) {
-    const result = [];
-
-    items.forEach(item => {
-      const filterdPosts = filterPosts(item.posts, query.toLowerCase());
-
-      if(filterdPosts.length > 0) {
-        result.push({
-          url: item.url,
-          posts: filterdPosts,
-        });
-      }
-    });
-
-    return result;
-  }
-  
-  function displayResults(items) {
-    const container = document.getElementById('searchPostList');
-
-    if(items.length < 1) {
-      container.innerHTML = '<li>검색 결과가 없습니다.</li>';
-      return false;
-    }
-
-    function displayItem(item) {
-      const listItem = document.createElement('li');
-      if(item.title) {
-        listItem.innerHTML = `
-          <article class="post-item-wrap">
-            <a href="${item.url}">
-              <span class="title">${item.title}</span>
-              <span class="desc">${item.description}</span>
-            </a>
-            <time datetime="${item.modified_time}" class="date">
-              ${item.modified_time}
-            </time>
-          </article>`;
-        container.appendChild(listItem);
-      }
-
-      if(item.posts && item.posts.length > 0) {
-        item.posts.forEach(nestedPost => {
-          displayItem(nestedPost);
-        });
-      }
-    }
-
-    items.forEach(item => {
-      displayItem(item);
-    });
-
-  }
-
-});
-</script>

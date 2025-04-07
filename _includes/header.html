@@ -1,7 +1,7 @@
 <header class="include-header-wrap" id="commonHeader">
   <div class="common-wrap">
     <p class="hide">다음 링크를 클릭하면 메인 페이지로 이동합니다.</p>
-    <h1 class="header-title" id="headerTitle" tabindex="-1">
+    <h1 class="header-title">
       <a href="{{ "/" | relative_url }}">underPage</a>
     </h1>
 
@@ -26,9 +26,40 @@
       <a href="https://underpage.github.io/">
         {% octicon home-fill height:22.5 class:"home-icon" %}
       </a>
-
     </div>
 
   </div>
 </header>
 <hr>
+
+<div class="header-category-wrap">
+
+  <button class="category-open-btn" id="categoryOpenBtn" aria-label="포스트 카테고리 열기">menu</button>
+
+  <div class="category-menu-wrap" id="headerCategory" tabindex="-1">
+    <div class="common-wrap">
+      <button class="category-close-btn" id="categoryCloseBtn" aria-label="포스트 카테고리 닫기"></button>
+
+      <nav class="header-category-nav">
+        {% include render-header-nav.html %}
+      </nav>
+
+    </div>
+  </div>
+
+</div>
+
+
+<script>
+
+const disableTabFocus = () => {
+  const buttons = document.querySelectorAll('.category-menu-wrap button, .category-menu-wrap a');
+  buttons.forEach(button => {
+    button.setAttribute('tabindex', '-1');
+  });
+};
+
+// 사용 예
+disableTabFocus();
+
+</script>

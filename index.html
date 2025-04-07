@@ -1,143 +1,27 @@
 ---
 layout: layout-page
-title: index
 permalink: /index
+title: index
+keywords: blog, github blog, gtihub page
 ---
 
-<section class="layout-page-wrap index-page-wrap">
+<section class="layout-page-wrap">
   <div class="page-title-wrap">
-    <h2 class="page-title">Index</h2>
+    <h2>Index</h2>
   </div>
 
-  <div class="page-content-wrap">
-    <p class="page-content-count">
+  <div class="page-content-wrap index-content">
+    <p class="default-post-count">
       {{ site.data.total_doc_files | default: '0' }} Posts
     </p>
 
     {% assign items = site.data.doc_items %}
-    {% if items %}
     {% assign sorted_items = items | sort: 'modified_time' %}
-    <ul class="page-post-list" id="indexPostList">
+    <ul class="default-post-list index-post-list" id="indexPostList" hidden>
       {% include render-index-posts.html items=sorted_items %}
     </ul>
-    {% endif %}
 
-    <p class="page-post-pagination" id="indexPagination"></p>
+    <p class="index-post-pagination" id="indexPagination"></p>
   </div>
   
 </section>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-
-  const $postList = document.getElementById('indexPostList');
-  const $itemsArray = Array.from($postList.getElementsByTagName('li'));
-
-  const $pagination = document.getElementById('indexPagination');
-
-  const itemsPerPage = 10;
-  let $pageCount = Math.ceil($itemsArray.length / itemsPerPage);
-
-  function sortItems() {
-    $itemsArray.sort((a, b) => {
-      const dateA = new Date(a.querySelector('time').getAttribute('datetime'));
-      const dateB = new Date(b.querySelector('time').getAttribute('datetime'));
-      return dateB - dateA;
-    });
-    $itemsArray.forEach(item => $postList.appendChild(item));
-  }
-
-  function showPage(page) {
-    if($itemsArray.length === 0) return;
-
-    sortItems();
-
-    const startIndex = (page - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    $itemsArray.forEach((item, i) => {
-      item.style.display = (i >= startIndex && i < endIndex) ? 'block' : 'none';
-    });
-
-    location.hash = `page/${page}`;
-    setupPagination(page);
-
-    $postList.classList.remove('none');
-  }
-
-  function setupPagination(currentPage) {
-    const buttons = $pagination.getElementsByTagName('button');
-    Array.from(buttons).forEach((button, i) => {
-      button.classList.toggle('on', (parseInt(button.dataset.page, 10) === currentPage));
-    });
-
-    const prevBtn = $pagination.querySelector('.prev-btn');
-    const nextBtn = $pagination.querySelector('.next-btn');
-
-    if(prevBtn) prevBtn.classList.toggle('none', (currentPage === 1));
-    if(nextBtn) nextBtn.classList.toggle('none', (currentPage === $pageCount));
-  }
-
-  function setupPaginationBtn() {
-    if($itemsArray.length === 0) return;
-
-    $pagination.innerHTML = '';
-
-    const prevBtn = document.createElement('button');
-    prevBtn.textContent = 'prev';
-    prevBtn.classList.add('prev-btn');
-    prevBtn.addEventListener('click', () => {
-      const currentPage = getPageFromURL();
-      if(currentPage > 1) {
-        showPage(currentPage - 1);
-      }
-    });
-    $pagination.appendChild(prevBtn);
-
-    for(let i = 1; i <= $pageCount; i++) {
-      const btn = document.createElement('button');
-      btn.textContent = i;
-      btn.dataset.page = i;
-      btn.addEventListener('click', () => {
-        showPage(i);
-      });
-      $pagination.appendChild(btn);
-    }
-
-    const nextBtn = document.createElement('button');
-    nextBtn.textContent = 'next';
-    nextBtn.classList.add('next-btn');
-    nextBtn.addEventListener('click', () => {
-      const currentPage = getPageFromURL();
-      if(currentPage < $pageCount) {
-        showPage(currentPage + 1);
-      }
-    });
-    $pagination.appendChild(nextBtn);
-
-    const initialPage = getPageFromURL();
-    setupPagination(initialPage);
-  }
-
-  function getPageFromURL() {
-    const hash = location.hash;
-    const match = hash.match(/#page\/(\d+)/);
-    return match ? parseInt(match[1], 10) : 1;
-  }
-  
-  function calculatepageCount() {
-    $pageCount = Math.ceil($itemsArray.length / itemsPerPage);
-  }
-
-  setupPaginationBtn();
-
-  const initialPage = getPageFromURL();
-  calculatepageCount();
-  showPage(initialPage);
-
-  window.addEventListener('hashchange', () => {
-    const page = getPageFromURL();
-    showPage(page);
-  });
-
-});
-</script>

@@ -21,9 +21,14 @@ gem install jekyll bundler
 jekyll new example 
 
 # 실행
-cd example 
-bundle install
+cd example && bundle install
 bundle exec jekyll serve
+
+## 변경된 파일만 빌드
+bundle exec jekyll serve --incremental
+
+## 빌드 상세 정보 확인
+bundle exec jekyll serve --verbose
 
 ## Gemfile.lock에 x86_64-linux 플랫폼 추가
 bundle lock --add-platform x86_64-linux
@@ -32,16 +37,18 @@ bundle lock --add-platform x86_64-linux
 # 정적 사이트 생성
 jekyll build
 
-# 변화를 감지해 재생성
+## 변화를 감지해 재생성
 jekyll build --watch
 
-# 빌드 과정 분석
+## 빌드 과정 분석
 jekyll build --profile
 
-# 캐시 삭제
-jekyll clea
 
-# 실행
+# 캐시 삭제
+jekyll clear
+
+
+# 웹 서버 실행
 jekyll serve
 >> localhost:4000
 ```

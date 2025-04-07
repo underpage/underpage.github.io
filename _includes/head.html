@@ -5,11 +5,18 @@
 <title>{{ site.title }}{% if page.title %} :: {{ page.title }}{% if page.description %} - {{ page.description }}{% endif %}{% endif %}</title>
 <meta name="robots" content="index, follow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="{{ page.description | page.summary | site.description  }}">
-<meta name="keywords" content="{{ site.keyword }}{% if page.keywords or page.tags %}, {{ page.keywords | default: page.tags | join: ', ' }}{% endif %}">
+<meta name="description" content="{{ page.description | default: site.description  }}{% if page.summary %} | {{ page.summary }}{% endif %}">
+<meta name="keywords" content="{% if page.keywords %}{{ page.keywords | join: ', ' }}{% elsif page.tags %}{{ page.tags | join: ', ' }}{% else %}{{ site.keyword }}{% endif %}">
+<meta name="google-site-verification" content="GfydRoSpDG65oJAnLYow1n9-upKTy-G1zP_C_CGXfX0">
+
+<meta property="og:title" content="{{ site.title }}">
+<meta property="og:description" content="{{ site.description }}">
+<meta property="og:url" content="{{ site.url }}">
+<meta property="og:type" content="website">
+
 <link rel="canonical" href="{{ page.url | absolute_url }}">
-<link rel="alternate" href="{{ site.url }}/feed.xml" type="application/rss+xml">
 <link rel="sitemap" href="{{ site.url }}/sitemap.xml" type="application/xml">
+<link rel="alternate" href="{{ site.url }}/feed.xml" type="application/rss+xml">
 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,6 +26,8 @@
 <link rel="stylesheet" href="{{ site.asset_url.css }}/base.css">
 <link rel="stylesheet" href="{{ site.asset_url.css }}/common.css">
 <link rel="icon" href="{{ site.asset_url.img }}/favicon.ico" type="image/x-icon">
+
+<script src="{{ site.asset_url.js }}/init.js" type="module" defer></script>
 </head>
 
 {% if jekyll.environment == "production" %}
