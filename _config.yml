@@ -1,6 +1,7 @@
 exclude:
   - .github
   - .gitignore
+  - .bundle
   - .jekyll-cache
   - .jekyll-metadata
   - .env
@@ -8,6 +9,7 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
+  - _site_backup*
   - _order.rb
   - _order.txt
   - _setorder.rb
