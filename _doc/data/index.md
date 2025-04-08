@@ -7,11 +7,12 @@ keywords:
 - data
 - data architecture
 - data processing
+- data system
 tags:
 - index
 - data
-created_time: 2024-09-28 11:43
-modified_time: 2025-03-12 23:14
+created_time: 2025-04-04 01:19
+modified_time: 2025-04-08 22:54
 ---
 
 # Data
@@ -36,16 +37,14 @@ modified_time: 2025-03-12 23:14
   - [Data Modeling](./data-modeling.md)
   - [Data Governance](./data-governance.md)
   - [Metadata](./metadata.md)
+  - [Master Data](./master-data.md)
+  - [Data Anonymization](./data-anonymization.md)
   - [Data Quality](./data-quality.md)
   - [Data Management Framework](./data-management-framework.md)
 - [Data Reliability](./data-reliability.md)
 
 
-**데이터 처리 과정**
-```
-데이터 수집/변환  =>  데이터 통합/전처리  =>  데이터 처리/저장  =>  데이터 분석
-```
-
+**데이터 처리 및 분석**
 - [Data Processing](./data-processing/index.md)
   - [Data Collection](./data-collection/index.md)
   - [Data Conversion](./data-conversion/index.md)
@@ -58,10 +57,21 @@ modified_time: 2025-03-12 23:14
   - [Data Manipulation](./data-manipulation/index.md)
   - [Data Storage](./data-storage/index.md)
     - [Database](./data-storage/database/index.md)
-      - [Database Management System](../dbms/index.md)
-      - [Query Language](../dbms/query-language/index.md)
     - [Data Warehouse](./data-storage/data-warehouse.md)
   - [Data Analysis](./data-analysis/index.md)
     - [Statistical Analysis](./data-analysis/statistical/index.md)
     - [Data Mining](./data-analysis/mining/index.md)
     - [Data Visualization](./data-analysis/visualization/index.md)
+
+
+**데이터 시스템 유형**
+- [Database Management System](./dbms/index.md)
+- [Search System](./search-system/index.md)
+- [Ledger System](./ledger-system/index.md)
+- [Streaming Data System](./streaming-system/index.md)
+
+
+**데이터 질의 언어**
+- [Query Language](./query-language/index.md)
+  - [SQL](./query-language/sql/index.md)
+  
