@@ -7,10 +7,11 @@ keywords:
 - database
 - database management system
 - dbms
+- dbms classification
 tags:
 - data
 created_time: 2024-10-03 16:18
-modified_time: 2025-04-8 23:41
+modified_time: 2025-04-09 00:12
 ---
 
 # DBMS
@@ -44,26 +45,27 @@ Database Management System
 
 
 ## DBMS History
-: DBMS 주요 발전 단계로 세대 구분은 공식적인 것은 아니며 기술에 따라 구분함  
+: DBMS 발전 과정을 기술이나 트렌드에 따라 세대별로 구분 (공식적으로 세대가 존재하지 않음)
 
 
 **제 1세대**
 ```
 1960년대 초반  Integrated Data Store (IDS)
-               최초 범용 DBMS로 네트워크 데이터 모델의 시초
+               최초 범용 DBMS로 네트워크 데이터 모델을 기반으로 함
 
 1960년대 후반  Information Management System (IMS)
-               최초 상용화된 제품으로 계층형 데이터베이스 모델이며 현재도 메인프레임에서 사용
+               최초 상용화된 제품으로 현재도 메인프레임에서 사용함
 ```
 
 
 **제 2세대**
 ```
-1970년대  관계형 데이터 모델이 제안
-           SQL 언어가 개발되고 상용 RDMBS인 Oracle이 출시됨
+1970년대  관계형 데이터 모델이 제안됨
+          SQL 언어가 개발되고 상용 RDMBS인 Oracle이 출시됨
 
 1980년대  상용 RDBMS들이 등장하고 RDBMS가 본격적으로 발전함
-           표준 SQL이 정의됨 (ANSI SQL)
+          트랜잭션 처리 기능 강화, 인덱싱, 쿼리 최적화 기술이 발전함
+          표준 SQL이 정의됨 (ANSI SQL)
 
 1990년대  엔터프라이즈 시장에 RDBMS가 확산됨
           객체지향 데이터베이스 개념이 도입되고 시도됨 (OODBMS, ORDBMS)
@@ -72,14 +74,15 @@ Database Management System
 
 **제 3세대**
 ```
-2000년대  오픈소스 DBMS가 대중화됨
-           MongoDB, Cassandra 등 NoSQL 데이터베이스가 등장
+2000년대  오픈소스 DBMS가 대중화됨 (MySQL, PostgreSQL)
+          대용량, 비정형 데이터 처리를 위해 NoSQL 등장 (MongoDB)
 
 2010년대  인메모리 데이터베이스가 발전함 (Redis)
-          빅데이터 처리를 위한 분산 데이터베이스가 발전함
+          빅데이터 처리를 위한 분산 데이터베이스가 발전함 (HBase, Cassandra)
           클라우드 기반 데이터베이스 서비스가 확산됨
 
-2020년대  AI를 위한 벡터 데이터베이스의 부상함 (Pinecone, Milvus, Weaviate)
+2020년대  AI를 위한 벡터 데이터베이스가 부상함 (Pinecone, Milvus, Weaviate)
+          멀티 모델 데이터베이스가 확산됨 (ArangoDB, Fauna)
 ```
 
 
@@ -92,8 +95,8 @@ Database Management System
 - HDBMS (계층형)
 - NDBMS (네트워크형)
 - RDBMS (관계형)
-- OODBMS (객체 지향)
-- ORDBMS (객체 관계)
+- OODBMS (객체지향)
+- ORDBMS (객체관계)
 
 **비정형 데이터 처리**
 - NoSQL
