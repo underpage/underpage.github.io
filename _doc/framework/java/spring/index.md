@@ -6,6 +6,8 @@ summary:
 keywords:
 - java framework
 - spring projects
+- spring portfolio
+- umbrella projects
 tags:
 - framework
 - java
@@ -14,17 +16,22 @@ modified_time: 2025-04-30 01:38
 ---
 
 # Spring Projects  
-: 웹, 시큐리티, 클라우드 등을 다양한 영역의 솔루션을 제공하는 종합적인 자바 생태계  
-: 일부 프로젝트는 독립적인 프레임워크이며 일부는 다른 프로젝트와 함께 연동되어 작동함  
-: 주로 자바 언어를 지원하나 코틀린, 그루비 등 JVM 기반 언어도 공식적으로 지원함  
+: 웹 애플리케이션, 보안, 클라우드 네이티브 등 다양한 영역의 솔루션을 제공하는 종합적인 생태계  
+: 스프링 프로젝트는 우산형 프로젝트와 그 하위 모듈로 구성되어 필요한 기능만 선택적으로 사용 가능함  
+: 주로 자바 언어를 기반으로 하나 코틀린, 그루비 등 JVM 기반 언어도 공식적으로 지원함  
 
 https://spring.io/projects  
 https://github.com/spring-projects  
 
 
+**스프링 포트폴리오**  
+: 스프링 생태계의 모든 프로젝트, 모듈, 도구 등을 총칭하는 용어  
+
+
 **우산형 프로젝트**  
-: 공통 목표를 가진 여러 프로젝트나 모듈을 포괄하는 상위 프로젝트를 의미함  
+: 공통 목표를 가진 하위 프로젝트나 모듈 및 도구를 포괄하는 상위 프로젝트  
 : 우산형 프로젝트는 자체적인 릴리스 주기와 버전 관리를 가지며 다양한 하위 모듈을 포함함  
+: 우산형 프로젝트는 Spring Framework의 핵심 모듈에 의존하며 이를 기반으로 특화된 기능을 제공함  
 
 - [Spring Framework](./spring-framework.md)
 - [Spring Boot](./spring-boot.md)
