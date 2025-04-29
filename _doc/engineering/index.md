@@ -11,8 +11,8 @@ keywords:
 tags:
 - index
 - software engineering
-created_time: 2024-09-28 11:43
-modified_time: 2025-03-16 23:28
+created_time: 2025-04-07 04:36
+modified_time: 2025-04-29 20:11
 ---
 
 # Software Engineering
@@ -23,11 +23,6 @@ modified_time: 2025-03-16 23:28
 **engineering**  
 : 수학적 원리와 과학적 지식을 활용해 실용적인 문제를 해결하는 학문  
 : 공학은 기계, 전기, 화학 등 분야에서 사용되어 효율적이고 안전성있는 설계와 구현을 목표로 함  
-
-**project**  
-: 특정 목표를 달성하기 위해 한정된 시간과 자원을 가지고 소프트웨어를 만들어내는 과정  
-: 소프트웨어는 프로젝트의 결과물이며 프로젝트가 종료되어도 소프트웨어는 지속적으로 존재함  
-: 하나의 프로젝트에서 여러 소프트웨어를 만들 수 있고 하나의 소프트웨어가 여러 프로젝트를 통해 개발될 수 있음  
 
 **software**  
 : 넓은 의미의 소프트웨어란 프로그램과 관련된 데이터와 문서들 집합  
@@ -51,7 +46,7 @@ modified_time: 2025-03-16 23:28
   - [Software Process Modeling](./sw-process-modeling.md)
   - [Software Development Methodology](./sw-development-method.md)
 
-프로젝트 관리
+소프트웨어 프로젝트 관리
 - [Software Project Management](./sw-project-management.md)
   - [Software Requirements Management](./sw-requirements.md)
   - [Software Quality Management](./sw-quality.md)
@@ -66,14 +61,16 @@ modified_time: 2025-03-16 23:28
   - [Design Principle](./sw-design/design-principle.md)
   - [Design Pattern](./sw-design/design-pattern.md)
 
-개발 및 검증
-- Software Development
-- [Software Testing](./sw-testing.md)
+소프트웨어 적용
+- [Architecture Implementation](./sw-implementation/index.md)
 
-배포 및 유지보수
-- [Software Configuration](./sw-configuration.md)
-- Software Deployment
-- [Software Maintenance](./sw-maintenance.md)
+소프트웨어 개발 및 배포
+- [Software Delivery](./sw-delivery/index.md)
+  - Software Development
+  - Software Deployment
+
+소프트웨어 운영
+- [Software Operation](./sw-operation/index.md)
 
 도구
 - [Software Engineering Tool](./sw-tool/index.md)
