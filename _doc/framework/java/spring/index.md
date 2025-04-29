@@ -9,8 +9,8 @@ keywords:
 tags:
 - framework
 - java
-created_time: 2025-03-10 18:22
-modified_time: 2025-03-11 02:22
+created_time: 2025-04-07 04:36
+modified_time: 2025-04-30 01:38
 ---
 
 # Spring Projects  
@@ -22,10 +22,22 @@ https://spring.io/projects
 https://github.com/spring-projects  
 
 
-- 대부분의 프로젝트는 스프링 핵심 모듈을 기반으로 구축됨
-- Spring REST Docs, Spring CLI 같은 도구를 제외한 프로젝트는 스프링 컨테이너를 지원함
-- 스프링 컨테이너를 통해 대부분 프로젝트는 서로 통합 및 확장이 가능함
+**우산형 프로젝트**  
+: 공통 목표를 가진 여러 프로젝트나 모듈을 포괄하는 상위 프로젝트를 의미함  
+: 우산형 프로젝트는 자체적인 릴리스 주기와 버전 관리를 가지며 다양한 하위 모듈을 포함함  
 
+- [Spring Framework](./spring-framework.md)
+- [Spring Boot](./spring-boot.md)
+- [Spring Security](./spring-security.md)
+- [Spring Batch](./spring-batch.md)
+- [Spring Data](./spring-data.md)
+- [Spring Integration](./spring-integration.md)
+- [Spring Cloud](./spring-cloud.md)
+- [Spring AI](./spring-ai.md)
+
+
+
+## Spring Project Category
 
 **웹**
 
