@@ -6,13 +6,12 @@ summary:
 keywords:
 - software engineering
 - software process
-- software architecture
 - software crisis
 tags:
 - index
 - software engineering
 created_time: 2025-04-07 04:36
-modified_time: 2025-04-29 20:11
+modified_time: 2025-05-01 03:21
 ---
 
 # Software Engineering
@@ -39,18 +38,20 @@ modified_time: 2025-04-29 20:11
 
 **주요 구성 요소**  
 : 소프트웨어 엔지니어링을 이루는 필수적인 요소들  
+: 소프트웨어 보안은 설계, 개발, 운영 등 전체 영역과 관련됨
 
 소프트웨어 프로세스
 - [Software Process](./sw-process.md)
   - [Software Process Model](./sw-process-model.md)
-  - [Software Process Modeling](./sw-process-modeling.md)
   - [Software Development Methodology](./sw-development-method.md)
+  - [Software Design Methodology](./sw-design-method.md)
+  - [Software Modeling](./sw-modeling.md)
 
 소프트웨어 프로젝트 관리
 - [Software Project Management](./sw-project-management.md)
   - [Software Requirements Management](./sw-requirements.md)
   - [Software Quality Management](./sw-quality.md)
-
+  
 소프트웨어 설계
 - [Software Architecture](./sw-architecture/index.md)
   - [Architecture Principle](./sw-architecture/architecture-principle.md) 
@@ -62,7 +63,7 @@ modified_time: 2025-04-29 20:11
   - [Design Pattern](./sw-design/design-pattern.md)
 
 소프트웨어 적용
-- [Architecture Implementation](./sw-implementation/index.md)
+- [Software Implementation](./sw-implementation/index.md)
 
 소프트웨어 개발 및 배포
 - [Software Delivery](./sw-delivery/index.md)
