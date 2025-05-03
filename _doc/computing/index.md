@@ -1,20 +1,17 @@
 ---
 order: 1
-title: computing
+title: Computing
 description: 컴퓨팅 (인덱스)
 summary:
 keywords:
 - computing
 - computing component
 - computer system
-- 컴퓨팅
-- 컴퓨팅 구성 요소
-- 컴퓨터 시스템
 tags:
 - index
 - computing
-created_time: 2024-09-28 11:43
-modified_time: 2025-01-16 01:30
+created_time: 2025-04-04 01:19
+modified_time: 2025-05-04 02:19
 ---
 
 # Computing 
@@ -25,25 +22,19 @@ modified_time: 2025-01-16 01:30
 
 > Computing > Computer System > Computer
 
-- [Computing Fundamental](./computing-fundamental/index.md)
-  - [Abstraction](./computing-fundamental/abstraction.md)
-- [Computing Model](./computing-model.md)
-  - [Turing Machine](./computing-model.md#turing-machine) 
-- [Computing Paradigm](./computing-paradigm.md)
-- Computing Disciplines
-  - Computer Science
-  - Information Science
-  - Data Science
-  - Software Engineering
-  - Computer Engineering
-  - Human Computer Interaction
-  - ... 
+- [컴퓨팅 핵심 개념](./computing-fundamental/index.md)
+  - [추상화](./computing-fundamental/abstraction.md)
+- [컴퓨팅 모델](./computing-model.md)
+- [컴퓨팅 패러다임](./computing-paradigm.md)
+- [시스템 아키텍처](./system-architecture/index.md)
 
 
 **history**
 ```
 고대 그리스인들이 수학 계산을 위해 주판을 사용했는데 이를 컴퓨팅 형태로 볼 수 있으며
 이후 수학 계산을 위해 다양한 도구들이 발명되면서 전자식 컴퓨터 개발의 발판이 됨
+
+주판 > 계산자 > 계산기 > 해석기관 > 전자식 컴퓨터
 ```
 
 
@@ -71,6 +62,6 @@ modified_time: 2025-01-16 01:30
 - 알고리즘
 - 프로그래밍 언어
 - 애플리케이션
-- 보안
 - 사용자 인터페이스
+- 보안
 - ...
