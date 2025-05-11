@@ -12,16 +12,16 @@ tags:
 - index
 - tech
 created_time: 2025-04-07 04:37
-modified_time: 2025-05-11 23:56
+modified_time: 2025-05-11 23:58
 ---
 
 # Technology
 : 혁신적인 최신 기술 및 트렌드  
 
 - [AI](./ai/index.md)
-- [Blockchain](./blockchain/index.md)
 - [Big Data](./bigdata/index.md)
 - [IoT](./iot/index.md)
+- [Blockchain](./blockchain/index.md)
 - AR/VR
 - Robotics
 
