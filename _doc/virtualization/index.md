@@ -10,7 +10,7 @@ tags:
 - index
 - virtualization
 created_time: 2025-04-07 04:37
-modified_time: 2025-05-15 21:54
+modified_time: 2025-05-17 23:01
 ---
 
 # Virtualization
@@ -18,14 +18,13 @@ modified_time: 2025-05-15 21:54
 : 이를 통해 하드웨어 자원 활용도를 높이고 확장성을 제공하고 비용 및 관리 용이성을 향상시킴  
 : 가상화 기술의 발전으로 클라우드, 서버리스, 엣지 컴퓨팅, 빅데이터 등이 함께 발전함  
 
-- 가상화 아키텍처
-- 가상화 구성 요소
-- 가상화 기술
+- [가상화 아키텍처](./vz-architecture.md)
+- [가상화 구성 요소](./vz-component.md)
+- [가상화 기술](./vz-tech.md)
 - [가상화 유형](./vz-type.md)
 - [가상화 관리](./vz-management.md)
 - [가상화 보안](./vz-security.md)
-- 가상화 구현
-- 가상화 관리
+- [가상화 구현](./vz-deployment.md)
 - [가상화 도구](./vz-tool.md)
 
 
