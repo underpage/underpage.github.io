@@ -1,5 +1,5 @@
 ---
-order: 3
+order: 4
 title: Data
 description: 데이터 (인덱스)
 summary:
@@ -8,11 +8,12 @@ keywords:
 - data architecture
 - data processing
 - data system
+- data language
 tags:
 - index
 - data
-created_time: 2025-04-04 01:19
-modified_time: 2025-04-08 22:54
+created_time: 2025-04-07 04:36
+modified_time: 2025-05-18 03:01
 ---
 
 # Data
@@ -23,55 +24,63 @@ modified_time: 2025-04-08 22:54
 
 
 **데이터 기초**
-- [Data](./data.md)
-- [Data Classification](./data-classification.md)
-- [Computer Data](./computer-data.md)
-  - [Data Type](./computer-data-type.md)
-  - [Data Representation](./data-representation.md)
-- [Data Structure](./data-structure/index.md)
-  - [Abstract Data Type](./data-structure/abstract-data-type.md)
+- [데이터](./data.md)
+- [데이터 분류](./data-classification.md)
+- [컴퓨터 데이터](./computer-data.md)
+  - [데이터 타입](./computer-data-type.md)
+  - [데이터 표현 방식](./data-representation.md)
+- [자료 구조](./data-structure/index.md)
+  - [추상 자료형](./data-structure/abstract-data-type.md)
 
 
 **데이터 설계 및 관리**
-- [Data Architecture](./data-architecture.md)
-  - [Data Modeling](./data-modeling.md)
-  - [Data Governance](./data-governance.md)
-  - [Metadata](./metadata.md)
-  - [Master Data](./master-data.md)
-  - [Data Anonymization](./data-anonymization.md)
-  - [Data Quality](./data-quality.md)
-  - [Data Management Framework](./data-management-framework.md)
-- [Data Reliability](./data-reliability.md)
+- [데이터 전략](./data-strategy.md)
+- [데이터 관리 프레임워크](./data-management-framework.md)
+- [데이터 아키텍처](./data-architecture.md)
+  - [데이터 모델링](./data-modeling.md)
+- [데이터 거버넌스](./data-governance.md)
+  - [데이터 스튜어드십](./data-stewardship.md)
+  - [데이터 품질](./data-quality.md)
+  - [데이터 리니지](./data-lineage.md)
+- [데이터 자산 관리](./data-asset-management.md)
+  - [메타데이터](./metadata.md)
+  - [데이터 카탈로그](./data-catalog.md)
+  - [마스터 데이터](./master-data.md)
+- [데이터 윤리](./data-ethics.md)
+- [데이터 규제](./data-regulation.md)
 
 
 **데이터 처리 및 분석**
-- [Data Processing](./data-processing/index.md)
-  - [Data Collection](./data-collection/index.md)
-  - [Data Conversion](./data-conversion/index.md)
-    - [Data Format](./data-conversion/format/index.md)
-    - [Data Encoding](./data-conversion/encoding/index.md)
-  - [Data Preprocessing](./data-preprocessing/index.md)
-    - [Data Cleaning](./data-preprocessing/data-cleaning.md)
-    - [Data Transformation](./data-preprocessing/data-transformation.md)
-    - [Data Integration](./data-preprocessing/data-integration.md)
-  - [Data Manipulation](./data-manipulation/index.md)
-  - [Data Storage](./data-storage/index.md)
-    - [Database](./data-storage/database/index.md)
-    - [Data Warehouse](./data-storage/data-warehouse.md)
-  - [Data Analysis](./data-analysis/index.md)
-    - [Statistical Analysis](./data-analysis/statistical/index.md)
-    - [Data Mining](./data-analysis/mining/index.md)
-    - [Data Visualization](./data-analysis/visualization/index.md)
+- [데이터 처리](./data-processing/index.md)
+- [데이터 수집](./data-collection/index.md)
+- [데이터 통합](./data-integration/index.md)
+- [데이터 변환](./data-conversion/index.md)
+  - [데이터 포맷](./data-conversion/format/index.md)
+  - [데이터 인코딩](./data-conversion/encoding/index.md)
+- [데이터 전처리](./data-preprocessing/index.md)
+  - [데이터 정제](./data-preprocessing/data-cleaning.md)
+  - [데이터 변형](./data-preprocessing/data-transformation.md)
+- [데이터 조작](./data-manipulation/index.md)
+- [데이터 저장](./data-storage/index.md)
+  - [데이터베이스](./data-storage/database/index.md)
+  - [데이터 웨어하우스](./data-storage/data-warehouse.md)
+  - [데이터 레이크](./data-storage/data-lake.md)
+- [데이터 분석](./data-analytics/index.md)
+  - [데이터 통계](./data-analytics/statistical/index.md)
+  - [데이터 마이닝](./data-analytics/mining/index.md)
+  - [데이터 시각화](./data-analytics/visualization/index.md)
 
 
 **데이터 시스템 유형**
-- [Database Management System](./dbms/index.md)
-- [Search System](./search-system/index.md)
-- [Ledger System](./ledger-system/index.md)
-- [Streaming Data System](./streaming-system/index.md)
+- [데이터베이스 관리 시스템](./dbms/index.md)
+- [원장 시스템](./ledger-system/index.md)
+- [검색 시스템](./search-system/index.md)
+- [동적 데이터 시스템](./dynamic-system/index.md)
+  - [스트리밍 데이터 시스템](./dynamic-system/streaming/index.md)
+  - [실시간 데이터 시스템](./dynamic-system/realtime/index.md)
 
 
-**데이터 질의 언어**
-- [Query Language](./query-language/index.md)
-  - [SQL](./query-language/sql/index.md)
-  
+**데이터 언어**
+- [데이터 질의 언어](./data-language/index.md#data-query-language)
+  - [SQL](./data-language/sql/index.md)
+- [데이터 흐름 언어](./data-language/index.md#data-flow-language)
