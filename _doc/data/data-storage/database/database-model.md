@@ -1,39 +1,53 @@
 ---
 order: 3
-title: database
+title: DB
 description: 데이터베이스 모델
 summary:
 keywords:
 - database
 - database model
-- 데이터베이스 모델
 tags:
 - database
 - model
-created_time: 2024-10-03 14:13
-modified_time: 2025-01-04 10:38
+created_time: 2025-04-07 04:36
+modified_time: 2025-05-22 00:10
 ---
 
 # Database Model
 : 데이터베이스의 논리적 구조를 결정하는 추상적 개념  
-: 데이터를 어떻게 구조화하고 저장하고 접근하는지 등을 이론적으로 정의  
+: 데이터를 어떻게 구조화하고 저장하고 접근하는지 등을 이론적으로 정의함  
 : 데이터베이스 모델은 데이터가 효율적이고 확장 가능하게 저장되고 빠르게 처리될 수 있게 도와줌  
 
-- 1960년대 [Hierarchical](#hierarchical-database-model)
-- 1970년대 [Network](#network-database-model) 
-- 1970년대 [Relational](#relational-database-model)
-- 1980년대 [Object Oriented](#object-oriented-database-model)
-- 1990년대 [Object Relational](#object-relational-database-model)
-- 1990년대 [Distributed](#distributed-database-model)
-- 2000년대 [Non Relational](#non-relational-database-model)
-- 2000년대 [Graph](#graph-database-model)
-- 2010년대 [Streaming](#streaming-database-model)
+- 1960년대 [계층형 모델](#hierarchical-database-model)
+- 1970년대 [네트워크 모델](#network-database-model) 
+- 1970년대 [관계형 모델](#relational-database-model)
+- 1980년대 [객체지향 모델](#object-oriented-database-model)
+- 1990년대 [객체관계형 모델](#object-relational-database-model)
+- 1990년대 [분산형 모델](#distributed-database-model)
+- 2000년대 [비관계형 모델](#non-relational-database-model)
+- 2000년대 [그래프 모델](#graph-database-model)
+- 2010년대 [스트리밍 모델](#streaming-database-model)
 
+
+**주요 용어**
 
 용어 | 설명
 ---|---
 데이터 구조 | 데이터를 구조화하는 방식으로 모델은 각각 다른 방식으로 데이터를 표현
 데이터 관계 | 데이터 간 연관성을 표현하는 방식
+
+
+**데이터 저장 모델**  
+: 데이터가 실제로 물리적 저장소에 저장되는 구조에 따라 다음과 같이 분류됨  
+: 행 기반 저장은 데이터를 행 단위로 연속적으로 스토리지에 저장하며 입력/수정/삭제 작업에 효율적  
+: 열 기반 저장은 데이터를 열 단위로 물리적으로 독립된 공간에 저장하며 대규모 데이터 분석 작업에 효율적  
+
+- 행 기반 저장 (Row-oriented)
+- 열 기반 저장 (Column-oriented)
+
+```
+대부분의 RDBMS 제품은 행 기반 저장이나 일부 RDBMS는 열 기반 저장 방식을 채택함
+```
 
 
 
@@ -59,6 +73,9 @@ modified_time: 2025-01-04 10:38
 : 데이터를 테이블로 표현하고 테이블 간 관계를 맺는 데이터베이스  
 : SQL를 통해 데이터를 조작하고 관리하는 방법 지원  
 : 유연하고 데이터가 독립적이나 대용량 데이터 처리시 성능 저하 문제가 있을 수 있음  
+
+E.F. Codd가 1970년
+수학적 관계 개념을 데이터베이스에 적용하여 제안
 
 **Codd's 12 rules**  
 : 커드의 12가지 규칙  
@@ -133,7 +150,7 @@ modified_time: 2025-01-04 10:38
 ## Non Relational Database Model
 : 비관계형 데이터베이스 모델  
 : 데이터를 구조화하지 않고 유연한 스키마로 저장하는 데이터베이스  
-: 다양한 데이터 모델을 사용 (key-value, document, graph 등)  
+: 다양한 데이터 모델을 사용함 (Key-Value, Document, Wide-Column, Graph 등)  
 : 스키마가 유연하며 확장성이 높아 대용량 데이터 처리에 적합하나 데이터 일관성 보장이 어려움  
 
 
