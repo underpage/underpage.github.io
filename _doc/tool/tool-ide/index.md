@@ -10,8 +10,8 @@ keywords:
 - intellij
 tags:
 - tool
-created_time: 2024-09-23 23:56
-modified_time: 2025-03-13 20:56
+created_time: 2025-04-07 04:37
+modified_time: 2025-05-23 18:27
 ---
 
 # IDE
@@ -25,13 +25,13 @@ Integrated Development Environment
 - Eclipse
 - Netbeans
 
+**JavaScript**
+- WebStorm (JetBrains)
+- Visual Studio Code
+
 **Python**
 - PyCharm (JetBrains)
 - Spyder
-
-**JavaScript**
-- WebStorm (JetBrains)
-- Komodo IDE
 
 **Ruby**
 - RubyMine (JetBrains)
@@ -39,18 +39,18 @@ Integrated Development Environment
 
 **C/C++**
 - CLion (JetBrains)
-- Visual Studio 
+- Visual Studio (Windows)
 
 **Multi**
 - Eclipse
 - Theia IDE
 - Visual Studio Code
 
-**online**
-- Idx (https://idx.dev)
+**Web-based IDE**
+- VS Code for the Web (https://vscode.dev)
+- Firebase Studio (https://firebase.studio)
 - Gitpod (https://www.gitpod.io)
 - Glitch
-- Replit
 - CodeSandbox
 - StackBlitz
-- VS Code for the Web (https://vscode.dev)
+- Replit
