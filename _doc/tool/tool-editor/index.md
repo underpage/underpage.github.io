@@ -6,19 +6,21 @@ summary:
 keywords:
 - tool
 - editor
-- vim
 - emacs
+- vim
 tags:
 - tool
-created_time: 2024-10-05 02:49
-modified_time: 2025-03-13 20:57
+created_time: 2025-04-07 04:37
+modified_time: 2025-05-23 18:25
 ---
 
 # Editor
-: 소스 코드 작성에 특화된 텍스트 편집기  
+: 소스 코드 작성에 특화된 텍스트 편집기 모음  
 
-- Vim
+**터미널 에디터**  
+: 터미널 환경에서 실행되는 텍스트 기반 에디터  
+
 - Emacs
-- Atom
-- Sublime Text
-- Brackets
+- Nano
+- Vim
+- Helix
