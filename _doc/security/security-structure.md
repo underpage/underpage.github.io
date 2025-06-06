@@ -7,11 +7,10 @@ keywords:
 - security
 - security structure
 - information protection
-- information security
 tags:
 - security
-created_time: 2025-02-17 17:06
-modified_time: 2025-03-10 02:04
+created_time: 2025-04-07 04:37
+modified_time: 2025-06-07 00:23
 ---
 
 # Security Layered Structure
@@ -27,19 +26,20 @@ modified_time: 2025-03-10 02:04
 
 **정보 보호** (Information Protection)  
 : 정보의 기밀성, 무결성, 가용성을 보장하기 위한 모든 활동과 프로세스를 포괄하는 최상위 개념  
-: 정보만 보호하지 않고 아니라 개인 정보 보호까지 포함함  
+: 정보만 아니라 개인의 정보 보호까지 포함함  
 
 **정보 보안** (Information Security)  
-: 정보 보호를 달성하기 위한 기술, 정책, 절차 등을 포함하는 구체적인 실행 체계  
+: 정보를 보호하기 위한 기술, 정책, 절차 등을 포함하는 구체적인 실행 체계  
+: 정보 보안은 관점에 따라 관리적, 물리적, 기술적 보안으로 구분됨  
 
-**개인정보 보호** (Privacy Protection)  
-: 개인정보의 오남용을 방지하기 위한 법적, 기술적, 관리적 체계와 활동의 총체  
+**개인 정보 보호** (Privacy Protection)  
+: 개인 정보의 오남용을 방지하기 위한 법적, 기술적, 관리적 체계와 활동의 총체  
 : 개인을 식별할 수 있는 정보의 수집, 이용, 제공 등 전 과정에서 정보 주체의 권리를 보호함  
 
 
 
 ## Administrative Security
-: 정보 보호 목표를 달성하기 위한 정책, 절차, 가이드라인 등 관리적 측면의 보안 체계
+: 정보 보호 목표를 달성하기 위한 정책, 절차, 가이드라인 같은 관리적 측면의 보안 체계
 
 **거시적 요소**
 - 보안 정책 관리
@@ -64,14 +64,14 @@ modified_time: 2025-03-10 02:04
 
 
 ## Physical Security
-: 정보 자산을 다양한 [물리적 위협](./security-threat/physical-threat.md)으로부터 보호하기 위한 보안 체계  
+: 자산을 다양한 [물리적 위협](./security-threat/physical-threat.md)으로부터 보호하기 위한 보안 체계  
 
 **거시적 요소**
 - 시설 보안
 - 환경 보안
 - 장비 보안
 - 매체 보안
-- 인원 보안
+- 인적 보안
 - 경계 보안
 
 **구체적 요소**
@@ -86,18 +86,19 @@ modified_time: 2025-03-10 02:04
 
 
 ## Technical Security
-: 기술적 수단과 도구를 활용하여 데이터와 정보 시스템을 보호하기 위한 체계  
+: 자산을 [위협](./security-threat/index.md)으로부터 보호하기 위해 기술적 수단과 도구를 활용하는 보안 체계  
 
 **주요 영역**
-- 데이터 보안
 - 시스템 보안
   - 운영체제 보안
   - 서버 보안
   - 엔드포인트 보안
+  - 데이터베이스 보안
   - 애플리케이션 보안
     - 웹 보안
     - 모바일 보안
 - 네트워크 보안
+- 데이터 보안
 - 클라우드 보안
 - 최신 기술 보안
   - IoT 보안
