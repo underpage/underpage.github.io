@@ -1,19 +1,19 @@
 ---
-order: 19
-title: security
+order: 20
+title: Security
 description: 보안 (인덱스)
 summary:
 keywords:
 - security
 - protection
 - threat
-- rist
+- risk
 tags:
 - index
 - security
 - glossary
-created_time: 2024-09-07 17:36
-modified_time: 2025-02-17 17:58
+created_time: 2025-04-07 04:37
+modified_time: 2025-06-07 00:23
 ---
 
 # Security
@@ -22,26 +22,33 @@ modified_time: 2025-02-17 17:58
 
 - [보안 원칙](./security-principle.md)
 - [보안 계층 구조](./security-structure.md)
+- [보안 위협 유형](./security-threat/index.md)
+
+- [보안 분석](./security-analysis/index.md)
 - [보안 전략](./security-strategy/index.md)
-  - [보안 관리 프로세스](./security-strategy.md#security-management-process)
+
 - [보안 기술](./security-technology/index.md)
   - [암호학](./security-technology/cryptography.md)
   - [포렌식](./security-technology/forensic.md)
-- [보안 위협 요소](./security-threat/index.md)
-- [보안 프로토콜](./security-protocol/index.md)
 - [보안 표준 및 프레임워크](./security-standard/index.md)
-- [보안 도구](../tool/tool-security/index.md)
+- [보안 프로토콜](./security-protocol/index.md)
+- [보안 도구](./security-tool/index.md)
 - [보안 약어](./security-acronym.md)
 
 
-**사용자 편의성**  
+**보안과 편의성**  
 : 보안과 사용자 편의성(정보 접근성)은 트레이드 오프 관계에 있음  
-: 보안을 높이면 사용자의 정보 접근이 어려워지며 반대로 정보 접근이 쉬워지면 보안이 취약해짐
+: 보안을 높이면 사용자의 정보 접근이 어려워지며 반대로 정보 접근이 쉬워지면 보안이 취약해짐  
+
+```
+위험도에 따라 차등적으로 보안을 적용하여 핵심 자산에 집중적 보안을 적용하고
+보안이 사용자에게 방해가 되지 않게 하며 보안 교육을 통해 사용자 인식을 개선함
+```
 
 
 **history**
 ```
-최초 해킹은 1969년 전화 시스템 해킹으로 시스템을 조작해 무료 전화를 사용하거나 회선을 변경함
+최초 해킹은 1969년 전화 시스템 해킹으로 시스템을 조작해 무료로 전화를 사용하거나 회선을 변경함
 이는 전화 네트워크의 주파수를 이용한 해킹 방식으로 당시 전화 시스템 취약점을 악용한 사례
 이러한 기술적 접근 방식은 컴퓨터 해킹으로 발전하는 기반이 됨
 
@@ -53,12 +60,12 @@ modified_time: 2025-02-17 17:58
 
 
 ## Security Glossary
-: 보안 관련 주요 용어
+: 보안 관련 주요 용어  
 
 
 **자산** (Asset)  
-: 조직이 보호할 대상으로 물리적, 논리적, 인적 요소  
-: 데이터와 이를 처리하는 시스템과 관련된 프로세스 등이 모두 보호 대상이 됨  
+: 조직이 보호할 대상으로 물리적, 논리적, 인적 요소오 분류됨  
+: 데이터와 이를 처리하는 시스템과 관련된 프로세스 등 모두 보호 대상  
 
 자산 | 대상
 ---|---
@@ -69,7 +76,7 @@ modified_time: 2025-02-17 17:58
 **위협** (Threat)  
 : 조직의 자산에 피해를 줄 수 있는 모든 잠재적 요소  
 : 허락되지 않은 접근이나 권한없는 사람이나 시스템의 리소스 수정, 훼손, 유출 등  
-: 위협은 항상 존재하며 이를 완전히 제거하는 것은 불가능하므로 적절한 보안 관리와 대응이 필요  
+: 위협은 항상 존재하며 이를 완전히 제거하는 것은 불가능하므로 적절한 보안 관리와 대응이 필요함  
 
 
 **위협 요소** (Threat Actor/Source)  
@@ -78,7 +85,7 @@ modified_time: 2025-02-17 17:58
 
 **취약점** (vulnerability)  
 : 자산의 특성에 따라 존재하는 약점이나 허점으로 위협 요소는 이를 이용해 공격을 시도함  
-: 보안 취약점은 보안 위협이 실현될 가능성을 제공함  
+: 취약점은 보안 위협이 실현될 가능성을 제공함  
 
 
 **위협** (Risk)  
@@ -102,7 +109,7 @@ modified_time: 2025-02-17 17:58
 
 **보호** (protection)  
 : 보안의 하위 개념으로 자산을 위협으로부터 안전하게 지키기 위한 모든 조치  
-: 리소스는 안전하게 관리하고 시스템을 정상적으로 동작하게 관리하는 것을 목표로 함  
+: 리소스는 안전하게 관리하고 시스템은 정상적으로 동작하게 관리하는 것을 목표로 함  
 
 
 **통제** (Control)  
