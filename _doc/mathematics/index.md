@@ -1,18 +1,16 @@
 ---
 order: 100
-title: math
+title: Math
 description: 수학 (인덱스)
 summary:
 keywords:
 - mathematics
 - math
-- math element
-- math object
 tags:
 - index
 - math
-created_time: 2024-09-08 06:57
-modified_time: 2025-01-31 23:19
+created_time: 2025-04-07 04:37
+modified_time: 2025-06-19 01:49
 ---
 
 # Mathematics
@@ -26,29 +24,30 @@ modified_time: 2025-01-31 23:19
 - [수학적 객체](#mathematical-objects)
 - [수학적 방법론](#mathematical-methods)
 
-
-**컴퓨터 과학과 수학**
-- [이산 수학](./discrete-mathematics/index.md)
-  - [논리](./discrete-mathematics/logic.md)
-  - [증명](./discrete-mathematics/proof.md)
-- [선형 대수학](./linear-algebra/index.md)
-- [확률과 통계](./probability-statistics/index.md)
-
-
 **수학 분류**
-- [기하학](./geometry.md)
-  - 유클리드 기하학
-  - 해석기하학
-  - 미분기하학
-  - 대수기하학
 - [대수학](./algebra.md)
-  - 선형 대수학
-  - 추상 대수학
+  - 선형대수학
+  - 추상대수학
 - [해석학](./analysis.md)
   - 미적분학
   - 실해석학
   - 복소해석학
   - 함수해석학
+- [기하학](./geometry.md)
+  - 유클리드 기하학
+  - 해석기하학
+  - 미분기하학
+  - 대수기하학
+
+**컴퓨터 과학과 수학**
+- [이산 수학](./discrete-mathematics/index.md)
+  - [논리](./discrete-mathematics/logic.md)
+  - [증명](./discrete-mathematics/proof.md)
+- [선형대수학](./linear-algebra/index.md)
+- [확률과 통계](./probability-statistics/index.md)
+- [최적화 이론](./optimization-theory/index.md)
+- [정보 이론](./information-theory/index.md)
+- [계산 이론](./computation-theory/index.md)
 
 
 
@@ -107,6 +106,17 @@ modified_time: 2025-01-31 23:19
 벡터 | 크기와 방향을 동시에 가진 수의 집합 (1차원 배열)
 행렬 | 수를 직사각형 형태로 배열한 2차원 배열 
 텐서 | 벡터와 행렬을 일반화한 다차원 배열
+
+
+**수론적 객체**
+
+객체 | 설명
+---|---
+소수 | 1과 자기 자신만을 약수로 가지는 자연수
+합성수 | 1과 자기 자신 외에 다른 약수를 가지는 자연수
+최대공약수 | 두 개 이상의 수가 공통으로 가지는 약수 중 가장 큰 수
+최소공배수 | 두 개 이상의 수의 공통 배수 중 가장 작은 수
+합동 | 두 정수가 어떤 수로 나눈 나머지가 같은 관계
 
 
 **대수적 객체**  
@@ -181,6 +191,15 @@ modified_time: 2025-01-31 23:19
 확률분포 | 확률변수의 모든 가능한 값과 그에 대한 확률을 나타내는 함수
 확률과정 | 시간에 따라 변화하는 확률변수들의 집합
 샘플공간 | 실험에서 가능한 모든 결과를 포함하는 집합
+
+
+**정보이론적 객체**
+
+객체 | 설명
+---|---
+코드 | 정보를 효율적으로 표현하기 위한 기호 체계
+엔트로피 | 정보의 불확실성이나 무질서도를 측정하는 척도
+상호정보량 | 두 확률변수 간의 정보 공유 정도를 나타내는 척도
 
 
 
