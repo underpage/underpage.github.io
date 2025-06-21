@@ -8,12 +8,11 @@ keywords:
 - data architecture
 - data processing
 - data system
-- data language
 tags:
 - index
 - data
 created_time: 2025-04-07 04:36
-modified_time: 2025-05-18 03:01
+modified_time: 2025-06-21 14:39
 ---
 
 # Data
@@ -73,11 +72,19 @@ modified_time: 2025-05-18 03:01
 
 **데이터 시스템 유형**
 - [데이터베이스 관리 시스템](./dbms/index.md)
-- [원장 시스템](./ledger-system/index.md)
-- [검색 시스템](./search-system/index.md)
-- [동적 데이터 시스템](./dynamic-system/index.md)
-  - [스트리밍 데이터 시스템](./dynamic-system/streaming/index.md)
-  - [실시간 데이터 시스템](./dynamic-system/realtime/index.md)
+- [원장 시스템](./data-system/ledger-system.md)
+- [검색 시스템](./data-system/search-system/index.md)
+- [동적 데이터 시스템](./data-system/dynamic-system/index.md)
+  - [스트리밍 데이터 시스템](./data-system/dynamic-system/streaming.md)
+  - [실시간 데이터 시스템](./data-system/dynamic-system/realtime.md)
+
+
+**데이터 도구**
+- [하둡](./data-tool/hadoop.md)
+- [스파크](./data-tool/spark.md)
+- [카프카](./data-tool/kafka.md)
+- [에어플로우](./data-tool/airflow.md)
+- [엘라스틱서치](./data-tool/elasticsearch.md)
 
 
 **데이터 언어**
