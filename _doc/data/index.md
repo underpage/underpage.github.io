@@ -12,14 +12,13 @@ tags:
 - index
 - data
 created_time: 2025-04-07 04:36
-modified_time: 2025-06-21 14:39
+modified_time: 2025-08-24 22:25
 ---
 
 # Data
 : 데이터의 어원은 라틴어 dare(give) => datum(thing given)에서 유래  
-: 데이터 정의는 문화적 배경에 따라 다양하게 해석되나 크게 과학적 관점의 데이터와 컴퓨터 데이터로 정의  
-: 컴퓨터 데이터란 컴퓨터 시스템에 의해 생성, 처리, 변환, 저장, 전송될 수 있는 모든 데이터를 의미  
-: 컴퓨터 데이터는 처리 중인 데이터(동적 데이터)나 프로그램 명령어 등 다양한 형태와 상태를 포괄함  
+: 데이터 정의는 문화적 배경이나 수학, 철학, 과학 등 분야에 따라 다양하게 해석됨  
+: 현대 사회에서 데이터는 디지털 기술과 컴퓨터 시스템을 통해 대규모로 생성, 수집, 활용됨  
 
 
 **데이터 기초**
@@ -49,7 +48,7 @@ modified_time: 2025-06-21 14:39
 - [데이터 규제](./data-regulation.md)
 
 
-**데이터 처리 및 분석**
+**데이터 처리/분석 과정**
 - [데이터 처리](./data-processing/index.md)
 - [데이터 수집](./data-collection/index.md)
 - [데이터 통합](./data-integration/index.md)
@@ -79,15 +78,13 @@ modified_time: 2025-06-21 14:39
   - [실시간 데이터 시스템](./data-system/dynamic-system/realtime.md)
 
 
-**데이터 도구**
+**데이터 처리/분석 도구**
 - [하둡](./data-tool/hadoop.md)
 - [스파크](./data-tool/spark.md)
 - [카프카](./data-tool/kafka.md)
-- [에어플로우](./data-tool/airflow.md)
-- [엘라스틱서치](./data-tool/elasticsearch.md)
 
 
-**데이터 언어**
+**데이터 처리 언어**
 - [데이터 질의 언어](./data-language/index.md#data-query-language)
   - [SQL](./data-language/sql/index.md)
 - [데이터 흐름 언어](./data-language/index.md#data-flow-language)
