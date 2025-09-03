@@ -10,14 +10,14 @@ tags:
 - python
 - language
 created_time: 2025-04-07 04:37
-modified_time: 2025-06-19 22:17
+modified_time: 2025-09-03 22:01
 ---
 
 # Python
 : 1991년 귀도 반 로섬이 개발한 프로그래밍 언어 및 생태계  
 : 파이썬은 PEP 프로세스를 통해 새로운 기능, 개선, 정책 등을 체계적으로 관리함  
 : [PyPI](./python-package-index/index.md)를 통해 서드파티 패키지를 제공하며 이를 관리하기 위한 패키지 관리 도구를 제공함  
-: 가상 환경 도구를 통해 프로젝트별로 독립적인 실행 환경으로 구성하고 관리할 수 있음  
+: 가상 환경 도구를 통해 프로젝트별로 독립적인 실행 환경으로 구성하고 관리함  
 : 파이썬은 웹 개발, 자동화, 데이터 분석, 인공지능 등 다양한 분야에서 폭넓게 활용됨  
 
 - [파이썬 언어](./python-lang/index.md)
@@ -27,8 +27,9 @@ modified_time: 2025-06-19 22:17
 - 파이썬 개발 도구
   - [패키지 관리자](./python-package-manager.md)
   - [가상 환경 관리자](./python-environment-manager.md)
-  - [빌드 및 배포](./python-build.md)
-- 파이썬 개발 플랫폼
+  - [빌드 및 배포 도구](./python-build.md)
+  - [코드 품질 도구](./python-quality-tool.md)
+- 파이썬 통합 개발 환경
   - [Anaconda](./platform-anaconda.md)
   - [Jupyter Notebook](./platform-jupyter.md)
 - [파이썬 개선 제안서](./pep.md)
@@ -40,7 +41,7 @@ modified_time: 2025-06-19 22:17
 **응용 분야**
 - [자동화](./python-automation/index.md)
 - [데이터 과학](./python-data/index.md)
-- [머신러닝](./python-ml/index.md)
+- [인공지능](../../ai/index.md)
 
 
 **PSF**  
@@ -87,7 +88,7 @@ pyenv global 3.12
 
 **conda**  
 : 가상 환경 및 패키지 관리 도구  
-: 단독 설치가 불가능하며 miniconda 또는 anaconda를 설치해야 함  
+: 도구만 단독 설치가 불가능하며 miniconda 또는 anaconda를 설치하여 사용  
 
 ```bash
 # miniconda 설치
