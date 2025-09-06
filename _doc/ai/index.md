@@ -11,7 +11,7 @@ tags:
 - tech
 - index
 created_time: 2025-06-18 19:39
-modified_time: 2025-09-06 18:10
+modified_time: 2025-09-06 21:33
 ---
 
 # AI
@@ -41,21 +41,23 @@ Artificial Intelligence
   - [인공지능 지식](./ai-knowledge.md)
   - [인공지능 추론](./ai-reasoning.md)
 - [인공지능 발전 단계](./ai-evolution.md)
-- [인공지능 핵심 기술](./ai-tech.md)
+
+**인공지능 구현 방식**
+- [규칙 기반 시스템](./ai-implementation.md#rule-based-system)
+- [지식 기반 시스템](./ai-implementation.md#knowledge-based-system)
+- [통계 기반 시스템](./ai-implementation.md#statistical-based-system)
+  - [통계적 방법론](./statistical-method.md)
+- [신경망 기반 시스템](./ai-implementation.md#neural-network-based-system)
+  - [신경망](./neural-network.md)
+
+**인공지능 구성요소**
+- [데이터](./ai-data.md)
   - [데이터 처리](./ai-data-processing.md)
   - [데이터 표현](./ai-data-representation.md)
-
-**인공지능 구성 요소**
 - [모델](./ai-model/index.md)
   - [언어 모델](./ai-model/language-model.md)
 - [학습](./ai-learning/index.md)
 - [알고리즘](./ai-algorithm/index.md)
-
-**인공지능 구현 방식**
-- [규칙 기반 시스템](./ai-implementation.md#rule-based)
-- [지식 기반 시스템](./ai-implementation.md#knowledge-based-system)
-- [통계 기반 시스템](./ai-implementation.md#statistical-based-system)
-- [신경망 기반 시스템](./ai-implementation.md#neural-network)
 
 **인공지능 접근법**
 - [머신 러닝](./ml/index.md)
