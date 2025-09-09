@@ -1,7 +1,7 @@
 ---
 order: 4.1
 title: DBMS
-description: 데이터베이스 관리 시스템
+description: 데이터베이스 관리 시스템 (DBMS)
 summary:
 keywords:
 - database
@@ -12,7 +12,7 @@ tags:
 - database
 - data
 created_time: 2025-04-07 04:36
-modified_time: 2025-09-10 00:31
+modified_time: 2025-09-10 00:47
 ---
 
 # DBMS
@@ -22,21 +22,24 @@ Database Management System
 : DBMS는 다중 사용자 환경에서 데이터 일관성을 유지하고 데이터 추상화와 독립성을 보장해야 함  
 
 - [DBMS 역사](#dbms-history)
+- [DBMS 구성요소](./dbms-component.md)
+- [DBMS 개념](./dbms-concept.md)
+- [DBMS 기능](./dbms-feature.md)
+  - [DBMS 언어](./dbms-language.md)
+- [DBMS 설계 원칙](./dbms-design-principle.md)
+  - [데이터베이스 모델링](../data-storage/database/database-modeling.md)
+- [DBMS 기법](./dbms-method.md)
 - [DBMS 분류](./classification/index.md)
   - [RDBMS](./classification/rdbms.md)
   - [NoSQL](./classification/nosql.md)
   - [NewSQL](./classification/newsql.md)
-- [DBMS 구성요소](./dbms-component.md)
-- [DBMS 주요 개념](./dbms-concept.md)
-- [DBMS 기능](./dbms-feature.md)
-  - [DBMS 언어](./dbms-language.md)
-- [DBMS 기법](./dbms-method.md)
 - [DBMS 제품](./product/index.md)
   - [Oracle](./product/oracle.md)
   - [MySQL](./product/mysql.md)
 - [DBMS 접근 방식](./dbms-access.md)
 - [DBMS & AI](./dbms-and-ai.md)
   - [NL2SQL](./dbms-and-ai.md#nl2sql)
+- [DBMS 운영](./dbms-operation.md)
 - [DBMS 도구](../../tool/tool-database/index.md)
 
 
