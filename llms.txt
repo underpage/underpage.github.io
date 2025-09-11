@@ -1,0 +1,40 @@
+# underpage.github.io
+This is a technical blog built with Jekyll focused on programming and computer science topics.
+
+## Navigation
+- [Home](https://underpage.github.io/)
+- [Tags](https://underpage.github.io/tag)
+- [Categories](https://underpage.github.io/category)
+
+## Categories
+- [Computing](https://underpage.github.io/doc/computing/index.md)
+- [Computer](https://underpage.github.io/doc/computer/index.md)
+- [Operating Systems](https://underpage.github.io/doc/os/index.md)
+- [Data](https://underpage.github.io/doc/data/index.md)
+- [Information](https://underpage.github.io/doc/information/index.md)
+- [Programming](https://underpage.github.io/doc/program/index.md)
+- [Programming Languages](https://underpage.github.io/doc/language/index.md)
+- [Frameworks](https://underpage.github.io/doc/framework/index.md)
+- [Software Engineering](https://underpage.github.io/doc/software-engineering/index.md)
+- [Mobile](https://underpage.github.io/doc/mobile/index.md)
+- [Enterprise](https://underpage.github.io/doc/enterprise/index.md)
+- [Web](https://underpage.github.io/doc/web/index.md)
+- [System Engineering](https://underpage.github.io/doc/systems/index.md)
+- [Network](https://underpage.github.io/doc/network/index.md)
+- [Virtualization](https://underpage.github.io/doc/virtualization/index.md)
+- [Container](https://underpage.github.io/doc/container/index.md)
+- [Cloud](https://underpage.github.io/doc/cloud/index.md)
+- [Protocol](https://underpage.github.io/doc/protocol/index.md)
+- [Infrastructure](https://underpage.github.io/doc/infra/index.md)
+- [Security](https://underpage.github.io/doc/security/index.md)
+- [Tools](https://underpage.github.io/doc/tool/index.md)
+- [Setup](https://underpage.github.io/doc/setup/index.md)
+- [Technology](https://underpage.github.io/doc/tech/index.md)
+- [AI & Machine Learning](https://underpage.github.io/doc/ai/index.md)
+- [Foundations](https://underpage.github.io/doc/foundation/index.md)
+- [Standards](https://underpage.github.io/doc/standard/index.md)
+- [Mathematics](https://underpage.github.io/doc/mathematics/index.md)
+
+## Feeds
+- [RSS Feed](https://underpage.github.io/feed.xml)
+- [Sitemap](https://underpage.github.io/sitemap.xml)
