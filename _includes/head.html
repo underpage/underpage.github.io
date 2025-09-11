@@ -37,5 +37,13 @@ window.dataLayer = window.dataLayer || [];
 function gtag() {dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-2THEZX5072');
+
+if(window.location.pathname === '/llms.txt') {
+  gtag('event', 'llm_txt_access', {
+    'event_category': 'AI_Crawler',
+    'event_label': 'LLM.txt File Access',
+    'value': 1
+  });
+}
 </script>
 {% endif %}

@@ -11,7 +11,7 @@ tags:
 - tech
 - index
 created_time: 2025-06-18 19:39
-modified_time: 2025-09-06 21:33
+modified_time: 2025-09-11 22:37
 ---
 
 # AI
@@ -64,19 +64,23 @@ Artificial Intelligence
 - [딥러닝](./dl/index.md)
 
 **인공지능 아키텍처**
+- [인공지능 시스템 스택](./ai-system-stack.md)
 - [에이전트 아키텍처](./ai-agent-architecture.md)
-
+- [인공지능 프로토콜](./ai-protocol/index.md)
+  - [MCP](./ai-protocol/mcp.md)
+  - [A2A](./ai-protocol/a2a.md)
+  
 **인공지능 방법론**
 - [프롬프트 엔지니어링](./ai-method/prompt-engineering.md)
 - [컨텍스트 엔지니어링](./ai-method/context-engineering.md)
 - [검색 증강 생성](./ai-method/rag.md)
 
 **인공지능 응용**
-- [자연어 처리](./nlp.md)
-- [컴퓨터 비전](./computer-vision.md)
-- [음성 인식](./speech.md)
-- [추천 시스템](./recommendation.md)
-- [로보틱스](./robotics.md)
+- [자연어 처리](./ai-application.md#nlp)
+- [컴퓨터 비전](./ai-application.md#computer-vision)
+- [음성 인식](./ai-application.md#speech)
+- [추천 시스템](./ai-application.md#recommendation)
+- [로보틱스](./ai-application.md#robotics)
 
 **이론적 기초**
 - [정보 이론](../information/information-theory/index.md)
