@@ -11,7 +11,7 @@ tags:
 - tech
 - index
 created_time: 2025-06-18 19:39
-modified_time: 2025-09-11 22:37
+modified_time: 2025-09-18 02:37
 ---
 
 # AI
@@ -30,11 +30,6 @@ Artificial Intelligence
 - 새로운 데이터를 지속적으로 학습하고 변화하는 상황과 환경에 적응함
 - 궁극적으로 모든 지적 영역에서 인간의 능력을 뛰어넘는 범용 지능체로 발전을 목표로 함
 
-
-**단계**
-```
-문제 정의 > 데이터 수집 > 데이터 처리 > 데이터 표현 > 모델 설계/학습/평가/배포 > 모니터링
-```
 
 **인공지능 기초**
 - [인공지능 개념](./ai.md)
@@ -55,32 +50,51 @@ Artificial Intelligence
   - [데이터 처리](./ai-data-processing.md)
   - [데이터 표현](./ai-data-representation.md)
 - [모델](./ai-model/index.md)
-  - [언어 모델](./ai-model/language-model.md)
+  - [모델 라이프사이클](./ai-model/model-lifecycle.md)
+  - [모델 유형](./ai-model/model-type.md)
+  - [모델 카탈로그](./ai-model/catalog/index.md)
 - [학습](./ai-learning/index.md)
+  - [학습 패러다임](./ai-learning/paradigm.md)
+  - [학습 전략](./ai-learning/strategie.md)
 - [알고리즘](./ai-algorithm/index.md)
 
-**인공지능 접근법**
-- [머신 러닝](./ml/index.md)
+**인공지능 방법론**
+- [머신러닝](./ml/index.md)
 - [딥러닝](./dl/index.md)
+
+**인공지능 응용 및 시스템**
+- [인공지능 응용](./ai-application.md)
+  - [자연어 처리](./ai-application.md#nlp)
+  - [컴퓨터 비전](./ai-application.md#computer-vision)
+  - [추천 시스템](./ai-application.md#recommendation)
+- [인공지능 시스템 유형](./ai-system/index.md)
+  - [생성형 AI](./ai-system/generative.md)
+  - [에이전틱 AI](./ai-system/agentic.md)
+  - [피지컬 AI](./ai-system/physical.md)
+
+**인공지능 기법**
+- [프롬프트 엔지니어링](./ai-technique/prompt-engineering.md)
+- [컨텍스트 엔지니어링](./ai-technique/context-engineering.md)
+- [도구 사용](./ai-technique/tool-use.md)
+- [검색 증강 생성](./ai-technique/rag.md)
 
 **인공지능 아키텍처**
 - [인공지능 시스템 스택](./ai-system-stack.md)
-- [에이전트 아키텍처](./ai-agent-architecture.md)
+- 인공지능 아키텍처 유형
+  - 에이전트 아키텍처
+  - 멀티모달 아키텍처
+- [인간-AI 상호작용](./human-ai-interaction.md)
 - [인공지능 프로토콜](./ai-protocol/index.md)
   - [MCP](./ai-protocol/mcp.md)
   - [A2A](./ai-protocol/a2a.md)
-  
-**인공지능 방법론**
-- [프롬프트 엔지니어링](./ai-method/prompt-engineering.md)
-- [컨텍스트 엔지니어링](./ai-method/context-engineering.md)
-- [검색 증강 생성](./ai-method/rag.md)
 
-**인공지능 응용**
-- [자연어 처리](./ai-application.md#nlp)
-- [컴퓨터 비전](./ai-application.md#computer-vision)
-- [음성 인식](./ai-application.md#speech)
-- [추천 시스템](./ai-application.md#recommendation)
-- [로보틱스](./ai-application.md#robotics)
+**인공지능 활용**
+- [인공지능 협업](./ai-collaboration.md)
+- [인공지능 활용 전략](./ai-adoption-strategy.md)
+
+**인공지능 신뢰성**
+- [설명 가능한 AI](./explainable-ai.md)
+- [AI 윤리 및 안전](./ai-ethics-safety.md)
 
 **이론적 기초**
 - [정보 이론](../information/information-theory/index.md)
