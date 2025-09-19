@@ -1,6 +1,6 @@
 ---
-order: 4
-title: security
+order: 8
+title: Security
 description: 보안 프로토콜 종류
 summary:
 keywords:
@@ -9,38 +9,42 @@ keywords:
 tags:
 - security
 - protocol
-created_time: 2025-01-07 06:42
-modified_time: 2025-02-07 19:53
+created_time: 2025-04-04 01:19
+modified_time: 2025-09-20 02:19
 ---
 
 # Security Protocols
-: 정보 시스템과 네트워크 환경에서 보안을 위한 표준화된 통신 규약과 절차 집합  
+: 정보 시스템과 애플리케이션 환경에서 보안을 위해 정의된 표준화된 규약과 절차 집합  
 
+```
+네트워크에서 프로토콜이란 서로 다른 시스템 간 데이터를 교환하기 위해 따르는 표준화된 규칙과 절차를 의미하나
+현재 정리된 보안 프로토콜은 전송 절차만 아니라 데이터 구조, 토큰 형식, 교환 규칙 등의 명세를 포괄함
+```
 
-**네트워크 계층별 보안 프로토콜**  
+**인증**
+- Kerberos
+- LDAP
+- SAML
+- OpenID Connect
+- FIDO2
 
-계층 | 프로토콜
----|---
-Network Layer     | GRE, L2TP, IPSec
-Transport Layer   | SSL/TLS, DTLS
-Session Layer     | PPTP, Kerberos
-Application Layer | SSH, HTTPS, FTPS, SFTP, DNSSEC 
+**인가**
+- RADIUS
+- TACACS+
+- OAuth 2.0
 
+**아이덴티티 페더레이션**
+- SAML
+- WS-Federation
+- OpenID Connect
 
-**특수 목적 보안 프로토콜**
+**토큰/세션 관리**
+- JWT
+- OAuth 2.0
+- OpenID Connect
 
-영역 | 프로토콜
----|---
-Crypto   | IPsec AH/ESP, PKCS, SRTP
-Wireless | WEP, WPA2, WPA3
-
-
-**응용 서비스 보안 프로토콜**
-
-서비스 | 프로토콜
----|---
-Auth  | TACACS+, RADIUS, LDAP, SAML, WS-Federation, OAuth 2.0, OpenID Connect, FIDO2
-Email | PGP, S/MIME, SPF, DKIM, DMARC
-Messaging | OTR, Signal Protocol, Matrix Protocol 
-VPN | L2TP/IPsec, OpenVPN, SSTP, WireGuard
-IoT | DTLS, CoAP, MQTT, LwM2M
+**암호화**
+- PGP
+- S/MIME
+- DNSSEC
+- SRTP
