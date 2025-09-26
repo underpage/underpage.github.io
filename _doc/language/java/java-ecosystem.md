@@ -1,6 +1,6 @@
 ---
-order: 6
-title: java
+order: 10
+title: Java
 description: 자바 에코시스템
 summary:
 keywords:
@@ -9,11 +9,10 @@ keywords:
 - framework
 - tool
 tags:
-- language
 - java
 - tool
-created_time: 2024-10-07 06:11
-modified_time: 2025-01-19 17:19
+created_time: 2025-04-07 04:36
+modified_time: 2025-09-26 15:38
 ---
 
 # Java Ecosystem
@@ -29,6 +28,7 @@ modified_time: 2025-01-19 17:19
   - [Java Microservices Framework](#java-microservices-framework)
   - [Java Concurrency Framework](#java-concurrency-framework)
   - [Java Persistence Framework](#java-persistence-framework)
+  - [Java AI Framework](#java-ai-framework)
   - [Java Logging Framework](#java-logging-framework)
   - [Java Testing Framework](#java-testing-framework)
 - Java Development Tools
@@ -43,44 +43,35 @@ modified_time: 2025-01-19 17:19
 
 - Tomcat
 - Jetty
+- Undertow
 - WildFly
 - GlassFish
-- WebSphere
-- WebLogic
 
 
 
 ## Java Library
 
 **Apache Commons Collections**  
-: Java Collections Framework를 확장해 여러 유용한 컬렉션 클래스와 메서드를 제공  
+: Java Collections Framework 확장으로 여러 유용한 컬렉션 클래스와 메소드 제공  
 
 **Eclipse Collections**  
 : Eclipse 재단에서 제공하는 컬렉션 라이브러리  
-: Java Collections Framework를 확장해 추가 기능과 성능 최적화를 제공  
+: Java Collections Framework를 확장해 추가 기능 및 성능 최적화 제공  
 
 **Guava**  
-: Java Collections Framework를 확장해 추가 컬렉션 타입과 유틸리티 메서드를 제공  
+: Java Collections Framework 확장으로 추가 컬렉션 타입과 유틸리티 메소드 제공  
 
 
 
 ## Java Template Engine
-: 정적 문서에 데이터를 삽입해 클라이언트에 전달할 최종 문서를 생성하는 시스템  
+: 정적 문서에 데이터를 삽입해 동적 콘텐츠를 생성하는 시스템  
 
-**text**   
 - Thymeleaf
 - Freemarker
-- Velocity
-- Java Server Pages
-- Handlebars
-- StrSubstitutor
-
-**layout**  
-- Tiles
-- SiteMesh
-
-**logic-less**   
 - Mustache
+- Pebble
+- Java Server Pages 
+
 
 
 ## Java Frameworks
@@ -97,11 +88,10 @@ modified_time: 2025-01-19 17:19
 
 ### Java DI Framework
 
-- Java EE CDI
+- Jakarta EE CDI
 - Spring DI Container
 - Google Guice
-- Pico Container
-- Seasar
+- Micronaut DI
 
 
 ### Java Web Framework
@@ -110,12 +100,12 @@ modified_time: 2025-01-19 17:19
 - Spring Boot
 - Micronaut
 - Quarkus
+- Helidon
 - Play
 - Vert.X
-- OpenLiberty
 - Vaadin
-- Wicket
 - Hilla
+- OpenLiberty
 
 
 ### Java Security Framework
@@ -127,17 +117,18 @@ modified_time: 2025-01-19 17:19
 ### Java Microservices Framework
 
 - Spring Boot
-- Micronaut 
+- Micronaut
 - Quarkus
-- Dropwizard
 - Helidon
+- Dropwizard
 
 
 ### Java Concurrency Framework
 
-- Akka
-- Disruptor
+- Spring WebFlux
 - RxJava
+- Akka
+- LMAX Disruptor
 
 
 ### Java Persistence Framework
@@ -147,6 +138,45 @@ modified_time: 2025-01-19 17:19
 - EclipseLink
 
 
+## Java AI Framework
+
+**Native**  
+: 인공지능 알고리즘을 Java로 구현한 라이브러리    
+
+- Tribuo: 머신러닝용 자바 라이브러리
+- Smile
+- Weka
+- MOA
+- DeepLearning4J
+- ND4J
+- EJML
+- Apache Commons Math
+
+
+**Interoperability**  
+: 서로 다른 언어나 플랫폼 간 연동을 통해 같이 동작하는 방식을 의미함  
+: Java에서 사용 가능한 인공지능 라이브러리  
+
+- GraalVM Python: GraalVM 위에서 파이썬 실행
+- Java Embedded Python: 파이썬 코드 임베드
+- Py4J
+- OpenNLP
+- Stanford CoreNLP
+- ImageJ
+- OpenCV Java
+- LangChain4j
+- Ollama4j
+
+
+**Hybrid**  
+: Java API를 제공하며 실행은 네이티브 엔진(PyTorch, TensorFlow)에 위임하는 방식  
+: 자바 생태계와 최신 인공지능 기술 활용이 가능함  
+
+- Deep Java Library (DJL)
+- TensorFlow Java
+
+
+
 ### Java Logging Framework
 
 **interface**  
@@ -154,7 +184,6 @@ modified_time: 2025-01-19 17:19
 : 로깅 관련 추상 레이어  
 : 로깅 프레임워크 위에서 작동하는 인터페이스  
 
-- Aapache Commons Logging
 - SLF4J (Simple Logging Facade for Java)
 
 
@@ -163,8 +192,6 @@ modified_time: 2025-01-19 17:19
 
 - Log4j2
 - Logback
-- Tinylog
-- Logbook
 
 
 ### Java Testing Framework
@@ -172,10 +199,7 @@ modified_time: 2025-01-19 17:19
 - JUnit
 - TestNG
 - Mockito
-- JMeter
-- EasyMock
-- Powermock
-- JBehave
+- Spring Boot Test
 
 
 
@@ -191,28 +215,28 @@ modified_time: 2025-01-19 17:19
 
 - Maven
 - Gradle
+- Bazel
 
 
 ### Java Document Tool
 
 - Javadoc
 - OpenAPI (Swagger)
+- Spring REST Docs
 
 
 ### Java Monitoring Tool
 
 - JProfiler
 - VisualVM
+- Micrometer
 
 
 ### Java Code Quality Tool
 
 - SonarQube
-- Checkstyle
-- PMD
-
-
-### Java Static Analysis Tool
-
-- DeepSource
 - SpotBugs
+- PMD
+- Checkstyle
+- DeepSource
+- CodeQL
