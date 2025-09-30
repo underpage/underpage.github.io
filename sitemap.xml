@@ -1,0 +1,42 @@
+---
+layout: null
+permalink: /sitemap
+---
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>{{ site.url }}/index</loc>
+    <lastmod>2024-09-06T06:00:00+09:00</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>{{ site.url }}/about</loc>
+    <lastmod>2024-09-06T06:00:00+09:00</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>{{ site.url }}/category</loc>
+    <lastmod>2024-09-06T06:00:00+09:00</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>{{ site.url }}/tag</loc>
+    <lastmod>2024-09-06T06:00:00+09:00</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>{{ site.url }}/search</loc>
+    <lastmod>2024-09-06T06:00:00+09:00</lastmod>
+    <priority>0.9</priority>
+  </url>
+  {% for doc in site.doc %}
+  <url>
+    <loc>{{ site.url }}{{ doc.url }}</loc>
+    <lastmod>{{ doc.modified_time | date: "%Y-%m-%dT%H:%M:%S%:z" }}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  {% endfor %}
+</urlset>

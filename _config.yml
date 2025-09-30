@@ -1,0 +1,73 @@
+exclude:
+  - .env
+  - .github
+  - .gitignore
+  - .vscode
+  - .bundle
+  - .jekyll-cache
+  - .jekyll-metadata
+  - vendor
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - _site_backup*
+  - _order.txt
+  - _url.rb
+  - _url.csv
+  _ @
+  
+include:
+  - _doc
+
+production:
+  build:
+    parallel: true
+    incremental: true
+    cache: true
+
+plugins:
+  - jekyll-cache
+  - jekyll-feed
+  - jekyll-octicons
+
+feeds:
+  rss: true
+
+encoding: utf-8
+timezone: Asia/Seoul
+date_format: '%Y-%m-%d'
+
+lang: 'ko'
+title: 'underpage'
+description: 'underpage blog'
+keyword: 'underpage, underPage, underpage github, github blog, dev blog'
+
+url: ''
+baseurl: ''
+asset_url:
+  img: '/assets/img'
+  css: '/assets/css'
+  js: '/assets/js'
+
+name: 'yjj'
+email: 'yoojj.dev@gmail.com'
+
+collections:
+  doc:
+    output: true
+    permalink: /:collection/:path.md
+
+defaults:
+  - scope:
+      path: ''
+      type: 'doc'
+    values:
+      layout: layout-markdown
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: true
+  auto_ids: true
+
+page_excerpts: true

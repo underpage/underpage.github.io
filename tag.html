@@ -1,0 +1,53 @@
+---
+layout: layout-page
+permalink: /tag
+title: tag
+description: 블로그의 다양한 태그를 통해 원하는 정보를 빠르게 찾아보세요.
+keywords: tag, tag list, post tag, category, 태그, 콘텐츠 태그, 카테고리, 주제, 관련 글 찾기
+---
+
+<section class="layout-page-wrap">
+  <div class="page-title-wrap">
+    <h2>Tags</h2>
+  </div>
+  
+  <div class="page-content-wrap tag-content">
+    {% assign tags = site.data.doc_tags %}
+    <p class="default-post-count">
+      {{ tags | size }} Tags
+    </p>
+
+    <ul class="tag-list" id="tagList">
+    {% for tag in tags %}
+      <li>
+        <a href="#;" data-url="{{ tag[0] | slugify }}">
+          {{ tag[0]}} <span>{{ tag[1].docs.size }}</span>
+        </a>
+      </li>
+    {% endfor %}
+    </ul>
+
+    {% for tag in tags %}
+    <div class="tag-list-container none" id="{{ tag[0] | slugify }}Container">
+      <ul class="default-post-list">
+      {% for item in tag[1].docs %}
+        <li>
+          <article class="post-item-wrap">
+            <a href="{{ item.url | relative_url }}">
+              <span class="title">{{ item.title }}</span>
+              <span class="desc">
+                {{ item.summary | default: item.description | truncate: 100 }}
+              </span>
+            </a>
+            <time datetime="{{ item.modified_time }}" class="date">
+              {{ item.modified_time }}
+            </time>
+          </article>
+        </li>
+      {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+
+</div>
+</section>

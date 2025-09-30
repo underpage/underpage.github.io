@@ -1,0 +1,33 @@
+{% for item in items %}
+  {% if item.posts %}
+    {% assign items = item.posts %}
+    {% include render-index-posts.html items=items %}
+  {% else %}
+  <li>
+    <article class="post-item-wrap">
+      <a href="{{ item.url }}">
+        <h3 class="title">{{ item.title }}</h3>
+        <span class="desc">
+          {{ item.summary | default: item.description | truncate: 100 }}
+        </span>
+      </a>
+      <time datetime="{{ item.modified_time }}" class="date">
+        {{ item.modified_time }}
+      </time>
+    </article>
+
+    <p class="index-post-tag none">
+      {% for tag in item.tags  %}
+        <a href="/tag#{{ tag | slugify }}">{{ tag }}</a>
+      {% endfor %}
+    </p>
+
+    <p class="index-post-keyword">
+      {% for tag in item.tags  %}
+        <span>{{ tag }}</span>
+      {% endfor %}
+    </p>
+
+  </li>
+  {% endif %}
+{% endfor %}

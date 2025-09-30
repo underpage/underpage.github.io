@@ -1,0 +1,101 @@
+name: Build and Deploy
+
+on:
+  schedule:
+    - cron: '0 17 * * *'
+  workflow_dispatch:
+    inputs:
+      force_build:
+        required: true
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    outputs:
+      build_required: ${{ steps.set_build_required.outputs.build_required }}
+    steps:
+      - name: -- Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: -- Check commits
+        id: check_commits
+        run: |
+          commits=$(git log --since="24 hours ago" --format='%H')
+          if [ -n "$commits" ]; then
+            echo "commits_exist=true" >> $GITHUB_OUTPUT
+          else
+            echo "commits_exist=false" >> $GITHUB_OUTPUT
+          fi
+          
+      - name: -- Set build required
+        id: set_build_required
+        run: |
+          if [ "${{ github.event.inputs.force_build }}" = "true" ]; then
+            echo "build_required=true" >> $GITHUB_OUTPUT
+
+          elif [ "${{ steps.check_commits.outputs.commits_exist }}" = "true" ]; then
+            echo "build_required=true" >> $GITHUB_OUTPUT
+
+          else
+            echo "build_required=false" >> $GITHUB_OUTPUT
+          fi
+
+
+
+  build:
+    needs: check
+    if: ${{ needs.check.outputs.build_required == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: -- Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: -- Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3.4'
+          bundler-cache: true
+          rubygems: latest
+          bundler: latest
+
+      - name: -- Jekyll cache
+        uses: actions/cache@v4
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-jekyll-${{ hashFiles('Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-jekyll-
+
+      - name: -- Install dependencies
+        run: |
+          bundle config set --local deployment 'true'
+          bundle install --without local --jobs 4 --retry 3
+
+      - name: -- Jekyll build
+        run: |
+          JEKYLL_ENV=production bundle exec jekyll build
+     
+      - name: -- Upload
+        uses: actions/upload-pages-artifact@v3
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: -- Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}

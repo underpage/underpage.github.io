@@ -1,0 +1,128 @@
+{% assign doc_items = site.data.doc_items %}
+{% assign sorted_items = doc_items | sort: 'order' %}
+
+<ul class="category-title-list" id="categoryTitleList">
+{% for item in sorted_items %}
+  <li>
+    <button onclick="toggleCategory('{{ item.folder }}', this, '1');">{{ item.folder }}</button>
+  </li>
+{% endfor %}
+</ul>
+
+<div class="category-container-1">  
+{% for item in sorted_items %}
+{% if item.posts %}
+
+  <ul class="category-list none" id="{{ item.folder }}-1">
+  {% assign parent_folder = item.folder %}
+    
+    {% for post in item.posts %}
+      {% if post.folder %}
+        <li>
+          <button onclick="toggleCategory('{{ post.folder }}', this, '2');">{{ post.folder }}</button>
+        </li>
+      {% endif %}
+    {% endfor %}
+
+    {% for post in item.posts %}
+      {% if post.filename %}
+        <li>
+          <a href="{{ post.url }}">{{ post.filename }}</a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+{% endif %}
+{% endfor %}
+</div>
+
+<div class="category-container-2">
+{% for item in sorted_items %}
+{% if item.posts %}
+{% for post in item.posts %}
+{% if post.posts %}
+  <ul class="category-list none" id="{{ post.folder }}-2">
+
+    {% for sub_post in post.posts %}
+      {% if sub_post.folder %}
+        <li>
+          <button onclick="toggleCategory('{{ sub_post.folder }}', this, '3');">{{ sub_post.folder }}</button>
+        </li>
+      {% endif %}
+    {% endfor %}
+
+    {% for sub_post in post.posts %}
+      {% if sub_post.filename %}
+        <li>
+          <a href="{{ sub_post.url }}">{{ sub_post.filename }}</a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endfor %}
+</div>
+
+
+
+<div class="category-container-3">
+{% for item in sorted_items %}
+{% if item.posts %}
+{% for post in item.posts %}
+{% if post.posts %}
+{% for sub_post in post.posts %}
+{% if sub_post.posts %}
+
+  <ul class="category-list none" id="{{ sub_post.folder }}-3">
+    {% for fourth_post in sub_post.posts %}
+      {% if fourth_post.filename %}
+        <li>
+          <a href="{{ fourth_post.url }}">{{ fourth_post.filename }}</a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endfor %}
+</div>
+
+<script>
+const toggleCategory = (folder, element, containerNo) => {
+  const depth = parseInt(containerNo);
+
+  for(let i = depth; i <= 3; i++) {
+    const subContainers = document.querySelectorAll(`.category-container-${i}`);
+    subContainers.forEach(container => {
+      container.querySelectorAll('.category-list').forEach(category => {
+        category.classList.add('none');
+      });
+    });
+  }
+
+  const selectedCategory = document.getElementById(`${folder}-${containerNo}`);
+  selectedCategory?.classList.remove('none');
+
+  const activeButtons = document.querySelectorAll('button.active');
+  activeButtons.forEach(button => {
+    const onclickAttr = button.getAttribute('onclick');
+    if(onclickAttr) {
+      const match = onclickAttr.match(/toggleCategory\('[^']*',\s*this,\s*'(\d+)'\)/);
+      if(match) {
+        const buttonDepth = parseInt(match[1]);
+        if(buttonDepth >= depth) {
+          button.classList.remove('active');
+        }
+      }
+    }
+  });
+
+  element.classList.add('active');
+}  
+</script>

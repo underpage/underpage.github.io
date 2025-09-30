@@ -1,0 +1,48 @@
+---
+layout: layout-page
+permalink: /category
+title: category
+description: 포스트 카테고리를 통해 원하는 정보를 빠르게 찾아보세요.
+keywords: category, 카테고리, 포스트 카테고리, 주제
+---
+
+<section class="layout-page-wrap category-page-wrap">
+  <div class="page-title-wrap">
+    <h2>Categories</h2>
+  </div>
+
+  <div class="page-content-wrap">
+    {% assign doc_items = site.data.doc_items %}
+    {% assign sorted_items = doc_items | sort: 'order' %}
+
+    <div class="category-container">
+    {% for item in sorted_items %}
+    <section class="category-wrap">
+      <h3 class="folder">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="folder">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z"></path>
+        </svg>
+        <a href="{{item.url}}"}>{{ item.folder }}</a>
+      </h3>
+
+      {% if item.posts %}
+      <ul>
+      {% for post in item.posts %}
+        {% if post.folder %}
+        <li class="subfolder">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="subfolder">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z"></path>
+          </svg>
+          <a href="{{ post.url }}"}>{{ post.folder }}</a>
+        </li>
+        {% endif %}
+      {% endfor %}
+      </ul>
+      {% endif %}
+      
+    </section>
+    {% endfor %}
+    </div>
+
+  </div>
+</section>

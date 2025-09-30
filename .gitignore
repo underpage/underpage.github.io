@@ -1,0 +1,11 @@
+.env
+
+.vscode
+.bundle
+.jekyll-cache
+.jekyll-metadata
+
+_site
+_site_backup*
+_order.txt
+_url.csv
