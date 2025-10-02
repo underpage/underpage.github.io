@@ -14,8 +14,7 @@ exclude:
   - _order.txt
   - _url.rb
   - _url.csv
-  _ @
-  
+
 include:
   - _doc
 

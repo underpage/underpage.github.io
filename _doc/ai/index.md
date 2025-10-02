@@ -1,17 +1,16 @@
 ---
-order: 16
+order: 22
 title: AI
 description: 인공지능 (인덱스)
-summary: 인공지능의 개념, 목표, 구현 기술, 구성 요소, 방법론, 응용 분야, 아키텍처, 활용 및 신뢰성, 이론적 기초에 대한 포괄적 안내
+summary: 인공지능의 개념, 목표, 구현 기술, 구성 요소, 방법론, 응용 분야, 아키텍처, 활용 및 신뢰성, 이론적 기초에 대한 개요
 keywords:
 - artificial intelligence
 - ai
 tags:
-- index
-- tech
 - ai
+- index
 created_time: 2025-09-30 21:13
-modified_time: 2025-09-30 21:39
+modified_time: 2025-10-02 22:06
 ---
 
 # AI

@@ -75,7 +75,7 @@ export function createSearchPostForm(customOptions = {}) {
             <span class="title">${item.title}</span>
             <span class="desc">${item.description}</span>
           </a>
-          <time datetime="${item.modified_time}" class="date">
+          <time datetime="${item.modified_time}" class="date no-select">
             ${item.modified_time}
           </time>
         </article>`;

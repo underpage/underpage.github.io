@@ -2,18 +2,19 @@
 order: 4
 title: Data
 description: 데이터 (인덱스)
-summary: 
+summary: 데이터의 정의, 기초, 설계/관리, 처리/분석 과정, 시스템, 데이터 처리 도구 등에 대한 개요
 keywords:
 - data
 - data architecture
 - data processing
 - data system
 tags:
-- index
 - data
+- index
 created_time: 2025-09-30 21:24
-modified_time: 2025-09-30 21:38
+modified_time: 2025-10-02 22:06
 ---
+
 # Data
 : 데이터의 어원은 라틴어 dare(give) => datum(thing given)에서 유래  
 : 데이터 정의는 문화적 배경이나 수학, 철학, 과학 등 분야에 따라 다양하게 해석됨  

@@ -8,10 +8,10 @@
       <a href="{{ item.url }}">
         <h3 class="title">{{ item.title }}</h3>
         <span class="desc">
-          {{ item.summary | default: item.description | truncate: 100 }}
+          {{ item.description | truncate: 100 }}
         </span>
       </a>
-      <time datetime="{{ item.modified_time }}" class="date">
+      <time datetime="{{ item.modified_time }}" class="date no-select">
         {{ item.modified_time }}
       </time>
     </article>
@@ -23,8 +23,8 @@
     </p>
 
     <p class="index-post-keyword">
-      {% for tag in item.tags  %}
-        <span>{{ tag }}</span>
+      {% for keyword in item.keywords  %}
+        <span>{{ keyword }}</span>
       {% endfor %}
     </p>
 

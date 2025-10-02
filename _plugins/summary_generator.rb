@@ -55,7 +55,11 @@ module Jekyll
         'x-goog-api-key' => @api_key
       }
 
-      query = "문서 내용을 한 문장(100자 내외)으로 요약(summary)하는데 '이 문서는~', '~니다' 라는 표현은 제외하고 단답형으로 작성"
+      query = <<~TEXT
+        문서 내용을 기반으로 한 문장(150자 내외)으로 요약(summary)
+        - '이 문서는~', '~다' 등의 표현은 사용하지 말고 단문형으로 작성
+        - 핵심 정보만 포함하고 불필요한 서두나 종결어는 제거
+      TEXT
 
       body = {
         contents: [
@@ -85,7 +89,7 @@ module Jekyll
         text = data.dig("candidates", 0, "content", "parts", 0, "text").to_s
         single_line = text.gsub(/\r?\n/, ' ').strip
       else
-        ''
+        
       end
 
     rescue => e

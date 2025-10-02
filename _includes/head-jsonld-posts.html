@@ -1,0 +1,30 @@
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ page.url | absolute_url }}"
+  },
+  "url": "{{ site.url | absolute_url }}"
+  "headline": {{ page.title | jsonify }},
+  "description": {{ page.description | default: page.summary | strip_html | jsonify }},
+  "keywords": {{ page.keywords | jsonify }},
+  "articleSection": {{ page.tags | jsonify }},
+  "author": {
+    "@type": "Person",
+    "name": {{ site.name | jsonify }}
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": {{ site.title | jsonify }},
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ site.asset_url.img }}/favicon.ico"
+    }
+  },
+  "datePublished": "{{ page.created_time | date_to_xmlschema }}",
+  "dateModified": "{{ page.modified_time | date_to_xmlschema }}"
+}
+</script>
