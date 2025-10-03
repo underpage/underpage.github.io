@@ -2,7 +2,7 @@
 order: 9
 title: Web
 description: 웹 (인덱스)
-summary: 월드 와이드 웹의 개념, 핵심 구성 요소, 동작 원리, 발전 단계 및 미래 트렌드에 대한 개요
+summary: 월드 와이드 웹의 개념, 핵심 구성 요소, 동작 원리, 발전 단계, 미래 트렌드 등에 대한 개요
 keywords:
 - world wide web
 - web
@@ -12,7 +12,7 @@ tags:
 - web
 - index
 created_time: 2025-10-01 03:38
-modified_time: 2025-10-02 22:06
+modified_time: 2025-10-04 08:20
 ---
 
 # Web
@@ -23,8 +23,8 @@ World Wide Web, WWW, W3
 : 초기에는 정보 공유가 목적이었으나 현재는 웹 애플리케이션으로 발전하여 상호작용 환경을 제공함  
 : 웹의 발전은 실시간 데이터처리, 모바일 웹, 클라우드 컴퓨팅, 엣지 컴퓨팅 등으로 확장됨  
 
-- [웹 역사](./web-history.md)
-- [웹 동작 원리](./how-the-web-works.md)
+- [웹 발전 배경](./web-history.md)
+- [웹 동작 방식](./how-the-web-works.md)
 - 웹 구성 요소
   - 구조: [HTML](./html/index.md)
   - 표현: [CSS](./css/index.md)
@@ -32,7 +32,6 @@ World Wide Web, WWW, W3
     - [DOM](./dom/index.md)
     - [Web API](./api/index.md)
     - [ECMAScript](../language/js/index.md)
-    - [WebAssembly](./wasm/index.md)
   - 그래픽
     - [SVG](./graphic/svg/index.md)
     - [Canvas](./graphic/canvas/index.md)
@@ -44,7 +43,6 @@ World Wide Web, WWW, W3
   - [시맨틱 웹](./semantic-web.md)
   - [탈중앙화 웹](./decentralized-web.md)
 - [웹 기술](./web-technology/index.md)
-  - [Progressive Web Apps](./web-technology/pwa.md)
 - [웹 표준](./web-standard/index.md)
   - [WAI-ARIA](./web-standard/wai-aria.md)
   - [WCAG](./web-standard/wcag.md)
@@ -78,6 +76,7 @@ World Wide Web, WWW, W3
 **개념적 발전 단계**  
 : 기술, 사용자 참여, 데이터 처리 방식 등에 따라 구분됨  
 : 공식적인 발전 단계는 아니며 기준이나 정의는 조직이나 연구자마다 다르게 정의함  
+: Web 4.0이나 5.0은 웹이 나아갈 방향을 예측하는 의미로 사용되며 구체적인 형태는 확정되지 않았음  
 
 단계 | 시기 | 정의
 ---|---|---
@@ -88,5 +87,3 @@ Web 3.0 | 2010년~| Decentralized Web <br> - 블록체인 기술을 기반으로
 Web 3.5 | 2015년~ | Intelligent Web <br> - 자동화, 지능형 웹 <br> - AI 기술 발전으로 사용자 경험을 지능적으로 개선함
 Web 4.0 | 미정 | Symbiotic Web <br> - 초연결 웹 <br> - 모든 장치와 사람을 실시간으로 연결
 Web 5.0 | 미래 | Emotional Web <br> - 감정 웹 <br> - 사용자 감정과 의도를 인식하여 더 개인화된 경험 제공 <br> - 인간과 기계의 상호작용이 감정적이고 직관적인 수준으로 확장됨 
-
-=> Web 4.0이나 5.0은 웹이 나아갈 방향을 예측하는 의미로 사용되며 구체적인 형태는 확정되지 않았음  

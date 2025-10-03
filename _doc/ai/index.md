@@ -10,7 +10,7 @@ tags:
 - ai
 - index
 created_time: 2025-09-30 21:13
-modified_time: 2025-10-02 22:06
+modified_time: 2025-10-04 08:16
 ---
 
 # AI
@@ -45,6 +45,7 @@ Artificial Intelligence
   - [신경망](./neural-network.md)
 
 **인공지능 구성요소**
+- [모델 실행](./ai-model-execution.md)
 - [데이터](./ai-data.md)
   - [데이터 처리](./ai-data-processing.md)
   - [데이터 표현](./ai-data-representation.md)

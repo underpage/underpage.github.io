@@ -11,7 +11,7 @@ tags:
 - glossary
 - index
 created_time: 2025-09-30 21:45
-modified_time: 2025-10-02 22:13
+modified_time: 2025-10-04 08:19
 ---
 
 # Cloud Computing
@@ -76,6 +76,6 @@ modified_time: 2025-10-02 22:13
 
 문서 | 설명
 ---|---
-NIST SP 800-145 | 클라우드 기본 정의
-NIST SP 800-146 | 클라우드 도입, 운영, 보안 권고사항
-NIST SP 800-144 | 클라우드 보안 및 프라이버시 가이드라인
+NIST SP 800-145 | 클라우드 기본 정의 (https://csrc.nist.gov/pubs/sp/800/145/final)
+NIST SP 800-146 | 클라우드 도입, 운영, 보안 권고사항 (https://csrc.nist.gov/pubs/sp/800/146/final)
+NIST SP 800-144 | 클라우드 보안 및 프라이버시 가이드라인 (https://csrc.nist.gov/pubs/sp/800/144/final)
