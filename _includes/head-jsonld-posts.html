@@ -25,7 +25,6 @@
     }
   },
   "datePublished": "{{ page.created_time | date_to_xmlschema }}",
-  "dateModified": "{{ page.modified_time | date_to_xmlschema }}",
-  "articleBody": {{ page.content | strip_html | jsonify }}
+  "dateModified": "{{ page.modified_time | date_to_xmlschema }}"
 }
 </script>
