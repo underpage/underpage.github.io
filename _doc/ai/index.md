@@ -10,7 +10,7 @@ tags:
 - ai
 - index
 created_time: 2025-09-30 21:13
-modified_time: 2025-10-04 08:16
+modified_time: 2025-10-19 20:38
 ---
 
 # AI
@@ -19,7 +19,6 @@ Artificial Intelligence
 : 인간의 지능적 행동을 모방하고 이를 확장하여 복잡한 문제를 자동화된 방식으로 해결하는 것을 목표로 함  
 : 현재 인공지능은 대량의 데이터로부터 패턴을 학습하고 이를 바탕으로 분류, 예측, 의사결정을 수행함  
 : 인공지능은 논리학, 확률론, 통계학, 정보 이론 등의 다양한 이론과 철학적 관점을 기반으로 함  
-
 
 **목표**
 - 대규모 데이터를 빠르고 정확하게 분석하고 처리함
@@ -32,35 +31,43 @@ Artificial Intelligence
 
 **인공지능 기초**
 - [인공지능 개념](./ai.md)
-  - [인공지능 지식](./ai-knowledge.md)
-  - [인공지능 추론](./ai-reasoning.md)
+  - [인공지능 인지](./ai-cognition.md)
+  - [인공지능 용어](./ai-glossary.md)
 - [인공지능 발전 단계](./ai-evolution.md)
-
-**인공지능 구현 방식**
-- [규칙 기반 시스템](./ai-implementation.md#rule-based-system)
-- [지식 기반 시스템](./ai-implementation.md#knowledge-based-system)
-- [통계 기반 시스템](./ai-implementation.md#statistical-based-system)
-  - [통계적 방법론](./statistical-method.md)
-- [신경망 기반 시스템](./ai-implementation.md#neural-network-based-system)
-  - [신경망](./neural-network.md)
+- [인공지능 구현 방식](./ai-implementation.md)
+  - [지식 기반 시스템](./ai-implementation.md#knowledge-based-system)
+    - [지식 표현](./ai-mechanism/knowledge-representation.md)
+  - [통계 기반 시스템](./ai-implementation.md#statistical-based-system)
+    - [통계적 방법론](./ai-mechanism/statistical-method.md)
+  - [신경망 기반 시스템](./ai-implementation.md#neural-network-based-system)
+    - [신경망](./ai-mechanism/neural-network.md)
 
 **인공지능 구성요소**
-- [모델 실행](./ai-model-execution.md)
+- [인공지능 프로세스](./ai-process.md)
 - [데이터](./ai-data.md)
   - [데이터 처리](./ai-data-processing.md)
   - [데이터 표현](./ai-data-representation.md)
 - [모델](./ai-model/index.md)
-  - [모델 라이프사이클](./ai-model/model-lifecycle.md)
-  - [모델 유형](./ai-model/model-type.md)
+  - [모델 분류](./ai-model/model-taxonomy.md)
   - [모델 카탈로그](./ai-model/catalog/index.md)
 - [학습](./ai-learning/index.md)
   - [학습 패러다임](./ai-learning/paradigm.md)
   - [학습 전략](./ai-learning/strategie.md)
+- [추론](./ai-reasoning/index.md)
+  - 추론 기법
 - [알고리즘](./ai-algorithm/index.md)
 
-**인공지능 방법론**
+**인공지능 방법론**: AI를 구현하는 체계적 접근법  
 - [머신러닝](./ml/index.md)
 - [딥러닝](./dl/index.md)
+- [강화학습](./rl/index.md)
+
+구분 | 머신러닝 | 딥러닝 | 강화학습
+---|---|---|---
+특화 | 정형 데이터 | 비정형 데이터 | 순차적 의사결정
+강점 | 적은 데이터로 학습, 빠른 학습 속도 | 복잡한 패턴 인식, 특징 추출 | 장기 목표 최적화
+약점 | 특징 공학 필요 | 대량 데이터 필요, 계산 비용이 높음 | 학습 시간이 길고 불안정함
+역할 | 분석, 예측 | 인식, 지각 | 행동 결정, 전략 수립
 
 **인공지능 응용 및 시스템**
 - [인공지능 응용](./ai-application.md)
