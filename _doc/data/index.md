@@ -12,14 +12,13 @@ tags:
 - data
 - index
 created_time: 2025-09-30 21:24
-modified_time: 2025-10-02 22:06
+modified_time: 2025-10-21 19:22
 ---
 
 # Data
 : 데이터의 어원은 라틴어 dare(give) => datum(thing given)에서 유래  
 : 데이터 정의는 문화적 배경이나 수학, 철학, 과학 등 분야에 따라 다양하게 해석됨  
 : 현대 사회에서 데이터는 디지털 기술과 컴퓨터 시스템을 통해 대규모로 생성, 수집, 활용됨  
-
 
 **데이터 기초**
 - [데이터](./data.md)
@@ -36,6 +35,7 @@ modified_time: 2025-10-02 22:06
 - [데이터 관리 프레임워크](./data-management-framework.md)
 - [데이터 아키텍처](./data-architecture.md)
   - [데이터 모델링](./data-modeling.md)
+  - [데이터 레이어](./data-layer.md)
 - [데이터 거버넌스](./data-governance.md)
   - [데이터 스튜어드십](./data-stewardship.md)
   - [데이터 품질](./data-quality.md)
@@ -48,7 +48,7 @@ modified_time: 2025-10-02 22:06
 - [데이터 규제](./data-regulation.md)
 
 
-**데이터 처리/분석 과정**
+**데이터 처리 및 분석**
 - [데이터 처리](./data-processing/index.md)
 - [데이터 수집](./data-collection/index.md)
 - [데이터 통합](./data-integration/index.md)
@@ -78,10 +78,10 @@ modified_time: 2025-10-02 22:06
   - [실시간 데이터 시스템](./data-system/dynamic-system/realtime.md)
 
 
-**데이터 처리/분석 도구**
-- [하둡](./data-tool/hadoop.md)
-- [스파크](./data-tool/spark.md)
-- [카프카](./data-tool/kafka.md)
+**데이터 처리 도구**
+- [하둡](../tool/data-tool/hadoop.md)
+- [스파크](../tool/data-tool/spark.md)
+- [카프카](../tool/data-tool/kafka.md)
 
 
 **데이터 처리 언어**
