@@ -10,7 +10,7 @@ tags:
 - cloud
 - index
 created_time: 2025-09-30 21:45
-modified_time: 2025-11-28 18:46
+modified_time: 2025-11-30 12:56
 ---
 
 # Cloud Computing
@@ -21,6 +21,7 @@ modified_time: 2025-11-28 18:46
 - [클라우드 컴퓨팅 개요](#cloud-computing-overview)
 - [클라우드 서비스 모델](./cloud-service-model.md)
 - [클라우드 배포 모델](./cloud-deployment-model.md)
+- [클라우드 이용 모델](./cloud-usage-model.md)
 - [클라우드 아키텍처](./cloud-architecture.md)
 - [클라우드 패턴](./cloud-pattern.md)
 - [클라우드 보안](./cloud-security.md)
@@ -33,14 +34,14 @@ modified_time: 2025-11-28 18:46
 
 
 **클라우드 표준**  
-: [미국 국립표준기술연구소](../standard/index.md#nist)(NIST)에서 제공하는 클라우드 컴퓨팅 표준 정의와 가이드라인  
+: [미국 국립표준기술연구소](../standard/index.md#nist)에서 제공하는 클라우드 컴퓨팅 표준 정의와 가이드라인  
 : NIST에서 정의한 표준은 AWS, Azure, GCP 등 모든 클라우드 제공업체가 준수하는 산업 표준  
 
 문서 | 설명
 ---|---
-NIST SP 800-145 | 클라우드 기본 정의 (https://csrc.nist.gov/pubs/sp/800/145/final)
-NIST SP 800-146 | 클라우드 도입, 운영, 보안 권고사항 (https://csrc.nist.gov/pubs/sp/800/146/final)
-NIST SP 800-144 | 클라우드 보안 및 프라이버시 가이드라인 (https://csrc.nist.gov/pubs/sp/800/144/final)
+NIST SP 800-145 | 클라우드 기본 정의 https://csrc.nist.gov/pubs/sp/800/145/final
+NIST SP 800-146 | 클라우드 도입, 운영, 보안 권고사항 https://csrc.nist.gov/pubs/sp/800/146/final
+NIST SP 800-144 | 클라우드 보안 및 프라이버시 가이드라인 https://csrc.nist.gov/pubs/sp/800/144/final
 
 
 
