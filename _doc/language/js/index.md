@@ -2,18 +2,17 @@
 order: 1
 title: JS
 description: 자바스크립트 (ECMAScript)
-summary: 사용자 동적 상호작용 및 DOM 제어를 위한 브라우저 스크립팅 언어인 자바스크립트 대한 개요
+summary:
 keywords:
 - ecmascript
 - javascript
+- es
 - js
-- es2024
-- es2025
 tags:
 - js
 - language
 created_time: 2025-10-10 23:20
-modified_time: 2025-10-15 23:59
+modified_time: 2025-12-02 23:41
 ---
 
 # JavaScript 
@@ -22,34 +21,32 @@ modified_time: 2025-10-15 23:59
 : ECMA-262라는 표준 사양을 따르는 언어를 ECMAScript라 명칭하나 여전히 자바스크립트로 통용됨  
 
 - [ECMAScript](#ecmascript)
-- [JS Language](./js-lang/index.md)
+- [JS 언어](./js-lang/index.md)
   - [Native Object](./js-object/object/index.md)
   - [Built-in Class](./js-object/class/index.md)
-- JS Core Concept
-  - [JS Hoisting](./js-hoisting.md)
-  - [JS Scope](./js-scope.md)
-  - [JS Closure](./js-closure.md)
-  - [JS Execution Context](./js-execution-context.md)
-- [JS Module System](./js-module-system.md)
-- [JS Runtime Environment](./js-runtime-environment.md)
+- [JS 모듈 시스템](./js-module-system.md)
+- JS 코어 컨셉
+  - [스코프](./js-scope.md)
+  - [호이스팅](./js-hoisting.md)
+  - [클로저](./js-closure.md)
+  - [실행 컨텍스트](./js-execution-context.md)
+- JS 실행 메커니즘
+  - [엔진](./js-engine.md)
+  - [런타임 시스템](./js-runtime.md)
+- [JS 런타임 환경](./js-runtime-environment.md)
   - [Node](./ssjs-node/index.md)
   - [Deno](./ssjs-deno/index.md)
   - [Bun](./ssjs-bun/index.md)
-- [JS Asynchronous Programming](./js-asyn-programming.md)
 - [AltJS](./js-alt.md)
-  - [TypeScript](./ts/index.md)
-- JS Development Tools
-  - [JS Package Manager](./js-package-manager.md)
-  - [JS Transpiler](./js-tool-transpiler.md)
-  - [JS Build](./js-tool-build.md)
-  - [JS Linter](./js-tool-linter.md)
-  - [JS Testing](./js-tool-testing.md)
-  - [JS Monorepo](./js-tool-monorepo.md)
-- [JS Execution Mechanism](./js-execution-mechanism.md)
-  - JS Performance Optimization
-  - JS Debugging
-- [JS Ecosystem](./js-ecosystem.md)
-- [Frontend Pattern](./frontend-pattern/index.md)
+  - [타입스크립트](./ts/index.md)
+- JS 개발 도구
+  - [JS 패키지 매니저](./js-package-manager.md)
+  - [JS 트랜스파일러](./js-tool-transpiler.md)
+  - [JS 빌드 도구](./js-tool-build.md)
+  - [JS 린터](./js-tool-linter.md)
+  - [JS 모노레포](./js-tool-monorepo.md)
+- [JS 생태계](./js-ecosystem.md)
+- [프론트엔드 패턴](./frontend-pattern/index.md)
 
 
 **히스토리**  
@@ -101,19 +98,7 @@ https://johnresig.com/files/ecma-cloud.png
 
 **ES4**  
 클래스 기반 객체 지향, 메소드 오버로딩, 연산자 오버로딩, 타입 어노테이션 등 새로운 기술 도입을 시도했으나  
-기존 자바스크립트와 너무 달라 호환성 문제 및 복잡성 증가로 폐기됨 [more](https://auth0.com/blog/the-real-story-behind-es4)
-
-
-**버전 별 특징**
-
-버전 | 업데이트
----|---
-ES10 | Object.fromEntries(), Array.prototype.flat(), Array.prototype.flatMap()
-ES11 | `??` 연산자, `?.` 연산자, Promise.allSettled(), BigInt 데이터타입
-ES12 | 논리 할당 연산자, WeakRefs 클래스, FinalizationRegistry 클래스
-ES13 | Array.at(), 클래스 필드 정의 문법
-ES14 | Array.findLast(), Hashbang 지원
-ES15 | RegExp.escape(), Promise.try(), Iterator 헬퍼
+기존 자바스크립트와 너무 달라 호환성 문제 및 복잡성 증가로 폐기됨 ([more](https://auth0.com/blog/the-real-story-behind-es4))
 
 
 **ES.Next** (https://tc39.es/)  
