@@ -2,7 +2,7 @@
 order: 22
 title: AI
 description: 인공지능 (인덱스)
-summary: 인공지능의 개념, 목표, 구현 기술, 구성 요소, 방법론, 응용 분야, 아키텍처, 활용 및 신뢰성, 이론적 기초에 대한 개요
+summary:
 keywords:
 - artificial intelligence
 - ai
@@ -10,7 +10,7 @@ tags:
 - ai
 - index
 created_time: 2025-09-30 21:13
-modified_time: 2025-10-19 20:38
+modified_time: 2025-12-09 12:28
 ---
 
 # AI
@@ -31,6 +31,7 @@ Artificial Intelligence
 
 **인공지능 기초**
 - [인공지능 개념](./ai.md)
+  - [인공지능 발전](./ai-history.md)
   - [인공지능 인지](./ai-cognition.md)
   - [인공지능 용어](./ai-glossary.md)
 - [인공지능 발전 단계](./ai-evolution.md)
@@ -54,20 +55,12 @@ Artificial Intelligence
   - [학습 패러다임](./ai-learning/paradigm.md)
   - [학습 전략](./ai-learning/strategie.md)
 - [추론](./ai-reasoning/index.md)
-  - 추론 기법
 - [알고리즘](./ai-algorithm/index.md)
 
 **인공지능 방법론**: AI를 구현하는 체계적 접근법  
 - [머신러닝](./ml/index.md)
-- [딥러닝](./dl/index.md)
-- [강화학습](./rl/index.md)
-
-구분 | 머신러닝 | 딥러닝 | 강화학습
----|---|---|---
-특화 | 정형 데이터 | 비정형 데이터 | 순차적 의사결정
-강점 | 적은 데이터로 학습, 빠른 학습 속도 | 복잡한 패턴 인식, 특징 추출 | 장기 목표 최적화
-약점 | 특징 공학 필요 | 대량 데이터 필요, 계산 비용이 높음 | 학습 시간이 길고 불안정함
-역할 | 분석, 예측 | 인식, 지각 | 행동 결정, 전략 수립
+  - [딥러닝](./dl/index.md)
+- [진화 계산](./ec/index.md)
 
 **인공지능 응용 및 시스템**
 - [인공지능 응용](./ai-application.md)
@@ -80,17 +73,15 @@ Artificial Intelligence
   - [피지컬 AI](./ai-system/physical.md)
 - [인공지능 기반 제품](./ai-system/index.md#ai-based-product)
 
-**인공지능 기법**
+**인공지능 기술**
+- [인공지능 최적화](./ai-optimization.md)
 - [프롬프트 엔지니어링](./ai-technique/prompt-engineering.md)
 - [컨텍스트 엔지니어링](./ai-technique/context-engineering.md)
-- [도구 사용](./ai-technique/tool-use.md)
 - [검색 증강 생성](./ai-technique/rag.md)
 
 **인공지능 아키텍처**
 - [인공지능 시스템 스택](./ai-system-stack.md)
-- 인공지능 아키텍처 유형
-  - 에이전트 아키텍처
-  - 멀티모달 아키텍처
+- [인공지능 오케스트레이션](./ai-orchestration.md)
 - [인간-AI 상호작용](./human-ai-interaction.md)
 - [인공지능 프로토콜](./ai-protocol/index.md)
   - [MCP](./ai-protocol/mcp.md)
@@ -103,9 +94,8 @@ Artificial Intelligence
 **인공지능 신뢰성**
 - [설명 가능한 AI](./ai-explainable.md)
 - [인공지능 품질 보증](./ai-quality-assurance.md)
-- [인공지능 보안](./ai-security/index.md)
-  - 인공지능 위협 유형
-  - 인공지능 보안 전략
+- [인공지능 윤리](./ai-ethics.md)
+- [인공지능 보안](./ai-security.md)
 
 **이론적 기초**
 - [정보 이론](../information/information-theory/index.md)
