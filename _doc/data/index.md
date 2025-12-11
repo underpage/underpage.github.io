@@ -2,7 +2,7 @@
 order: 4
 title: Data
 description: 데이터 (인덱스)
-summary: 데이터의 정의, 기초, 설계/관리, 처리/분석 과정, 시스템, 데이터 처리 도구 등에 대한 개요
+summary:
 keywords:
 - data
 - data architecture
@@ -12,7 +12,7 @@ tags:
 - data
 - index
 created_time: 2025-09-30 21:24
-modified_time: 2025-10-21 19:22
+modified_time: 2025-12-11 18:13
 ---
 
 # Data
@@ -42,8 +42,8 @@ modified_time: 2025-10-21 19:22
   - [데이터 리니지](./data-lineage.md)
 - [데이터 자산 관리](./data-asset-management.md)
   - [메타데이터](./metadata.md)
-  - [데이터 카탈로그](./data-catalog.md)
   - [마스터 데이터](./master-data.md)
+  - [데이터 카탈로그](./data-catalog.md)
 - [데이터 윤리](./data-ethics.md)
 - [데이터 규제](./data-regulation.md)
 
@@ -51,22 +51,22 @@ modified_time: 2025-10-21 19:22
 **데이터 처리 및 분석**
 - [데이터 처리](./data-processing/index.md)
 - [데이터 수집](./data-collection/index.md)
-- [데이터 통합](./data-integration/index.md)
+  - [데이터 적재](./data-collection/data-ingestion.md)
 - [데이터 변환](./data-conversion/index.md)
   - [데이터 포맷](./data-conversion/format/index.md)
   - [데이터 인코딩](./data-conversion/encoding/index.md)
 - [데이터 전처리](./data-preprocessing/index.md)
   - [데이터 정제](./data-preprocessing/data-cleaning.md)
-  - [데이터 변형](./data-preprocessing/data-transformation.md)
-- [데이터 조작](./data-manipulation/index.md)
+  - [데이터 변환](./data-preprocessing/data-transformation.md)
+  - [데이터 통합](./data-preprocessing/data-integration.md)
 - [데이터 저장](./data-storage/index.md)
   - [데이터베이스](./data-storage/database/index.md)
   - [데이터 웨어하우스](./data-storage/data-warehouse.md)
   - [데이터 레이크](./data-storage/data-lake.md)
 - [데이터 분석](./data-analytics/index.md)
-  - [데이터 통계](./data-analytics/statistical/index.md)
-  - [데이터 마이닝](./data-analytics/mining/index.md)
-  - [데이터 시각화](./data-analytics/visualization/index.md)
+  - [데이터 구조](./data-analytics/data-structure.md)
+  - [데이터 특성](./data-analytics/data-characteristics.md)
+  - [데이터 시각화](./data-analytics/da-visualization.md)
 
 
 **데이터 시스템 유형**
