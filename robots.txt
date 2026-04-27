@@ -1,0 +1,8 @@
+---
+layout: null
+---
+
+User-agent: *
+Disallow: /assets/img
+
+Sitemap: {{ site.url }}/sitemap.xml

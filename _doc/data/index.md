@@ -1,0 +1,114 @@
+---
+order: 4
+category: Data
+title: 데이터 (인덱스)
+summary: 데이터 정의·분류·표현, 아키텍처, 거버넌스, ETL, DBMS, 데이터 웨어하우스 등 데이터에 대한 개요
+keywords:
+- data
+- data architecture
+- data processing
+- database
+tags:
+- data
+- index
+created_time: 2026-03-28 23:56
+modified_time: 2026-04-23 23:09
+---
+
+{::comment}
+ttl_tags: [data, data-classification, computer-data, data-structure, data-strategy, data-management, data-architecture, data-modeling, data-governance, data-quality, data-lineage, metadata, master-data, data-catalog, data-ethics, data-regulation, data-processing, data-collection, data-ingestion, data-conversion, data-preprocessing, data-storage, database, data-warehouse, data-lake, data-analytics, dbms, ledger-system, search-system, streaming, realtime, hadoop, spark, kafka, sql]
+related:
+- id: mathematics
+  type: requires
+- id: computing
+  type: requires
+- id: information
+  type: influences
+- id: computer
+  type: references
+- id: program
+  type: references
+- id: network
+  type: references
+- id: ai
+  type: references
+- id: security
+  type: references
+- id: ict
+  type: references
+{:/comment}
+
+# Data
+: 데이터의 어원은 라틴어 dare(give) => datum(thing given)에서 유래  
+: 데이터 정의는 문화적 배경이나 수학, 철학, 과학 등 분야에 따라 다양하게 해석됨  
+: 현대 사회에서 데이터는 디지털 기술과 컴퓨터 시스템을 통해 대규모로 생성, 수집, 활용됨  
+
+**데이터 기초**
+- [데이터](./data.md)
+- [데이터 분류](./data-classification.md)
+- [컴퓨터 데이터](./computer-data.md)
+  - [데이터 타입](./computer-data-type.md)
+  - [데이터 표현 방식](./data-representation.md)
+- [자료 구조](./data-structure/index.md)
+  - [추상 자료형](./data-structure/abstract-data-type.md)
+
+
+**데이터 설계 및 관리**
+- [데이터 전략](./data-strategy.md)
+- [데이터 관리 프레임워크](./data-management-framework.md)
+- [데이터 아키텍처](./data-architecture.md)
+  - [데이터 모델링](./data-modeling.md)
+  - [데이터 레이어](./data-layer.md)
+- [데이터 거버넌스](./data-governance.md)
+  - [데이터 스튜어드십](./data-stewardship.md)
+  - [데이터 품질](./data-quality.md)
+  - [데이터 리니지](./data-lineage.md)
+- [데이터 자산 관리](./data-asset-management.md)
+  - [메타데이터](./metadata.md)
+  - [마스터 데이터](./master-data.md)
+  - [데이터 카탈로그](./data-catalog.md)
+- [데이터 윤리](./data-ethics.md)
+- [데이터 규제](./data-regulation.md)
+
+
+**데이터 처리 및 분석**
+- [데이터 처리](./data-processing/index.md)
+  - 데이터 파이프라인
+- [데이터 수집](./data-collection/index.md)
+  - [데이터 적재](./data-collection/data-ingestion.md)
+- [데이터 변환](./data-conversion/index.md)
+  - [데이터 포맷](./data-conversion/format/index.md)
+  - [데이터 인코딩](./data-conversion/encoding/index.md)
+- [데이터 전처리](./data-preprocessing/index.md)
+  - [데이터 정제](./data-preprocessing/data-cleaning.md)
+  - [데이터 변환](./data-preprocessing/data-transformation.md)
+  - [데이터 통합](./data-preprocessing/data-integration.md)
+- [데이터 저장](./data-storage/index.md)
+  - [데이터베이스](./data-storage/database/index.md)
+  - [데이터 웨어하우스](./data-storage/data-warehouse.md)
+  - [데이터 레이크](./data-storage/data-lake.md)
+- [데이터 분석](./data-analytics/index.md)
+  - [데이터 구조](./data-analytics/data-structure.md)
+  - [데이터 특성](./data-analytics/data-characteristics.md)
+  - [데이터 시각화](./data-analytics/da-visualization.md)
+
+
+**데이터 시스템 유형**
+- [데이터베이스 관리 시스템](./dbms/index.md)
+- [원장 시스템](./data-system/ledger-system.md)
+- [검색 시스템](./data-system/search-system/index.md)
+- [동적 데이터 시스템](./data-system/dynamic-system/index.md)
+  - [스트리밍 데이터 시스템](./data-system/dynamic-system/streaming.md)
+  - [실시간 데이터 시스템](./data-system/dynamic-system/realtime.md)
+
+
+**데이터 처리 도구**
+- [하둡](../tool/data-tool/hadoop.md)
+- [스파크](../tool/data-tool/spark.md)
+- [카프카](../tool/data-tool/kafka.md)
+
+
+**데이터 처리 언어**
+- [데이터 질의 언어](./data-language/index.md#data-query-language)
+  - [SQL](./data-language/sql/index.md)
+- [데이터 흐름 언어](./data-language/index.md#data-flow-language)

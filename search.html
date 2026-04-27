@@ -1,0 +1,32 @@
+---
+layout: layout-page
+permalink: /search
+title: search
+description: 블로그 포스트를 검색해서 원하는 정보를 빠르게 찾아보세요.
+keywords: search, search form, post search, 검색, 포스트 검색
+---
+
+<section class="layout-page-wrap">
+  <div class="page-title-wrap">
+    <h2>Search</h2>
+  </div>
+
+  <div class="page-content-wrap search-content">
+    
+    <form class="search-post-form" method="get" id="searchPostForm">
+      <fieldset>
+        <legend class="hide">포스트 검색 양식</legend>
+
+        <label for="searchPostInput" class="hide">검색어 입력</label>
+        <input type="text" id="searchPostInput" name="q" autocomplete="off" placeholder="search" aria-label="검색어 입력" autofocus>
+
+        <button type="submit" aria-label="검색">
+          {% octicon search height:26 %}
+        </button>
+      </fieldset>
+    </form>
+
+    <ul class="default-post-list" id="searchPostList"></ul>
+
+  </div>
+</section>

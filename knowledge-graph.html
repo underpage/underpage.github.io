@@ -1,0 +1,352 @@
+---
+permalink: /knowledge-graph
+title: Knowledge Graph
+description: 블로그 문서 지식 그래프
+---
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Knowledge Graph</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/assets/css/tools.css">
+<style>
+  :root { --bg:#040508; --text:#d0d4e8; --text-dim:#7880a0; --accent:#7aa3f0; --grid:#0a0b14; }
+  body { background:var(--bg); color:var(--text); font-family:'Noto Sans KR',sans-serif; overflow:hidden; width:100vw; height:100vh; }
+  body::before { content:''; position:fixed; inset:0; background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px); background-size:48px 48px; pointer-events:none; opacity:0.5; }
+  #ui { position:fixed; top:0; left:0; right:0; display:flex; align-items:center; gap:14px; padding:36px 24px; background:linear-gradient(180deg,rgba(4,5,8,.98) 0%,transparent 100%); z-index:20; flex-wrap:wrap; }
+  #filters { display:flex; gap:5px; flex-wrap:wrap; }
+  .fbtn { font-family:'IBM Plex Mono',monospace; font-size:9px; padding:2px 8px; border-radius:2px; border:1px solid; background:transparent; cursor:pointer; letter-spacing:.05em; opacity:.4; transition:opacity .15s; }
+  .fbtn.active { opacity:1; }
+  #stats { position:fixed; bottom:14px; right:14px; font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--text-dim); text-align:right; line-height:1.9; z-index:20; }
+  #legend { position:fixed; bottom:14px; left:14px; display:flex; flex-direction:column; gap:4px; z-index:20; max-height:50vh; overflow:hidden; }
+  .leg { display:flex; align-items:center; gap:6px; font-family:'IBM Plex Mono',monospace; font-size:9px; color:var(--text-dim); }
+  .legdot { width:6px; height:6px; border-radius:50%; border:1.5px solid; flex-shrink:0; }
+  #tip { position:fixed; pointer-events:none; background:rgba(4,5,8,.97); border:1px solid #1e2240; padding:10px 13px; border-radius:4px; font-size:11px; line-height:1.7; max-width:250px; z-index:30; display:none; }
+  #tip .tt { font-weight:500; font-size:12px; color:#d0d4f0; margin-bottom:3px; }
+  #tip .td { color:var(--text-dim); font-size:10px; }
+  #tip .tg { margin-top:4px; display:flex; gap:3px; flex-wrap:wrap; }
+  #tip .tag { font-family:'IBM Plex Mono',monospace; font-size:9px; padding:1px 5px; border-radius:2px; border:1px solid #2a2d4a; color:var(--text-dim); }
+  #tip .tm { font-family:'IBM Plex Mono',monospace; font-size:9px; color:#6870a0; margin-top:3px; }
+  svg { width:100vw; height:100vh; }
+  .lf { stroke:#8898d8; stroke-width:1; fill:none; }
+  .lx { stroke:#e0e4ff; stroke-width:1; fill:none; stroke-dasharray:5 3; }
+  .lk { stroke:#5a9898; stroke-width:1; fill:none; stroke-dasharray:1 5; }
+  .ng { cursor:pointer; }
+  .nglow { filter:blur(9px); opacity:.28; pointer-events:none; }
+  .nl { font-family:'Noto Sans KR',sans-serif; text-anchor:middle; dominant-baseline:middle; pointer-events:none; }
+  .ns { font-family:'IBM Plex Mono',monospace; fill:#5a6080; text-anchor:middle; dominant-baseline:middle; pointer-events:none; }
+  @keyframes pulse { 0%,100%{opacity:.1} 50%{opacity:.25} }
+  .pulse { animation:pulse 4s ease-in-out infinite; }
+  @keyframes fi { from{opacity:0} to{opacity:1} }
+  #container { animation:fi .5s ease; }
+  #loading { position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--text-dim); letter-spacing:.1em; }
+</style>
+</head>
+<body>
+<div id="ui">
+  <div class="tool-title">// Knowledge Graph</div>
+  <a class="tool-back" href="/">&#8592; Index</a>
+  <div id="filters">
+    <button class="fbtn active" id="allbtn" style="border-color:#6870a0;color:#9098c0;" onclick="resetAll()">ALL</button>
+  </div>
+</div>
+<div id="legend"></div>
+<div id="stats"></div>
+<div id="tip"></div>
+<div id="loading">loading...</div>
+<svg id="g"><g id="container"></g></svg>
+<script>
+const FC = {
+  computing:{bg:'#1e3248',br:'#63d0ff',lb:'Computing'},
+  computer:{bg:'#223255',br:'#7aaaf5',lb:'Computer'},
+  os:{bg:'#1e1e40',br:'#9898ff',lb:'OS'},
+  data:{bg:'#0a2020',br:'#5ecec4',lb:'Data'},
+  information:{bg:'#241c08',br:'#e8c450',lb:'Information'},
+  program:{bg:'#182818',br:'#96cc96',lb:'Program'},
+  language:{bg:'#1a3028',br:'#7dd07d',lb:'Language'},
+  framework:{bg:'#162818',br:'#b8e0b8',lb:'Framework'},
+  web:{bg:'#223018',br:'#c8e888',lb:'Web'},
+  mobile:{bg:'#2a2010',br:'#ffd740',lb:'Mobile'},
+  network:{bg:'#122438',br:'#4dc8ff',lb:'Network'},
+  virtualization:{bg:'#1e1e35',br:'#aa8fe0',lb:'Virtualization'},
+  container:{bg:'#241830',br:'#e8c8f8',lb:'Container'},
+  cloud:{bg:'#0a0a30',br:'#5080ff',lb:'Cloud'},
+  cloude:{bg:'#0a0a30',br:'#5080ff',lb:'Cloud'},
+  protocol:{bg:'#102230',br:'#3dd8ee',lb:'Protocol'},
+  security:{bg:'#301414',br:'#ff6b68',lb:'Security'},
+  infra:{bg:'#281e10',br:'#ffb740',lb:'Infra'},
+  software:{bg:'#201830',br:'#c060d0',lb:'SW Eng'},
+  enterprise:{bg:'#301a0c',br:'#ff9878',lb:'Enterprise'},
+  systems:{bg:'#1a2818',br:'#a0d850',lb:'Systems'},
+  ict:{bg:'#182030',br:'#58b8ff',lb:'ICT'},
+  ai:{bg:'#280e0e',br:'#ff9090',lb:'AI'},
+  tool:{bg:'#222210',br:'#e0f060',lb:'Tool'},
+  standard:{bg:'#1e1020',br:'#f05090',lb:'Standard'},
+  mathematics:{bg:'#101c28',br:'#90e8f8',lb:'Math'},
+};
+const DC = {bg:'#202020',br:'#888898',lb:'Other'};
+const gc = f => FC[f]||DC;
+
+const nodes=[], links=[], crossLinks=[], nm={};
+const NOW = new Date();
+let activeF = new Set(), highlighted = null;
+let ng, lg, sim;
+
+function flatten(posts, parentUrl, parentFolder, depth) {
+  if(!posts) return;
+  posts.forEach(item => {
+    if(item.folder) {
+      const idx = (item.posts||[]).find(p=>p.filename==='index');
+      const n = {
+        id: item.url,
+        label: idx?.title || item.folder,
+        tags: idx?.tags||null,
+        modified_time: idx?.modified_time||null,
+        topFolder: parentFolder,
+        isFolder:true, isIndex:true, isEmpty:!idx?.title,
+        depth, size: depth===0?52:depth===1?38:28, url:item.url
+      };
+      nodes.push(n); nm[item.url]=n;
+      if(parentUrl) links.push({source:parentUrl, target:item.url, type:'folder'});
+      if(idx?.related) {
+        idx.related.forEach(r => {
+          crossLinks.push({sourceUrl:item.url, targetId:r.id, type:r.type||'references'});
+        });
+      }
+      flatten(item.posts, item.url, parentFolder, depth+1);
+    } else {
+      if(!item.filename || item.filename==='index' || item.filename==='@' || item.filename==='@@') return;
+      const n = {
+        id: item.url,
+        label: item.title || item.filename,
+        tags: item.tags,
+        ttl_tags: item.ttl_tags,
+        modified_time: item.modified_time,
+        topFolder: parentFolder,
+        isIndex: item.filename==='index',
+        isEmpty: !item.title,
+        depth, size: item.filename==='index'?38:22, url:item.url
+      };
+      nodes.push(n); nm[item.url]=n;
+      if(parentUrl && item.filename!=='index')
+        links.push({source:parentUrl, target:item.url, type:'folder'});
+      if(item.related) {
+        item.related.forEach(r => {
+          crossLinks.push({sourceUrl:item.url, targetId:r.id, type:r.type||'references'});
+        });
+      }
+    }
+  });
+}
+
+function buildGraph(RAW) {
+  RAW.forEach(f => {
+    const idx = (f.posts||[]).find(p=>p.filename==='index');
+    const n = {
+      id:f.url, label:idx?.title||f.folder,
+      tags:idx?.tags||null,
+      modified_time:idx?.modified_time||null,
+      topFolder:f.folder, isRoot:true, isIndex:true, isEmpty:false,
+      depth:0, size:52, url:f.url, order:f.order
+    };
+    nodes.push(n); nm[f.url]=n;
+    if(idx?.related) {
+      idx.related.forEach(r => {
+        crossLinks.push({sourceUrl:f.url, targetId:r.id, type:r.type||'references'});
+      });
+    }
+    flatten(f.posts, f.url, f.folder, 1);
+  });
+
+  const idToUrl = {};
+  nodes.forEach(n => {
+    const parts = n.id.split('/');
+    const fn = parts[parts.length - 1] === 'index.md'
+      ? parts[parts.length - 2]
+      : parts[parts.length - 1].replace('.md', '');
+    if(!idToUrl[fn]) idToUrl[fn] = n.id;
+  });
+  if(idToUrl['cloude'] && !idToUrl['cloud']) idToUrl['cloud'] = idToUrl['cloude'];
+  crossLinks.forEach(cl => {
+    const t = idToUrl[cl.targetId];
+    if(t) links.push({source:cl.sourceUrl, target:t, type:cl.type});
+  });
+
+  const kwIndex = {};
+  nodes.forEach(n => {
+    (n.ttl_tags||[]).forEach(kw => { kwIndex[kw] = kwIndex[kw]||[]; kwIndex[kw].push(n.id); });
+  });
+  const kwPairs = new Map();
+  Object.values(kwIndex).forEach(ids => {
+    for(let i=0;i<ids.length;i++) for(let j=i+1;j<ids.length;j++) {
+      const key=[ids[i],ids[j]].sort().join('||');
+      kwPairs.set(key,(kwPairs.get(key)||0)+1);
+    }
+  });
+  kwPairs.forEach((cnt,key)=>{
+    if(cnt>=2){ const [s,t]=key.split('||'); links.push({source:s,target:t,type:'keyword'}); }
+  });
+
+  nodes.forEach(n => { n.color = gc(n.topFolder); });
+  const nids = new Set(nodes.map(n=>n.id));
+  const vlinks = links.filter(l=>nids.has(l.source)&&nids.has(l.target));
+
+  document.getElementById('loading').style.display='none';
+
+  const total=nodes.length, empty=nodes.filter(n=>n.isEmpty).length, roots=nodes.filter(n=>n.isRoot).length;
+  document.getElementById('stats').innerHTML=`total — ${total}<br>folders — ${roots}<br>empty — ${empty}<br>links — ${vlinks.length}`;
+
+  const topF=[...new Set(nodes.filter(n=>n.isRoot).map(n=>n.topFolder))];
+  const fDiv=document.getElementById('filters');
+  topF.forEach(f=>{
+    const c=gc(f), btn=document.createElement('button');
+    btn.className='fbtn'; btn.textContent=c.lb;
+    btn.style.borderColor=c.br; btn.style.color=c.br;
+    btn.dataset.f=f;
+    btn.onclick=()=>{ activeF.has(f)?activeF.delete(f):activeF.add(f); btn.classList.toggle('active'); document.getElementById('allbtn').classList.toggle('active',activeF.size===0); upd(); };
+    fDiv.appendChild(btn);
+  });
+
+  const legDiv=document.getElementById('legend');
+  topF.forEach(f=>{
+    const c=gc(f);
+    legDiv.innerHTML+=`<div class="leg"><div class="legdot" style="border-color:${c.br};background:${c.bg}"></div>${c.lb}</div>`;
+  });
+
+  const W=window.innerWidth, H=window.innerHeight;
+  const svg=d3.select('#g'), cont=d3.select('#container');
+
+  sim=d3.forceSimulation(nodes)
+    .force('link',d3.forceLink(vlinks).id(d=>d.id).distance(d=>(d.source.size+d.target.size)*1.5+20).strength(0.35))
+    .force('charge',d3.forceManyBody().strength(d=>-(d.size||22)*18))
+    .force('center',d3.forceCenter(W/2,H/2))
+    .force('collision',d3.forceCollide().radius(d=>d.size*1.4+8))
+    .force('x',d3.forceX(W/2).strength(0.025))
+    .force('y',d3.forceY(H/2).strength(0.025));
+
+  lg=cont.append('g').selectAll('line').data(vlinks).join('line')
+    .attr('class',d=>d.type==='folder'?'lf':d.type==='keyword'?'lk':'lx')
+    .attr('opacity',d=>d.type==='folder'?0.55:d.type==='keyword'?0.2:0.9);
+
+  let dragMoved=false;
+  const drag=d3.drag()
+    .on('start',(e,d)=>{ dragMoved=false; if(!e.active) sim.alphaTarget(0.3).restart(); d.fx=d.x; d.fy=d.y; })
+    .on('drag',(e,d)=>{ dragMoved=true; d.fx=e.x; d.fy=e.y; })
+    .on('end',(e,d)=>{ if(!e.active) sim.alphaTarget(0); d.fx=null; d.fy=null; if(!dragMoved) handleClick(d); });
+
+  ng=cont.append('g').selectAll('g').data(nodes).join('g').attr('class','ng')
+    .on('mouseover',(e,d)=>showT(e,d)).on('mousemove',e=>movT(e)).on('mouseout',()=>hidT())
+    .call(drag).style('cursor','pointer');
+
+  svg.on('click',(e)=>{ if(e.target.tagName==='svg'||e.target.tagName==='g'&&e.target.id==='container'){ highlighted=null; upd(); } });
+
+  ng.filter(d=>d.isRoot).append('rect').attr('class','nglow')
+    .attr('width',d=>d.size*2.8).attr('height',d=>d.size*2.0)
+    .attr('x',d=>-d.size*1.4).attr('y',d=>-d.size*1.0)
+    .attr('rx',5).attr('fill',d=>d.color.br);
+
+  ng.append('rect')
+    .attr('width',d=>d.size*2.6).attr('height',d=>d.size*1.7)
+    .attr('x',d=>-d.size*1.3).attr('y',d=>-d.size*.85)
+    .attr('rx',4)
+    .attr('fill',d=>d.color.bg)
+    .attr('stroke',d=>d.color.br)
+    .attr('stroke-width',d=>d.isRoot?1.5:d.isIndex?1:0.7)
+    .attr('opacity',d=>d.isEmpty?0.25:1);
+
+  ng.filter(d=>d.isRoot).insert('rect',':first-child')
+    .attr('class','pulse')
+    .attr('width',d=>d.size*3.1).attr('height',d=>d.size*2.2)
+    .attr('x',d=>-d.size*1.55).attr('y',d=>-d.size*1.1)
+    .attr('rx',6).attr('fill','none')
+    .attr('stroke',d=>d.color.br).attr('stroke-width',1);
+
+  ng.each(function(d){
+    const g=d3.select(this);
+    const lbl=(d.label||d.url.split('/').pop()||'').slice(0,15);
+    g.append('text').attr('class','nl')
+      .attr('y',0).attr('font-size',d.isRoot?'12px':d.isIndex?'11px':'9px')
+      .attr('fill',d.isEmpty?'#2a2a3a':d.color.br).text(lbl);
+  });
+
+  sim.on('tick',()=>{
+    lg.attr('x1',d=>d.source.x).attr('y1',d=>d.source.y).attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
+    ng.attr('transform',d=>`translate(${d.x},${d.y})`);
+  });
+
+  svg.call(d3.zoom().scaleExtent([0.1,5]).on('zoom',e=>cont.attr('transform',e.transform)));
+  upd();
+}
+
+function handleClick(d) {
+  if(d.url) window.open(d.url,'_blank');
+  highlighted = highlighted===d.id ? null : d.id;
+  upd();
+}
+
+function resetAll() {
+  activeF.clear();
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('allbtn').classList.add('active');
+  upd();
+}
+
+function upd() {
+  let connected = null;
+  if(highlighted) {
+    connected = new Set([highlighted]);
+    links.forEach(l=>{
+      const s=typeof l.source==='object'?l.source.id:l.source;
+      const t=typeof l.target==='object'?l.target.id:l.target;
+      if(s===highlighted) connected.add(t);
+      if(t===highlighted) connected.add(s);
+    });
+  }
+
+  d3.selectAll('.ng').each(function(d){
+    if(!d) return;
+    if(connected) { d3.select(this).attr('opacity',connected.has(d.id)?1:0.05); return; }
+    let vis=true;
+    if(activeF.size>0 && !activeF.has(d.topFolder)) vis=false;
+    d3.select(this).attr('opacity',vis?1:0.04);
+  });
+
+  d3.selectAll('.lf,.lx,.lk').attr('opacity',function(d){
+    if(!d) return 0;
+    const sc=typeof d.source==='object'?d.source.id:d.source;
+    const tc=typeof d.target==='object'?d.target.id:d.target;
+    const s=nm[sc], t=nm[tc];
+    if(!s||!t) return 0;
+    if(d.type==='keyword') return 0;
+    if(connected) return (connected.has(sc)&&connected.has(tc))?0.7:0.02;
+    if(activeF.size>0) return (activeF.has(s.topFolder)&&activeF.has(t.topFolder))?0.5:0.02;
+    return 0.4;
+  });
+}
+
+const tip=document.getElementById('tip');
+const W=window.innerWidth, H=window.innerHeight;
+function showT(e,d){
+  const tags=(d.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('');
+  tip.innerHTML=`<div class="tt">${d.label||''}</div>${tags?`<div class="tg">${tags}</div>`:''}${d.modified_time?`<div class="tm">${d.modified_time}</div>`:''}`;
+  tip.style.display='block'; movT(e);
+}
+function movT(e){
+  tip.style.left=Math.min(e.clientX+12,W-260)+'px';
+  tip.style.top=Math.min(e.clientY-8,H-120)+'px';
+}
+function hidT(){ tip.style.display='none'; }
+
+fetch('/assets/data/doc_items.json')
+  .then(r => r.json())
+  .then(data => buildGraph(data))
+  .catch(err => {
+    document.getElementById('loading').textContent = 'failed to load data';
+    console.error(err);
+  });
+</script>
+</body>
+</html>

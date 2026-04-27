@@ -1,0 +1,307 @@
+---
+permalink: /quiz
+title: Quiz
+description: 문서 기반 문제 풀이
+---
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz</title>
+<link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/assets/css/tools.css">
+<style>
+  :root { --bg:#07080f; --text:#d0d4e8; --dim:#7880a0; --accent:#7aa3f0; --border:#1e2240; --card:#0d0f1e; }
+  body { background:var(--bg); color:var(--text); font-family:'Noto Sans KR',sans-serif; }
+  .wrap { max-width:720px; margin:0 auto; }
+
+  .section { margin-bottom:24px; }
+  label { font-size:11px; color:var(--dim); font-family:'IBM Plex Mono',monospace; letter-spacing:.08em; display:block; margin-bottom:8px; }
+  select, input[type="text"], input[type="password"] {
+    width:100%; background:var(--card); border:1px solid var(--border); color:var(--text);
+    padding:10px 12px; border-radius:3px; font-size:13px; font-family:'Noto Sans KR',sans-serif;
+    appearance:none; outline:none;
+  }
+  select:focus, input:focus { border-color:var(--accent); }
+
+  .row { display:flex; gap:12px; }
+  .row .section { flex:1; }
+
+  .type-grid { display:flex; gap:8px; flex-wrap:wrap; }
+  .type-btn {
+    font-family:'IBM Plex Mono',monospace; font-size:10px; padding:5px 12px;
+    border:1px solid var(--border); background:transparent; color:var(--dim);
+    border-radius:2px; cursor:pointer; transition:all .15s; letter-spacing:.05em;
+  }
+  .type-btn.active { border-color:var(--accent); color:var(--accent); background:rgba(122,163,240,.08); }
+
+  .gen-btn {
+    width:100%; padding:12px; background:rgba(122,163,240,.1); border:1px solid var(--accent);
+    color:var(--accent); font-family:'IBM Plex Mono',monospace; font-size:12px;
+    letter-spacing:.1em; border-radius:3px; cursor:pointer; transition:all .15s; margin-top:8px;
+  }
+  .gen-btn:hover { background:rgba(122,163,240,.2); }
+  .gen-btn:disabled { opacity:.4; cursor:not-allowed; }
+
+  .quiz-area { margin-top:32px; }
+  .q-card {
+    background:var(--card); border:1px solid var(--border); border-radius:4px;
+    padding:20px; margin-bottom:16px;
+  }
+  .q-num { font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--dim); margin-bottom:8px; }
+  .q-text { font-size:14px; line-height:1.8; margin-bottom:16px; }
+  .q-options { display:flex; flex-direction:column; gap:8px; margin-bottom:16px; }
+  .opt-btn {
+    text-align:left; padding:10px 14px; background:transparent; border:1px solid var(--border);
+    color:var(--text); border-radius:3px; cursor:pointer; font-size:13px; font-family:'Noto Sans KR',sans-serif;
+    transition:all .15s;
+  }
+  .opt-btn:hover:not(:disabled) { border-color:var(--accent); color:var(--accent); }
+  .opt-btn.correct { border-color:#5ecec4; color:#5ecec4; background:rgba(94,206,196,.08); }
+  .opt-btn.wrong { border-color:#ff6b68; color:#ff6b68; background:rgba(255,107,104,.08); }
+  .opt-btn:disabled { cursor:default; }
+  .answer-box { font-size:12px; color:var(--dim); line-height:1.7; border-top:1px solid var(--border); padding-top:12px; display:none; }
+  .answer-box.show { display:block; }
+  .reveal-btn {
+    font-family:'IBM Plex Mono',monospace; font-size:10px; padding:4px 10px;
+    border:1px solid var(--border); background:transparent; color:var(--dim);
+    border-radius:2px; cursor:pointer; transition:all .15s;
+  }
+  .reveal-btn:hover { border-color:var(--dim); }
+
+  .key-wrap { display:flex; gap:8px; align-items:center; }
+  .key-wrap input { flex:1; }
+  .key-save { padding:10px 16px; background:transparent; border:1px solid var(--border); color:var(--dim); border-radius:3px; cursor:pointer; font-family:'IBM Plex Mono',monospace; font-size:11px; white-space:nowrap; transition:all .15s; }
+  .key-save:hover { border-color:var(--accent); color:var(--accent); }
+
+  .status { font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--dim); margin-top:12px; min-height:18px; }
+  .status.err { color:#ff6b68; }
+
+</style>
+</head>
+<body class="tool-body">
+<div class="wrap">
+  <div class="tool-nav">
+    <div class="tool-title">// Quiz</div>
+    <a class="tool-back" href="/">&#8592; Index</a>
+  </div>
+
+  <div class="section">
+    <label>API KEY</label>
+    <div class="key-wrap">
+      <input type="password" id="apiKey" placeholder="Gemini API Key">
+      <button class="key-save" onclick="saveKey()">저장</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="section">
+      <label>CATEGORY</label>
+      <select id="categorySelect">
+        <option value="random">전체 (랜덤)</option>
+      </select>
+    </div>
+    <div class="section">
+      <label>COUNT</label>
+      <select id="countSelect">
+        <option value="3">3문제</option>
+        <option value="5" selected>5문제</option>
+        <option value="10">10문제</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="section">
+    <label>QUESTION TYPE</label>
+    <div class="type-grid" id="typeGrid">
+      <button class="type-btn active" data-type="definition">개념 정의</button>
+      <button class="type-btn active" data-type="comparison">비교</button>
+      <button class="type-btn active" data-type="relation">관계 추론</button>
+      <button class="type-btn active" data-type="application">적용</button>
+    </div>
+  </div>
+
+  <button class="gen-btn" id="genBtn" onclick="generate()">GENERATE</button>
+  <div class="status" id="status"></div>
+
+  <div class="quiz-area" id="quizArea"></div>
+</div>
+
+<script>
+let docItems = [];
+
+const TYPE_LABELS = {
+  definition: '개념 정의',
+  comparison: '비교',
+  relation: '관계 추론',
+  application: '적용'
+};
+
+// API Key
+const keyInput = document.getElementById('apiKey');
+const saved = localStorage.getItem('gemini_key');
+if (saved) keyInput.value = saved;
+
+function saveKey() {
+  localStorage.setItem('gemini_key', keyInput.value.trim());
+  setStatus('키 저장됨');
+}
+
+// Type buttons
+document.getElementById('typeGrid').addEventListener('click', e => {
+  if (e.target.classList.contains('type-btn'))
+    e.target.classList.toggle('active');
+});
+
+// Load doc_items.json
+fetch('/assets/data/doc_items.json')
+  .then(r => r.json())
+  .then(data => {
+    docItems = data;
+    const sel = document.getElementById('categorySelect');
+    data.forEach(f => {
+      const idx = (f.posts || []).find(p => p.filename === 'index');
+      const opt = document.createElement('option');
+      opt.value = f.folder;
+      opt.textContent = idx?.title || f.folder;
+      sel.appendChild(opt);
+    });
+  })
+  .catch(() => setStatus('doc_items.json 로드 실패', true));
+
+function getContext(folder) {
+  const items = folder === 'random'
+    ? docItems[Math.floor(Math.random() * docItems.length)]
+    : docItems.find(f => f.folder === folder);
+
+  if (!items) return null;
+
+  const idx = (items.posts || []).find(p => p.filename === 'index');
+  const ttlTags = idx?.ttl_tags || [];
+  const related = idx?.related || [];
+  const title = idx?.title || items.folder;
+  const summary = idx?.summary || '';
+
+  return { title, summary, ttlTags, related, folder: items.folder };
+}
+
+function buildPrompt(ctx, types, count) {
+  const typeDesc = types.map(t => TYPE_LABELS[t]).join(', ');
+  return `다음은 "${ctx.title}" 카테고리의 학습 메타데이터입니다.
+
+요약: ${ctx.summary}
+핵심 개념: ${ctx.ttlTags.join(', ')}
+연관 카테고리: ${ctx.related.map(r => `${r.id}(${r.type})`).join(', ')}
+
+위 내용을 기반으로 ${count}개의 문제를 생성하세요.
+문제 유형: ${typeDesc}
+
+반드시 아래 JSON 형식으로만 응답하세요. 다른 텍스트 없이 JSON만 출력하세요:
+[
+  {
+    "type": "문제유형",
+    "question": "문제 내용",
+    "options": ["선택지1", "선택지2", "선택지3", "선택지4"],
+    "answer": 0,
+    "explanation": "정답 해설"
+  }
+]
+
+answer는 options 배열의 정답 인덱스(0부터 시작)입니다.`;
+}
+
+async function generate() {
+  const key = keyInput.value.trim() || localStorage.getItem('gemini_key');
+  if (!key) return setStatus('API 키를 입력하세요', true);
+
+  const types = [...document.querySelectorAll('.type-btn.active')].map(b => b.dataset.type);
+  if (!types.length) return setStatus('문제 유형을 하나 이상 선택하세요', true);
+
+  const folder = document.getElementById('categorySelect').value;
+  const count = parseInt(document.getElementById('countSelect').value);
+  const ctx = getContext(folder);
+  if (!ctx) return setStatus('데이터를 찾을 수 없습니다', true);
+
+  const btn = document.getElementById('genBtn');
+  btn.disabled = true;
+  setStatus(`"${ctx.title}" 문제 생성 중...`);
+  document.getElementById('quizArea').innerHTML = '';
+
+  try {
+    const res = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${key}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: buildPrompt(ctx, types, count) }] }],
+          generationConfig: { temperature: 0.7 }
+        })
+      }
+    );
+
+    if (!res.ok) throw new Error(`API 오류 ${res.status}`);
+    const data = await res.json();
+    const raw = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
+    const json = raw.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
+    const questions = JSON.parse(json);
+
+    renderQuiz(questions);
+    setStatus('');
+  } catch (e) {
+    setStatus(`오류: ${e.message}`, true);
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+function renderQuiz(questions) {
+  const area = document.getElementById('quizArea');
+  area.innerHTML = '';
+
+  questions.forEach((q, i) => {
+    const card = document.createElement('div');
+    card.className = 'q-card';
+    card.innerHTML = `
+      <div class="q-num">Q${i + 1} · ${q.type}</div>
+      <div class="q-text">${q.question}</div>
+      <div class="q-options">
+        ${q.options.map((opt, j) =>
+          `<button class="opt-btn" data-idx="${j}" onclick="answer(this, ${q.answer}, '${escape(q.explanation)}')">${j + 1}. ${opt}</button>`
+        ).join('')}
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">해설 보기</button>
+      <div class="answer-box">${q.explanation}</div>
+    `;
+    area.appendChild(card);
+  });
+}
+
+function answer(btn, correct, explanation) {
+  const card = btn.closest('.q-card');
+  const btns = card.querySelectorAll('.opt-btn');
+  btns.forEach(b => {
+    b.disabled = true;
+    if (parseInt(b.dataset.idx) === correct) b.classList.add('correct');
+  });
+  if (parseInt(btn.dataset.idx) !== correct) btn.classList.add('wrong');
+  card.querySelector('.answer-box').textContent = unescape(explanation);
+  card.querySelector('.answer-box').classList.add('show');
+  card.querySelector('.reveal-btn').style.display = 'none';
+}
+
+function reveal(btn) {
+  const box = btn.nextElementSibling;
+  box.classList.add('show');
+  btn.style.display = 'none';
+}
+
+function setStatus(msg, isErr = false) {
+  const el = document.getElementById('status');
+  el.textContent = msg;
+  el.className = 'status' + (isErr ? ' err' : '');
+}
+</script>
+</body>
+</html>

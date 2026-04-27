@@ -1,0 +1,304 @@
+---
+permalink: /dashboard
+title: Dashboard
+description: 위키 지식 현황 분석
+---
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard</title>
+<link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/assets/css/tools.css">
+<style>
+  :root {
+    --bg: #0b0e0b;
+    --bg2: #0f130f;
+    --card: #111511;
+    --border: #1a2218;
+    --text: #c8d4c0;
+    --dim: #5a7055;
+    --accent: #7ec87a;
+    --accent2: #b8e0b4;
+    --warn: #e8c46a;
+    --err: #e07070;
+    --bar-bg: #162016;
+  }
+  body { background:var(--bg); color:var(--text); font-family:'Noto Sans KR',sans-serif; }
+  .mono { font-family:'IBM Plex Mono',monospace; }
+
+  /* Summary cards */
+  .cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:12px; margin-bottom:28px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:3px; padding:16px 18px; }
+  .card-label { font-family:'IBM Plex Mono',monospace; font-size:9px; color:var(--dim); letter-spacing:.1em; text-transform:uppercase; margin-bottom:8px; }
+  .card-val { font-family:'IBM Plex Mono',monospace; font-size:28px; font-weight:500; color:var(--accent2); line-height:1; }
+  .card-sub { font-size:11px; color:var(--dim); margin-top:6px; }
+  .card.warn .card-val { color:var(--warn); }
+  .card.err .card-val { color:var(--err); }
+
+  /* Grid layout */
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; }
+  .grid.wide { grid-template-columns:2fr 1fr; }
+  @media (max-width: 900px) { .grid, .grid.wide { grid-template-columns:1fr; } }
+
+  /* Section */
+  .section { background:var(--card); border:1px solid var(--border); border-radius:3px; padding:18px; }
+  .section-title { font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--dim); letter-spacing:.1em; text-transform:uppercase; margin-bottom:16px; padding-bottom:10px; border-bottom:1px solid var(--border); }
+
+  /* Table */
+  table { width:100%; border-collapse:collapse; font-size:12px; }
+  th { font-family:'IBM Plex Mono',monospace; font-size:9px; color:var(--dim); letter-spacing:.08em; text-align:left; padding:0 0 8px 0; border-bottom:1px solid var(--border); font-weight:400; }
+  th:not(:first-child) { text-align:right; }
+  td { padding:7px 0; border-bottom:1px solid rgba(26,34,24,.6); vertical-align:middle; }
+  td:not(:first-child) { text-align:right; font-family:'IBM Plex Mono',monospace; font-size:11px; }
+  tr:last-child td { border-bottom:none; }
+  .cat-name { font-size:12px; }
+  .cat-dot { display:inline-block; width:6px; height:6px; border-radius:50%; margin-right:8px; }
+
+  /* Bar */
+  .bar-wrap { display:flex; align-items:center; gap:8px; }
+  .bar-track { flex:1; height:4px; background:var(--bar-bg); border-radius:2px; overflow:hidden; }
+  .bar-fill { height:100%; border-radius:2px; transition:width .4s ease; }
+  .bar-num { font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--dim); min-width:28px; text-align:right; }
+
+  /* Recent list */
+  .recent-item { display:flex; justify-content:space-between; align-items:baseline; padding:7px 0; border-bottom:1px solid rgba(26,34,24,.6); gap:12px; }
+  .recent-item:last-child { border-bottom:none; }
+  .recent-title { font-size:12px; flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .recent-time { font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--dim); white-space:nowrap; }
+  .recent-cat { font-family:'IBM Plex Mono',monospace; font-size:9px; color:var(--dim); white-space:nowrap; }
+
+  /* Tag cloud */
+  .tag-cloud { display:flex; flex-wrap:wrap; gap:6px; }
+  .tag-item { font-family:'IBM Plex Mono',monospace; font-size:9px; padding:3px 8px; border-radius:2px; border:1px solid var(--border); color:var(--dim); }
+  .tag-item.hot { border-color:rgba(126,200,122,.4); color:var(--accent); }
+
+  /* Relation type list */
+  .rel-row { display:flex; justify-content:space-between; padding:5px 0; border-bottom:1px solid rgba(26,34,24,.5); font-size:12px; }
+  .rel-row:last-child { border-bottom:none; }
+  .rel-type { font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--dim); }
+  .rel-count { font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--accent2); }
+
+  .empty-state { font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--dim); text-align:center; padding:20px 0; }
+
+  /* Sort */
+  .sort-th { cursor:pointer; user-select:none; }
+  .sort-th:hover { color:var(--text); }
+  .sort-icon { margin-left:4px; }
+  .sort-th:not(.asc):not(.desc) .sort-icon::after { content:'⇅'; opacity:.4; }
+  .sort-th.asc .sort-icon::after { content:'▲'; color:var(--accent); }
+  .sort-th.desc .sort-icon::after { content:'▼'; color:var(--accent); }
+</style>
+</head>
+<body class="tool-body">
+
+<div class="tool-nav">
+  <div class="tool-title">// Dashboard</div>
+  <a class="tool-back" href="/">&#8592; Index</a>
+</div>
+
+<div class="cards" id="cards"></div>
+
+<div class="grid wide">
+  <div class="section">
+    <div class="section-title">Category Overview</div>
+    <table id="catTable">
+      <thead>
+        <tr>
+          <th class="sort-th" id="sortCat">Category<span class="sort-icon"></span></th>
+          <th class="sort-th" id="sortDocs" style="text-align:right">Docs<span class="sort-icon"></span></th>
+          <th>Linked</th>
+          <th>TTL Tags</th>
+        </tr>
+      </thead>
+      <tbody id="catBody"></tbody>
+    </table>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:16px;">
+    <div class="section">
+      <div class="section-title">Relation Types</div>
+      <div id="relTypes"></div>
+    </div>
+    <div class="section">
+      <div class="section-title">Top TTL Tags</div>
+      <div class="tag-cloud" id="tagCloud"></div>
+    </div>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="section">
+    <div class="section-title">Recent Activity</div>
+    <div id="recentList"></div>
+  </div>
+  <div class="section">
+    <div class="section-title">Untagged Docs</div>
+    <div id="untaggedList"></div>
+  </div>
+</div>
+
+<script>
+const CAT_COLORS = {
+  computing:'#63d0ff', computer:'#7aaaf5', os:'#9898ff', data:'#5ecec4',
+  information:'#e8c450', program:'#96cc96', language:'#7dd07d', framework:'#b8e0b8',
+  web:'#c8e888', mobile:'#ffd740', network:'#4dc8ff', virtualization:'#aa8fe0',
+  container:'#e8c8f8', cloud:'#5080ff', protocol:'#3dd8ee', security:'#ff6b68',
+  infra:'#ffb740', software:'#c060d0', enterprise:'#ff9878', systems:'#a0d850',
+  ict:'#58b8ff', ai:'#ff9090', tool:'#e0f060', standard:'#f05090',
+  mathematics:'#90e8f8', foundation:'#98d8b0'
+};
+
+fetch('/assets/data/doc_items.json')
+  .then(r => r.json())
+  .then(render)
+  .catch(() => document.body.innerHTML += '<p style="color:#e07070;font-family:monospace;padding:20px">doc_items.json 로드 실패</p>');
+
+function render(data) {
+  // --- Flatten all docs ---
+  const allDocs = [];
+  const allRelations = [];
+  const tagCount = {};
+
+  data.forEach(cat => {
+    flatDocs(cat.posts || [], cat.folder, allDocs, allRelations, tagCount);
+  });
+
+  const totalCats = data.length;
+  const totalDocs = allDocs.length;
+  const linked = allDocs.filter(d => d.related && d.related.length > 0).length;
+  const withTtl = allDocs.filter(d => d.ttl_tags && d.ttl_tags.length > 0).length;
+  const incomplete = allDocs.filter(d => !d.title);
+
+  // --- Cards ---
+  const cardData = [
+    { label:'Categories', val: totalCats, sub: '카테고리' },
+    { label:'Documents', val: totalDocs, sub: '전체 문서' },
+    { label:'Linked', val: linked, sub: `${pct(linked, totalDocs)}% 연결됨`, cls: linked/totalDocs > 0.5 ? '' : 'warn' },
+    { label:'TTL Tagged', val: withTtl, sub: `${pct(withTtl, totalDocs)}% 태그됨`, cls: withTtl/totalDocs > 0.5 ? '' : 'warn' },
+    { label:'Relations', val: allRelations.length, sub: '전체 관계' },
+    { label:'Incomplete', val: incomplete.length, sub: '제목 없음', cls: incomplete.length > 0 ? 'err' : '' },
+  ];
+  document.getElementById('cards').innerHTML = cardData.map(c => `
+    <div class="card ${c.cls || ''}">
+      <div class="card-label">${c.label}</div>
+      <div class="card-val">${c.val}</div>
+      <div class="card-sub">${c.sub}</div>
+    </div>
+  `).join('');
+
+  // --- Category table ---
+  const catData = data.map(cat => {
+    const docs = flatDocsInCat(cat.posts || []);
+    const catLinked = docs.filter(d => d.related && d.related.length > 0).length;
+    const ttlSum = docs.reduce((s, d) => s + (d.ttl_tags?.length || 0), 0);
+    const avgTtl = docs.length ? Math.round(ttlSum / docs.length) : 0;
+    const color = CAT_COLORS[cat.folder] || '#888898';
+    const idx = (cat.posts || []).find(p => p.filename === 'index');
+    const name = idx?.title || cat.folder;
+    return { folder: cat.folder, name, docs: docs.length, catLinked, avgTtl, color };
+  });
+  const maxDocs = Math.max(...catData.map(c => c.docs), 1);
+
+  let sortKey = '', sortDir = '';
+
+  function renderCatTable(key, dir) {
+    sortKey = key; sortDir = dir;
+    ['sortCat', 'sortDocs'].forEach(id => document.getElementById(id).classList.remove('asc', 'desc'));
+    if (key) document.getElementById(key === 'name' ? 'sortCat' : 'sortDocs').classList.add(dir);
+
+    const sorted = key ? [...catData].sort((a, b) => {
+      const av = a[key], bv = b[key];
+      if (typeof av === 'string') return dir === 'asc' ? av.localeCompare(bv, 'ko') : bv.localeCompare(av, 'ko');
+      return dir === 'asc' ? av - bv : bv - av;
+    }) : catData;
+
+    document.getElementById('catBody').innerHTML = sorted.map(c => `<tr>
+      <td class="cat-name"><span class="cat-dot" style="background:${c.color}"></span>${c.name}</td>
+      <td>
+        <div class="bar-wrap">
+          <div class="bar-track"><div class="bar-fill" style="width:${pct(c.docs,maxDocs)}%;background:${c.color}40;border:1px solid ${c.color}60"></div></div>
+          <span class="bar-num">${c.docs}</span>
+        </div>
+      </td>
+      <td>${c.catLinked > 0 ? pct(c.catLinked, c.docs) + '%' : '—'}</td>
+      <td>${c.avgTtl > 0 ? 'avg ' + c.avgTtl : '—'}</td>
+    </tr>`).join('') || '<tr><td colspan="4" class="empty-state">데이터 없음</td></tr>';
+  }
+
+  document.getElementById('sortCat').addEventListener('click', () =>
+    renderCatTable('name', sortKey === 'name' ? (sortDir === 'asc' ? 'desc' : 'asc') : 'asc'));
+  document.getElementById('sortDocs').addEventListener('click', () =>
+    renderCatTable('docs', sortKey === 'docs' ? (sortDir === 'desc' ? 'asc' : 'desc') : 'desc'));
+
+  renderCatTable('', '');
+
+  // --- Relation types ---
+  const relTypeCount = {};
+  allRelations.forEach(r => { relTypeCount[r.type] = (relTypeCount[r.type] || 0) + 1; });
+  const sortedRel = Object.entries(relTypeCount).sort((a,b) => b[1]-a[1]);
+  document.getElementById('relTypes').innerHTML = sortedRel.length
+    ? sortedRel.map(([type, cnt]) => `
+        <div class="rel-row">
+          <span class="rel-type">${type}</span>
+          <span class="rel-count">${cnt}</span>
+        </div>`).join('')
+    : '<div class="empty-state">관계 없음</div>';
+
+  // --- Tag cloud ---
+  const topTags = Object.entries(tagCount).sort((a,b) => b[1]-a[1]).slice(0, 30);
+  const maxTagCnt = topTags[0]?.[1] || 1;
+  document.getElementById('tagCloud').innerHTML = topTags
+    .map(([tag, cnt]) => `<span class="tag-item ${cnt >= maxTagCnt * 0.4 ? 'hot' : ''}">${tag}</span>`)
+    .join('');
+
+  // --- Recent activity ---
+  const sorted = [...allDocs].filter(d => d.modified_time)
+    .sort((a,b) => new Date(b.modified_time) - new Date(a.modified_time))
+    .slice(0, 12);
+  document.getElementById('recentList').innerHTML = sorted.length
+    ? sorted.map(d => `
+        <div class="recent-item">
+          <span class="recent-title">${d.title || d.filename}</span>
+          <span class="recent-cat">${d.folder}</span>
+          <span class="recent-time">${d.modified_time?.slice(0,10) || ''}</span>
+        </div>`).join('')
+    : '<div class="empty-state">데이터 없음</div>';
+
+  // --- Untagged Docs ---
+  const untagged = allDocs.filter(d => !d.ttl_tags || d.ttl_tags.length === 0);
+  document.getElementById('untaggedList').innerHTML = untagged.length
+    ? untagged.slice(0, 12).map(d => `
+        <div class="recent-item">
+          <span class="recent-title" style="color:var(--dim)">${d.title || d.filename}</span>
+          <span class="recent-cat">${d.folder}</span>
+        </div>`).join('')
+    : '<div class="empty-state" style="color:var(--accent)">모든 문서에 태그 존재 ✓</div>';
+}
+
+function flatDocs(posts, folder, out, relations, tagCount) {
+  posts.forEach(item => {
+    if (item.folder) {
+      flatDocs(item.posts || [], folder, out, relations, tagCount);
+    } else {
+      const doc = { ...item, folder };
+      out.push(doc);
+      (item.related || []).forEach(r => relations.push({ ...r, from: item.url }));
+      (item.ttl_tags || []).forEach(t => { tagCount[t] = (tagCount[t] || 0) + 1; });
+    }
+  });
+}
+
+function flatDocsInCat(posts) {
+  const out = [];
+  posts.forEach(item => {
+    if (item.folder) out.push(...flatDocsInCat(item.posts || []));
+    else out.push(item);
+  });
+  return out;
+}
+
+function pct(a, b) { return b ? Math.round(a / b * 100) : 0; }
+</script>
+</body>
+</html>
