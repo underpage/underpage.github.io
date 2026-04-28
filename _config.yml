@@ -12,8 +12,11 @@ exclude:
   - README.md
   - _site_backup*
   - _order.txt
+  - _sitemap.txt
   - _url.rb
   - _url.csv
+  - _category.md
+  - _thought_pattern.md
   - _graph.md
 
 include:

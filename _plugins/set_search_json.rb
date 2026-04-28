@@ -21,6 +21,7 @@ module Jekyll
       if ENV['JEKYLL_ENV'] != 'production'
         #start_listener(site, output_path)
         generate_file(items, output_path)
+        generate_sitemap(items, '_sitemap.txt')
         @@has_run = true
       end
     end
@@ -40,6 +41,30 @@ module Jekyll
       FileUtils.mkdir_p(File.dirname(output_path))
       File.write(output_path, JSON.generate(items))
       puts ">> doc_items.json generated"
+    end
+
+    def generate_sitemap(items, output_path)
+      lines = []
+      build_lines(items, lines, 0)
+      File.write(output_path, lines.join("\n") + "\n")
+      puts ">> sitemap.txt generated"
+    end
+
+    def build_lines(items, lines, depth)
+      return unless items
+      indent = '  ' * depth
+      items.each do |item|
+        if item['folder']
+          idx = (item['posts'] || []).find { |p| p['filename'] == 'index' }
+          title = idx&.dig('title')
+          lines << "#{indent}#{item['folder']}/#{title ? "  #{title}" : ''}"
+          build_lines(item['posts'], lines, depth + 1)
+        else
+          next if %w[index @ @@].include?(item['filename'])
+          title = item['title']
+          lines << "#{indent}#{item['filename']}.md#{title ? "  #{title}" : ''}"
+        end
+      end
     end
 
   end

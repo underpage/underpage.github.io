@@ -31,9 +31,9 @@ description: 블로그 문서 지식 그래프
   #tip .tag { font-family:'IBM Plex Mono',monospace; font-size:9px; padding:1px 5px; border-radius:2px; border:1px solid #2a2d4a; color:var(--text-dim); }
   #tip .tm { font-family:'IBM Plex Mono',monospace; font-size:9px; color:#6870a0; margin-top:3px; }
   svg { width:100vw; height:100vh; }
-  .lf { stroke:#8898d8; stroke-width:1; fill:none; }
-  .lx { stroke:#e0e4ff; stroke-width:1; fill:none; stroke-dasharray:5 3; }
-  .lk { stroke:#5a9898; stroke-width:1; fill:none; stroke-dasharray:1 5; }
+  .lf { stroke:#5060a0; stroke-width:1; fill:none; }
+  .lx { stroke:#8898d8; stroke-width:1; fill:none; stroke-dasharray:5 3; }
+  .lk { stroke:#3a6868; stroke-width:1; fill:none; stroke-dasharray:1 5; }
   .ng { cursor:pointer; }
   .nglow { filter:blur(9px); opacity:.28; pointer-events:none; }
   .nl { font-family:'Noto Sans KR',sans-serif; text-anchor:middle; dominant-baseline:middle; pointer-events:none; }
@@ -128,7 +128,7 @@ function flatten(posts, parentUrl, parentFolder, depth) {
         topFolder: parentFolder,
         isIndex: item.filename==='index',
         isEmpty: !item.title,
-        depth, size: item.filename==='index'?38:22, url:item.url
+        depth, size: item.filename==='index'?38:26, url:item.url
       };
       nodes.push(n); nm[item.url]=n;
       if(parentUrl && item.filename!=='index')
@@ -196,8 +196,8 @@ function buildGraph(RAW) {
 
   document.getElementById('loading').style.display='none';
 
-  const total=nodes.length, empty=nodes.filter(n=>n.isEmpty).length, roots=nodes.filter(n=>n.isRoot).length;
-  document.getElementById('stats').innerHTML=`total — ${total}<br>folders — ${roots}<br>empty — ${empty}<br>links — ${vlinks.length}`;
+  const total=nodes.length, empty=nodes.filter(n=>n.isEmpty).length, rootCount=nodes.filter(n=>n.isRoot).length;
+  document.getElementById('stats').innerHTML=`total — ${total}<br>folders — ${rootCount}<br>empty — ${empty}<br>links — ${vlinks.length}`;
 
   const topF=[...new Set(nodes.filter(n=>n.isRoot).map(n=>n.topFolder))];
   const fDiv=document.getElementById('filters');
@@ -219,17 +219,40 @@ function buildGraph(RAW) {
   const W=window.innerWidth, H=window.innerHeight;
   const svg=d3.select('#g'), cont=d3.select('#container');
 
+  // 루트 노드를 원형으로 사전 배치 — force 시작점 고정
+  const roots=nodes.filter(n=>n.isRoot);
+  const R=Math.min(W,H)*0.30;
+  roots.forEach((n,i)=>{
+    const angle=(2*Math.PI*i/roots.length)-Math.PI/2;
+    n.x=W/2+R*Math.cos(angle);
+    n.y=H/2+R*Math.sin(angle);
+  });
+
+  const rootByFolder={};
+  nodes.filter(n=>n.isRoot).forEach(n=>{ rootByFolder[n.topFolder]=n; });
+
   sim=d3.forceSimulation(nodes)
-    .force('link',d3.forceLink(vlinks).id(d=>d.id).distance(d=>(d.source.size+d.target.size)*1.5+20).strength(0.35))
-    .force('charge',d3.forceManyBody().strength(d=>-(d.size||22)*18))
-    .force('center',d3.forceCenter(W/2,H/2))
-    .force('collision',d3.forceCollide().radius(d=>d.size*1.4+8))
-    .force('x',d3.forceX(W/2).strength(0.025))
-    .force('y',d3.forceY(H/2).strength(0.025));
+    .force('link',d3.forceLink(vlinks).id(d=>d.id)
+      .distance(d=>d.type==='folder'?(d.source.size+d.target.size)*1.4+20:(d.source.size+d.target.size)*3.0+60)
+      .strength(d=>d.type==='folder'?0.9:0.2))
+    .force('charge',d3.forceManyBody().strength(d=>d.isRoot?-(d.size*40):-(d.size*20)))
+    .force('center',d3.forceCenter(W/2,H/2).strength(0.04))
+    .force('collision',d3.forceCollide().radius(d=>d.size*1.8+10))
+    .force('cluster',alpha=>{
+      nodes.forEach(n=>{
+        if(n.isRoot) return;
+        const r=rootByFolder[n.topFolder];
+        if(!r) return;
+        n.vx+=(r.x-n.x)*alpha*0.18;
+        n.vy+=(r.y-n.y)*alpha*0.18;
+      });
+    })
+    .force('x',d3.forceX(W/2).strength(0.02))
+    .force('y',d3.forceY(H/2).strength(0.02));
 
   lg=cont.append('g').selectAll('line').data(vlinks).join('line')
     .attr('class',d=>d.type==='folder'?'lf':d.type==='keyword'?'lk':'lx')
-    .attr('opacity',d=>d.type==='folder'?0.55:d.type==='keyword'?0.2:0.9);
+    .attr('opacity',d=>d.type==='folder'?0.35:d.type==='keyword'?0.1:0.55);
 
   let dragMoved=false;
   const drag=d3.drag()
@@ -237,9 +260,11 @@ function buildGraph(RAW) {
     .on('drag',(e,d)=>{ dragMoved=true; d.fx=e.x; d.fy=e.y; })
     .on('end',(e,d)=>{ if(!e.active) sim.alphaTarget(0); d.fx=null; d.fy=null; if(!dragMoved) handleClick(d); });
 
-  ng=cont.append('g').selectAll('g').data(nodes).join('g').attr('class','ng')
+  const ngG=cont.append('g');
+  ng=ngG.selectAll('g').data(nodes).join('g').attr('class','ng')
     .on('mouseover',(e,d)=>showT(e,d)).on('mousemove',e=>movT(e)).on('mouseout',()=>hidT())
     .call(drag).style('cursor','pointer');
+  ngG.raise(); // 노드 레이어를 선 레이어 위로 강제 배치
 
   svg.on('click',(e)=>{ if(e.target.tagName==='svg'||e.target.tagName==='g'&&e.target.id==='container'){ highlighted=null; upd(); } });
 
@@ -252,10 +277,10 @@ function buildGraph(RAW) {
     .attr('width',d=>d.size*2.6).attr('height',d=>d.size*1.7)
     .attr('x',d=>-d.size*1.3).attr('y',d=>-d.size*.85)
     .attr('rx',4)
-    .attr('fill',d=>d.color.bg)
+    .attr('fill',d=>(d.isEmpty&&!d.isFolder)?'#181820':d.color.bg)
     .attr('stroke',d=>d.color.br)
-    .attr('stroke-width',d=>d.isRoot?1.5:d.isIndex?1:0.7)
-    .attr('opacity',d=>d.isEmpty?0.25:1);
+    .attr('stroke-width',d=>d.isRoot?1.5:d.isFolder?1.2:d.isIndex?1.2:1)
+    .attr('opacity',d=>(d.isEmpty&&!d.isFolder)?0.45:1);
 
   ng.filter(d=>d.isRoot).insert('rect',':first-child')
     .attr('class','pulse')
@@ -268,12 +293,25 @@ function buildGraph(RAW) {
     const g=d3.select(this);
     const lbl=(d.label||d.url.split('/').pop()||'').slice(0,15);
     g.append('text').attr('class','nl')
-      .attr('y',0).attr('font-size',d.isRoot?'12px':d.isIndex?'11px':'9px')
-      .attr('fill',d.isEmpty?'#2a2a3a':d.color.br).text(lbl);
+      .attr('y',0).attr('font-size',d.isRoot?'13px':d.isFolder?'11px':d.isIndex?'11px':'10px')
+      .attr('fill',(d.isEmpty&&!d.isFolder)?'#6068a0':d.color.br).text(lbl);
   });
 
+  function clipToRect(x1,y1,x2,y2,hw,hh){
+    const dx=x2-x1,dy=y2-y1;
+    if(!dx&&!dy) return [x1,y1];
+    const t=Math.min(hw/Math.abs(dx),hh/Math.abs(dy));
+    return [x1+dx*t,y1+dy*t];
+  }
+
   sim.on('tick',()=>{
-    lg.attr('x1',d=>d.source.x).attr('y1',d=>d.source.y).attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
+    lg.each(function(d){
+      const sw=d.source.size*1.3,sh=d.source.size*0.85;
+      const tw=d.target.size*1.3,th=d.target.size*0.85;
+      const [x1,y1]=clipToRect(d.source.x,d.source.y,d.target.x,d.target.y,sw,sh);
+      const [x2,y2]=clipToRect(d.target.x,d.target.y,d.source.x,d.source.y,tw,th);
+      d3.select(this).attr('x1',x1).attr('y1',y1).attr('x2',x2).attr('y2',y2);
+    });
     ng.attr('transform',d=>`translate(${d.x},${d.y})`);
   });
 
@@ -299,6 +337,7 @@ function upd() {
   if(highlighted) {
     connected = new Set([highlighted]);
     links.forEach(l=>{
+      if(l.type==='keyword') return;
       const s=typeof l.source==='object'?l.source.id:l.source;
       const t=typeof l.target==='object'?l.target.id:l.target;
       if(s===highlighted) connected.add(t);
@@ -321,9 +360,9 @@ function upd() {
     const s=nm[sc], t=nm[tc];
     if(!s||!t) return 0;
     if(d.type==='keyword') return 0;
-    if(connected) return (connected.has(sc)&&connected.has(tc))?0.7:0.02;
-    if(activeF.size>0) return (activeF.has(s.topFolder)&&activeF.has(t.topFolder))?0.5:0.02;
-    return 0.4;
+    if(connected) return (connected.has(sc)&&connected.has(tc))?0.8:0.02;
+    if(activeF.size>0) return (activeF.has(s.topFolder)&&activeF.has(t.topFolder))?0.45:0.02;
+    return 0.28;
   });
 }
 

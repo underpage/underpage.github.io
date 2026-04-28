@@ -8,8 +8,10 @@
 _site
 _site_backup*
 _order.txt
+_sitemap.txt
 _url.csv
-_graph.md
 _category.md
+_thought_pattern.md
+_graph.md
 
 CLAUDE.md
