@@ -15,17 +15,12 @@ exclude:
   - _sitemap.txt
   - _url.rb
   - _url.csv
+  - CLAUDE.md
   - llm-*
 
 
 include:
   - _doc
-
-production:
-  build:
-    parallel: true
-    incremental: true
-    cache: true
 
 plugins:
   - jekyll-cache
