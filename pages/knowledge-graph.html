@@ -268,34 +268,62 @@ function buildGraph(RAW) {
 
   svg.on('click',(e)=>{ if(e.target.tagName==='svg'||e.target.tagName==='g'&&e.target.id==='container'){ highlighted=null; upd(); } });
 
-  ng.filter(d=>d.isRoot).append('rect').attr('class','nglow')
-    .attr('width',d=>d.size*2.8).attr('height',d=>d.size*2.0)
-    .attr('x',d=>-d.size*1.4).attr('y',d=>-d.size*1.0)
-    .attr('rx',5).attr('fill',d=>d.color.br);
-
-  ng.append('rect')
-    .attr('width',d=>d.size*2.6).attr('height',d=>d.size*1.7)
-    .attr('x',d=>-d.size*1.3).attr('y',d=>-d.size*.85)
-    .attr('rx',4)
-    .attr('fill',d=>(d.isEmpty&&!d.isFolder)?'#181820':d.color.bg)
-    .attr('stroke',d=>d.color.br)
-    .attr('stroke-width',d=>d.isRoot?1.5:d.isFolder?1.2:d.isIndex?1.2:1)
-    .attr('opacity',d=>(d.isEmpty&&!d.isFolder)?0.45:1);
-
-  ng.filter(d=>d.isRoot).insert('rect',':first-child')
-    .attr('class','pulse')
-    .attr('width',d=>d.size*3.1).attr('height',d=>d.size*2.2)
-    .attr('x',d=>-d.size*1.55).attr('y',d=>-d.size*1.1)
-    .attr('rx',6).attr('fill','none')
-    .attr('stroke',d=>d.color.br).attr('stroke-width',1);
-
   ng.each(function(d){
     const g=d3.select(this);
-    const lbl=(d.label||d.url.split('/').pop()||'').slice(0,15);
+    const lbl=(d.label||d.url.split('/').pop()||'');
+    const fs=d.isRoot?13:d.isFolder||d.isIndex?11:10;
+
+    const tmp=g.append('text').attr('font-size',`${fs}px`).attr('font-family','Noto Sans KR,sans-serif').text(lbl);
+    const bb=tmp.node().getBBox();
+    tmp.remove();
+
+    const padX=14,padY=7;
+    let rw,rh,tfs=fs;
+    if(d.isRoot){
+      rw=d.size*2.6; rh=d.size*1.7;
+      const maxTw=rw-padX*2;
+      if(bb.width>maxTw) tfs=fs*maxTw/bb.width;
+    } else if(d.isFolder||d.isIndex){
+      rw=d.size*2.0; rh=d.size*1.3;
+      const maxTw=rw-padX*2;
+      if(bb.width>maxTw) tfs=fs*maxTw/bb.width;
+    } else {
+      rw=Math.max(bb.width+padX*2,d.size*1.1);
+      rh=Math.max(bb.height+padY*2,d.size*0.75);
+    }
+    d.boxW=rw/2; d.boxH=rh/2;
+
+    if(d.isRoot){
+      g.append('rect').attr('class','pulse')
+        .attr('width',rw+20).attr('height',rh+14)
+        .attr('x',-(rw+20)/2).attr('y',-(rh+14)/2)
+        .attr('rx',6).attr('fill','none')
+        .attr('stroke',d.color.br).attr('stroke-width',1);
+      g.append('rect').attr('class','nglow')
+        .attr('width',rw+12).attr('height',rh+8)
+        .attr('x',-(rw+12)/2).attr('y',-(rh+8)/2)
+        .attr('rx',5).attr('fill',d.color.br);
+    } else if(d.isFolder||d.isIndex){
+      g.append('rect').attr('class','pulse')
+        .attr('width',rw+12).attr('height',rh+8)
+        .attr('x',-(rw+12)/2).attr('y',-(rh+8)/2)
+        .attr('rx',5).attr('fill','none')
+        .attr('stroke',d.color.br).attr('stroke-width',0.8);
+    }
+    g.append('rect')
+      .attr('width',rw).attr('height',rh)
+      .attr('x',-rw/2).attr('y',-rh/2)
+      .attr('rx',4)
+      .attr('fill',(d.isEmpty&&!d.isFolder)?'#181820':d.color.bg)
+      .attr('stroke',d.color.br)
+      .attr('stroke-width',d.isRoot?1.5:(d.isFolder||d.isIndex)?1.2:0.6)
+      .attr('opacity',(d.isEmpty&&!d.isFolder)?0.45:1);
     g.append('text').attr('class','nl')
-      .attr('y',0).attr('font-size',d.isRoot?'13px':d.isFolder?'11px':d.isIndex?'11px':'10px')
+      .attr('y',0).attr('font-size',`${tfs}px`)
       .attr('fill',(d.isEmpty&&!d.isFolder)?'#6068a0':d.color.br).text(lbl);
   });
+
+  sim.force('collision',d3.forceCollide().radius(d=>d.boxW?Math.sqrt(d.boxW*d.boxW+d.boxH*d.boxH)+6:d.size*1.8+10));
 
   function clipToRect(x1,y1,x2,y2,hw,hh){
     const dx=x2-x1,dy=y2-y1;
@@ -306,8 +334,8 @@ function buildGraph(RAW) {
 
   sim.on('tick',()=>{
     lg.each(function(d){
-      const sw=d.source.size*1.3,sh=d.source.size*0.85;
-      const tw=d.target.size*1.3,th=d.target.size*0.85;
+      const sw=d.source.boxW||d.source.size*1.3,sh=d.source.boxH||d.source.size*0.85;
+      const tw=d.target.boxW||d.target.size*1.3,th=d.target.boxH||d.target.size*0.85;
       const [x1,y1]=clipToRect(d.source.x,d.source.y,d.target.x,d.target.y,sw,sh);
       const [x2,y2]=clipToRect(d.target.x,d.target.y,d.source.x,d.source.y,tw,th);
       d3.select(this).attr('x1',x1).attr('y1',y1).attr('x2',x2).attr('y2',y2);
