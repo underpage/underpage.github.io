@@ -1,0 +1,27 @@
+---
+layout: layout-page
+permalink: /index
+title: index
+keywords: blog, github blog, gtihub page
+---
+
+<section class="layout-page-wrap">
+  <div class="page-title-wrap">
+    <h2>Index</h2>
+  </div>
+
+  <div class="page-content-wrap index-content">
+    <p class="default-post-count">
+      {{ site.data.total_doc_files | default: '0' }} Posts
+    </p>
+
+    {% assign items = site.data.doc_items %}
+    {% assign sorted_items = items | sort: 'modified_time' %}
+    <ul class="default-post-list index-post-list" id="indexPostList" hidden>
+      {% include render-index-posts.html items=sorted_items %}
+    </ul>
+
+    <p class="index-post-pagination" id="indexPagination"></p>
+  </div>
+  
+</section>

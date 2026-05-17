@@ -52,3 +52,28 @@ jekyll clear
 jekyll serve
 >> localhost:4000
 ```
+
+
+
+### 프로젝트 구성
+
+```
+github.io/
+├── _doc/               # 문서 (Jekyll 컬렉션)
+├── _includes/          # 공통 컴포넌트
+├── _layouts/           # 레이아웃 템플릿
+├── _plugins/           # Ruby 플러그인
+├── assets/
+├── pages/              # 정적 페이지
+│   ├── index.html
+│   ├── about.html
+│   ├── search.html
+│   ├── category.html
+│   ├── dashboard.html
+│   └── knowledge-graph.html
+├── _config.yml
+├── 404.html
+├── sitemap.xml
+├── feed.xml
+└── robots.txt
+```
