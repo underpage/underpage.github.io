@@ -15,9 +15,8 @@ exclude:
   - _sitemap.txt
   - _url.rb
   - _url.csv
-  - _category.md
-  - _thought_pattern.md
-  - _graph.md
+  - llm-*
+
 
 include:
   - _doc
