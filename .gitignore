@@ -10,8 +10,8 @@ _site_backup*
 _order.txt
 _sitemap.txt
 _url.csv
-_category.md
-_thought_pattern.md
-_graph.md
+
+llm-analysis/
+llm-learn/
 
 CLAUDE.md
