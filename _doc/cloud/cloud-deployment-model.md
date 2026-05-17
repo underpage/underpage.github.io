@@ -1,0 +1,85 @@
+---
+order: 2
+category: Cloud
+title: 클라우드 배포 모델
+summary: 퍼블릭·프라이빗·하이브리드·멀티 클라우드 배포 모델의 정의, 특성, 비교
+keywords:
+- cloud
+- cloud deployment model
+- public
+- private
+tags:
+- cloud
+- model
+created_time: 2025-10-02 22:12
+modified_time: 2026-05-18 01:13
+---
+
+{::comment}
+ttl_tags: [cloud-deployment-model, public-cloud, private-cloud, hybrid-cloud, multi-cloud, multi-tenancy, on-premises, data-sovereignty, vendor-lock-in, workload, cloud-provider, cloud-infrastructure]
+related:
+- id: network
+  type: requires
+- id: security
+  type: references
+- id: infra
+  type: references
+- id: cloud-service-model
+  type: references
+{:/comment}
+
+# Cloud Deployment Model
+: 클라우드 배포 모델이란 클라우드 인프라를 구축하고 운영하는 방식을 정의하는 모델  
+: 배포 모델에 따라 클라우드 서비스의 관리 주체, 데이터 위치, 접근 방식, 보안 수준 등이 달라짐  
+: 조직의 비즈니스 요구사항, 보안 정책, 비용 등에 따라 적절한 모델을 선택함  
+
+- [퍼블릭 클라우드](#public-cloud)
+- [프라이빗 클라우드](#private-cloud)
+- [하이브리드 클라우드](#hybrid-cloud)
+- [멀티 클라우드](#multi-cloud)
+
+
+**배포 모델 비교**
+
+항목 | Public | Private | Hybrid | Multi
+---|---|---|---|---
+초기 비용 | 낮음 | 높음 | 중간 | 중간~높음
+운영 비용 | 사용량 기반 | 고정적 | 혼합 | 사용량 기반
+제어 수준 | 제한적 | 완전한 제어 | 높음 | 높음
+커스터마이징 | 제한적 | 완전한 제어 | 혼합 | 혼합
+구축 속도 | 즉시 | 느림 | 중간 | 중간
+확장성 | 거의 무제한 | 물리적 제약 | 높음 | 거의 무제한
+복잡성 | 낮음 | 중간 | 높음 | 매우 높음
+
+
+
+## Public Cloud
+: 클라우드 제공 업체가 불특정 다수에게 인터넷을 통해 서비스를 제공하는 모델  
+: 제공 업체가 모든 컴퓨팅 리소스를 소유하고 관리하며 사용자는 리소스를 필요한 만큼 사용함  
+: 제공 업체가 인프라 관리를 담당하므로 유지보수가 간소화될 수 있음  
+: 멀티테넌시 환경으로 다른 사용자와 물리적 인프라를 공유하지만 논리적으로는 격리됨  
+: 데이터가 외부(제공 업체의 데이터 센터)에 존재하므로 유출될 가능성 및 제약이 존재함  
+
+
+
+## Private Cloud
+: 정부, 의료, 금융 등 특정 조직 전용으로 구축되고 운영되는 서비스 모델  
+: 조직의 요구사항에 맞춰 직접 구축하고 관리하므로 리소스 할당과 정책을 완전히 제어함  
+: 직접 구축하므로 보안성이 높으나 이를 관리하기 위한 전문 지식이 필요함  
+: 초기 구축 비용이 매우 높으며 하드웨어 용량에 의해 확장성이 제한됨  
+
+
+
+## Hybrid Cloud
+: 프라이빗 클라우드와 퍼블릭 클라우드의 장점을 결합한 모델  
+: 중요한 데이터는 프라이빗에, 변동성 높은 워크로드는 퍼블릭에 배치함  
+: 서로 다른 클라우드 환경이 단일 인프라처럼 작동하며 이를 연동하는 과정 및 관리가 복잡함  
+: 다른 환경이므로 데이터 일관성 유지를 위한 전문적인 설계와 관리가 필요함  
+
+
+
+## Multi Cloud
+: 다양한 클라우드 제공 업체의 서비스를 조합해 사용하는 모델  
+: 여러 제공 업체를 동시에 사용해 가용성을 높이고 리스크를 분산할 수 있음  
+: 특정 업체의 서비스를 선택적으로 활용 가능하나 서비스에 대한 전문 지식과 관리가 필요함  
+: 업체 간 데이터 전송 비용이 매우 높으며 서로 다른 보안 정책으로 운영 복잡도가 매우 높음  
