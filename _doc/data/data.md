@@ -13,11 +13,23 @@ tags:
 - data
 - information
 created_time: 2025-10-11 23:02
-modified_time: 2026-06-06 14:49
+modified_time: 2026-06-07 03:05
 ---
 
 {::comment}
-ttl_tags: [data, information, knowledge, wisdom, dikw, data-analysis, data-structuring, data-classification, data-sorting, data-grouping, data-tagging, metadata, information-quality, data-processing, knowledge-management, knowledge-lifecycle, knowledge-type, explicit-knowledge, implicit-knowledge, tacit-knowledge, data-pipeline, etl, data-value-hierarchy]
+ttl_tags: [data, information, knowledge, wisdom, dikw, data-analysis, data-structuring, data-classification, data-sorting, data-grouping, data-tagging, data-hierarchization, metadata, information-quality, data-processing, data-engineering, knowledge-management, knowledge-lifecycle, knowledge-combination, knowledge-type, explicit-knowledge, declarative-knowledge, implicit-knowledge, procedural-knowledge, tacit-knowledge, data-pipeline, etl, data-value-hierarchy]
+
+related:
+- id: computer-data
+  type: references
+- id: data-classification
+  type: references
+- id: data-processing
+  type: references
+- id: data-preprocessing
+  type: references
+- id: data-analytics
+  type: references
 {:/comment}
 
 # Data
@@ -52,14 +64,14 @@ ttl_tags: [data, information, knowledge, wisdom, dikw, data-analysis, data-struc
 
 ```
 데이터 구조화는 인간의 주관이 개입하므로 
-동일한 데이터라도 기준과 목적에 따라 다른 패턴이 도출될 수 있음
+동일한 데이터라도 기준, 목적 등에 따라 다른 패턴이 도출될 수 있음
 ```
 
 
 **구조화 발전 과정**
 ```
 물리적 분류 => 체계적 분류법 도입 (카탈로그, 색인) => 기계적 처리 (천공 카드, 파일 시스템) => 
-디지털 구조화 (데이터베이스) => 자동화된 구조화 (데이터 웨어하우스) => 지능형 구조화 (자동 분류) 
+디지털 구조화 (데이터베이스) => 자동화된 구조화 (데이터 웨어하우스) => 지능형 구조화 (지식 그래프, 자동 분류) 
 ```
 
 
@@ -125,10 +137,10 @@ data => information => knowledge => wisdom
 
 
 **정보 품질**
-- 정확성
-- 완전성
-- 적시성
-- 관련성
+- 정확성: 정보가 맞는지
+- 완전성: 필요한 내용이 있는지
+- 적시성: 지금 상황에 맞는지
+- 관련성: 목적에 부합하는지
 
 
 
