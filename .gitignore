@@ -13,5 +13,6 @@ _url.csv
 
 llm-analysis/
 llm-learn/
+llm-prompts/
 
-CLAUDE.md
+AGENTS.md
