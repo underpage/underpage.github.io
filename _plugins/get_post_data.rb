@@ -72,8 +72,8 @@ module Jekyll
             tag_item = {
               'url' => url,
               'order' => front_matter['order'],
-              'category' => front_matter['title'],
-              'title' => front_matter['summary'],
+              'category' => front_matter['category'],
+              'title' => front_matter['title'],
               'modified_time' => front_matter['modified_time'],
             }
             front_matter['tags'].each do |tag|

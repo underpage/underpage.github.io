@@ -1,4 +1,6 @@
 require 'dotenv'
+require 'json'
+require 'fileutils'
 
 module Jekyll
   class SearchJsonGenerator < Jekyll::Generator
@@ -12,8 +14,6 @@ module Jekyll
 
       Dotenv.load
       return if ENV['JEKYLL_ENV'] == 'production'
-
-      require 'listen'
 
       items = site.data['doc_items']
       output_path = File.join('assets', 'data', 'doc_items.json')
@@ -29,6 +29,8 @@ module Jekyll
     private
 
     def start_listener(site, output_path)
+      require 'listen'
+
       listener = Listen.to('_doc', only: /\.(md|markdown)$/, latency: 120) do |modified, added, removed|
         items = site.data['doc_items']
         generate_file(items, output_path)
