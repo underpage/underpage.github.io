@@ -10,9 +10,9 @@
     {% if tag != 'index' and site.data.doc_tags[tag] %}
       {% assign tagData = site.data.doc_tags[tag] %}
       {% for post in tagData.docs %}
-        {% if post.url != page.url and post.category %}
+        {% if post.url != page.url and post.title %}
           <li>
-            <a href="{{ post.url }}">{{ post.category }}</a>
+            <a href="{{ post.url }}">{{ post.title }}</a>
           </li>
           {% assign relatedCount = relatedCount | plus: 1 %}
           {% if relatedCount >= maxRelated %}
