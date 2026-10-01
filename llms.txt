@@ -9,6 +9,7 @@ This is a technical blog built with Jekyll focused on programming and computer s
 - [Home]({{ site.url }}{{ site.baseurl }}/)
 - [Categories]({{ site.url }}{{ site.baseurl }}/category)
 - [Tags]({{ site.url }}{{ site.baseurl }}/tag)
+- [News]({{ site.url }}{{ site.baseurl }}/news)
 
 ## Categories
 - [Computing]({{ site.url }}{{ site.baseurl }}/doc/computing/index.md)
@@ -38,6 +39,16 @@ This is a technical blog built with Jekyll focused on programming and computer s
 - [Standards]({{ site.url }}{{ site.baseurl }}/doc/standard/index.md)
 - [Mathematics]({{ site.url }}{{ site.baseurl }}/doc/mathematics/index.md)
 - [Unclassified]({{ site.url }}{{ site.baseurl }}/doc/unclassified/index.md)
+
+## News
+Daily AI news reports, collected and summarized automatically at 09:00 KST.
+Each report lists the day's articles with a three-line summary in English and Korean,
+a sentiment tag, and a link to the original source.
+
+- [News Archive]({{ site.url }}{{ site.baseurl }}/news)
+
+Report URLs follow `/news/YYYY/MM/DD/` (e.g. `/news/2026/09/29/`).
+Source pipeline: https://github.com/underpage/ai-news-pipeline
 
 ## Feeds
 - [RSS Feed]({{ site.url }}{{ site.baseurl }}/feed.xml)
