@@ -2,7 +2,8 @@ name: Build and Deploy
 
 on:
   schedule:
-    - cron: '0 17 * * *'
+    # 10:00 KST — 뉴스 파이프라인(09:00 KST) 종료 후
+    - cron: '0 1 * * *'
   workflow_dispatch:
     inputs:
       force_build:
@@ -23,6 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       build_required: ${{ steps.set_build_required.outputs.build_required }}
+      news_key: ${{ steps.news_rev.outputs.key }}
     steps:
       - name: -- Checkout
         uses: actions/checkout@v4
@@ -39,6 +41,43 @@ jobs:
             echo "commits_exist=false" >> $GITHUB_OUTPUT
           fi
 
+      # 뉴스는 별도 저장소(ai-news-pipeline)에 커밋되므로 여기서 따로 확인한다.
+      # sha는 캐시 키로, 갱신 시각은 빌드 필요 판정에 쓴다
+      - name: -- Check news
+        id: news_rev
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # 조회에 실패해도 뉴스를 놓치지 않도록 먼저 true를 기록해 둔다(fail-open).
+          # 이 스텝이 중간에 죽어도 Set build required가 이 값을 읽는다
+          echo "news_updated=true" >> $GITHUB_OUTPUT
+          echo "key=news-pending-${{ github.run_id }}" >> $GITHUB_OUTPUT
+
+          api="repos/underpage/ai-news-pipeline/commits?path=archive/news&per_page=1"
+          sha=$(gh api "$api" --jq '.[0].sha // empty' 2>/dev/null || true)
+          committed_at=$(gh api "$api" --jq '.[0].commit.committer.date // empty' 2>/dev/null || true)
+
+          # jq는 빈 배열에서 리터럴 문자열 "null"을 흘릴 수 있다.
+          # 형식을 검증하지 않으면 news-null이라는 고정 키가 만들어지고
+          # 그 캐시가 영원히 적중해 뉴스가 동결된다
+          case "$sha" in
+            [0-9a-f][0-9a-f][0-9a-f][0-9a-f]*) echo "key=news-$sha" >> $GITHUB_OUTPUT ;;
+            *) sha='' ;;
+          esac
+
+          # 확실히 오래된 경우에만 false로 덮어쓴다.
+          # 파이프라인(09:00 KST)이 지연돼 24시간 창을 벗어나는 날을 흡수하려고 48시간을 쓴다
+          if [ -n "$committed_at" ]; then
+            committed_ts=$(date -u -d "$committed_at" +%s 2>/dev/null || echo '')
+            if [ -n "$committed_ts" ]; then
+              elapsed=$(( $(date -u +%s) - committed_ts ))
+              if [ "$elapsed" -ge 172800 ]; then
+                echo "news_updated=false" >> $GITHUB_OUTPUT
+              fi
+            fi
+          fi
+
       - name: -- Set build required
         id: set_build_required
         run: |
@@ -46,6 +85,9 @@ jobs:
             echo "build_required=true" >> $GITHUB_OUTPUT
 
           elif [ "${{ steps.check_commits.outputs.commits_exist }}" = "true" ]; then
+            echo "build_required=true" >> $GITHUB_OUTPUT
+
+          elif [ "${{ steps.news_rev.outputs.news_updated }}" = "true" ]; then
             echo "build_required=true" >> $GITHUB_OUTPUT
 
           else
@@ -63,6 +105,68 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      # 뉴스가 그대로면 캐시가 정확히 적중해 아래 스텝들을 건너뛴다.
+      # 갱신됐거나 캐시가 없으면 restore-keys로 직전 뉴스를 먼저 복원해 둔다.
+      # save를 분리한 이유: cache@v4는 가져오기 실패로 낡은 _news가 남아도
+      # 그것을 새 sha 키로 저장해버려, 그 sha인 동안 재시도조차 불가능해진다
+      - name: -- Restore news cache
+        id: news_cache
+        uses: actions/cache/restore@v4
+        with:
+          path: _news
+          key: ${{ needs.check.outputs.news_key || format('news-pending-{0}', github.run_id) }}
+          restore-keys: news-
+
+      - name: -- Checkout news
+        id: news_checkout
+        if: steps.news_cache.outputs.cache-hit != 'true'
+        continue-on-error: true
+        uses: actions/checkout@v4
+        with:
+          repository: underpage/ai-news-pipeline
+          path: .news-src
+          fetch-depth: 1
+          sparse-checkout: archive/news
+
+      # 가져오기에 실패하면 복원된 캐시를 그대로 쓴다 — 배포를 막지 않는다.
+      # checkout이 중간에 끊겨 디렉터리만 생긴 경우에도 멀쩡한 캐시를 지우지 않도록
+      # outcome과 실제 파일 수를 모두 확인한 뒤 임시 디렉터리에서 통째로 교체한다
+      - name: -- Sync news
+        id: news_sync
+        if: steps.news_cache.outputs.cache-hit != 'true'
+        continue-on-error: true
+        run: |
+          mkdir -p _news
+
+          if [ "${{ steps.news_checkout.outcome }}" != "success" ]; then
+            echo "::warning::뉴스 저장소를 가져오지 못했습니다 — 캐시된 _news를 사용합니다"
+            echo "synced=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          fetched=$(find .news-src/archive/news -name '*.md' 2>/dev/null | wc -l)
+          if [ "$fetched" -eq 0 ]; then
+            echo "::warning::가져온 뉴스가 비어 있습니다 — 캐시된 _news를 사용합니다"
+            echo "synced=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          rm -rf _news.new && mkdir -p _news.new
+          cp -r .news-src/archive/news/. _news.new/
+          rm -rf _news && mv _news.new _news
+
+          echo "뉴스 동기화 완료: ${fetched}개"
+          echo "synced=true" >> $GITHUB_OUTPUT
+
+      # 실제로 가져오기에 성공했을 때만 저장한다.
+      # 낡은 캐시를 새 sha로 저장하면 그 sha인 동안 영원히 그것만 복원된다
+      - name: -- Save news cache
+        if: steps.news_sync.outputs.synced == 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: _news
+          key: ${{ needs.check.outputs.news_key || format('news-pending-{0}', github.run_id) }}
 
       - name: -- Setup Ruby
         uses: ruby/setup-ruby@v1
