@@ -33,13 +33,19 @@ const initPathComponents = async () => {
       tagList.init();
     }
 
+    if(path === '/news' || path === '/news/') {
+      const { createNewsTab } = await import('./component/news.tab.js');
+      const newsTab = createNewsTab();
+      newsTab.init();
+    }
+
     if(path === '/search') {
       const { createSearchPostForm } = await import('./component/search.post.form.js');
       const searchPostForm = createSearchPostForm();
       searchPostForm.init();
     }
 
-    if(path.includes('doc')) {
+    if(path.includes('doc') || path.startsWith('/news/')) {
       const { createSidePostNav } = await import('./component/side.post.nav.js');
       const sidePostNav = createSidePostNav();
       sidePostNav.init();
