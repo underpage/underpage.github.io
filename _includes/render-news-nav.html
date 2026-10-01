@@ -1,0 +1,53 @@
+{% assign current_year = page.news_month | slice: 0, 4 %}
+
+<section class="markdown-nav">
+  <h3 class="folder">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
+    </svg>
+    news
+  </h3>
+
+  <ul class="sub-nav-list depth-1">
+  {% for year in site.data.news_years %}
+    <li>
+      <h3 class="sub-folder depth-1 {% if year.year == current_year %}on{% endif %}" data-folder-id="{{ year.year }}">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="folder">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z"></path>
+        </svg>
+        {{ year.year }}
+      </h3>
+
+      <div class="sub-nav-container {% if year.year == current_year %}visible{% endif %}" data-folder-id="{{ year.year }}">
+        <ul class="sub-nav-list depth-2">
+        {% for month in year.months %}
+          <li>
+            <h3 class="sub-folder depth-2 {% if month.label == page.news_month %}on{% endif %}" data-folder-id="{{ month.label }}">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="folder">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z"></path>
+              </svg>
+              {{ month.month }}
+            </h3>
+
+            <div class="sub-nav-container {% if month.label == page.news_month %}visible{% endif %}" data-folder-id="{{ month.label }}">
+              <ul class="sub-nav-list depth-3">
+              {% for day in month.days %}
+                <li>
+                  <a href="{{ day.url }}" class="{% if day.url == page.url %}on{% endif %}">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="file">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
+                    </svg>
+                    {{ day.date }}
+                  </a>
+                </li>
+              {% endfor %}
+              </ul>
+            </div>
+          </li>
+        {% endfor %}
+        </ul>
+      </div>
+    </li>
+  {% endfor %}
+  </ul>
+</section>
