@@ -1,0 +1,24 @@
+{% include head.html %}
+
+<body>
+
+{% include header.html %}
+
+<div class="common-wrap common-layout-wrap markdown-layout-wrap">
+  <nav class="markdown-nav-wrap">
+    <h2 class="hide">news</h2>
+    {% include render-news-nav.html %}
+  </nav>
+
+  <div class="markdown-content-wrap">
+    <div class="markdown-body markdown">
+      {{ content }}
+    </div>
+  </div>
+
+</div>
+
+{% include footer.html %}
+
+</body>
+</html>
