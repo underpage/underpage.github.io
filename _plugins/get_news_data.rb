@@ -66,10 +66,15 @@ module Jekyll
       File.read(file_path, encoding: 'bom|utf-8').scrub('')
     end
 
-    # 그날의 첫 기사 제목 — 목록에서 미리보기로 쓴다
+    # 목록에 쓸 그날의 대표 기사 제목.
+    # 파이프라인이 중요도 순으로 번호를 매기므로 1번이 그날의 톱기사다.
+    # 원문이 영문이어도 '번역 제목'이 있으면 그쪽을 쓴다
     def first_headline(content)
-      match = content.match(/^##\s+\d+\.\s*(.+)$/)
-      match ? match[1].strip : ''
+      article = content.match(/^##\s+\d+\.\s*([^\n]+)\n(.*?)(?=^##\s|\z)/m)
+      return '' unless article
+
+      translated = article[2][/^-\s*\*\*번역 제목\*\*:\s*([^\n]+)/, 1]
+      (translated || article[1]).strip
     end
 
     def group_by_month(days)
