@@ -5,7 +5,7 @@ gem "kramdown-parser-gfm"
 
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.17"
-  gem "jekyll-octicons", "~> 19.8.0"
+  gem "jekyll-octicons", "~> 19.38.0"
   gem "jekyll-cache"
   gem "dotenv"
 end
