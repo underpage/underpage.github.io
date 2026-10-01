@@ -17,6 +17,8 @@ exclude:
   - _url.csv
   - CLAUDE.md
   - llm-*
+  - _news
+  - .news-src
 
 
 include:
