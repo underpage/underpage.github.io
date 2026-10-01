@@ -25,6 +25,7 @@ module Jekyll
       Dir.foreach(path) do |entry|
         next if entry == '.' || entry == '..'
         next if File.directory?(File.join(path, entry)) && entry == '_정리'
+        next if !File.directory?(File.join(path, entry)) && File.extname(entry) != '.md'
 
         full_path = File.join(path, entry)
         relative_path = File.join(parent_path, entry)
