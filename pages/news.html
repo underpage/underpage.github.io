@@ -1,0 +1,73 @@
+---
+layout: layout-page
+permalink: /news
+title: news
+description: 매일 자동으로 수집·요약되는 AI 뉴스 아카이브입니다.
+keywords: news, ai news, AI 뉴스, 뉴스 아카이브, 데일리 뉴스
+---
+
+<section class="layout-page-wrap">
+  <div class="page-title-wrap">
+    <h2>News</h2>
+  </div>
+
+  <div class="page-content-wrap news-content">
+    <p class="default-post-count">
+      {{ site.data.total_news_files | default: '0' }} News
+    </p>
+
+    <div class="news-tab-wrap">
+      <h3 class="hide">연도 선택</h3>
+      <ul class="news-year-list" id="newsYearList">
+      {% for year in site.data.news_years %}
+        <li>
+          <button type="button" data-year="{{ year.year }}" class="{% if forloop.first %}on{% endif %}">{{ year.year }}</button>
+        </li>
+      {% endfor %}
+      </ul>
+
+      <h3 class="hide">월 선택</h3>
+      {% for year in site.data.news_years %}
+      <ul class="news-month-list {% unless forloop.first %}none{% endunless %}" id="year-{{ year.year }}">
+        {% assign is_latest_year = forloop.first %}
+        {% assign year_months = year.months | reverse %}
+        {% for month in year_months %}
+        <li>
+          <button type="button" data-month="{{ month.label }}" class="{% if is_latest_year and forloop.first %}on{% endif %}">
+            {{ month.month | plus: 0 }}월
+          </button>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endfor %}
+    </div>
+
+    {% for month in site.data.news_items %}
+    <section class="news-content-wrap {% unless forloop.first %}none{% endunless %}" id="month-{{ month.label }}">
+      <h3 class="hide">{{ month.label }} 뉴스 목록</h3>
+
+      <ul class="default-post-list">
+      {% for day in month.days %}
+        <li>
+          <article class="post-item-wrap">
+            <a href="{{ day.url }}">
+              <span class="title">{{ day.date }}</span>
+              <span class="desc">{{ day.headline | escape | truncate: 100 }}</span>
+            </a>
+            <time datetime="{{ day.date }}" class="date no-select">
+              {{ day.count }}건
+            </time>
+          </article>
+        </li>
+      {% endfor %}
+      </ul>
+    </section>
+    {% endfor %}
+
+    {% assign news_count = site.data.news_items | size %}
+    {% if news_count == 0 %}
+    <p>수집된 뉴스가 없습니다.</p>
+    {% endif %}
+
+  </div>
+</section>
