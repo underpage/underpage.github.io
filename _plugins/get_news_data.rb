@@ -6,8 +6,8 @@ module Jekyll
     priority :normal
 
     # 파이프라인이 만드는 일별 리포트만 받는다.
-    # index.md·README.md·하위 폴더 등이 섞여 들어오면 permalink가 충돌하거나
-    # 'README.md' 같은 연도 탭이 생기므로 형식을 명시적으로 검증한다
+    # index.md, README.md, 하위 폴더 등이 섞여 들어오면 permalink가 충돌하거나
+    # README.md 같은 연도 탭이 생기므로 형식을 명시적으로 검증한다.
     DAILY_REPORT = %r{\A\d{4}/\d{2}/\d{4}-\d{2}-\d{2}\.md\z}
 
     def generate(site)
@@ -37,7 +37,7 @@ module Jekyll
       days.sort_by { |day| day['date'] }.reverse
     end
 
-    # 파일 하나가 깨져도 나머지 뉴스와 사이트 전체 빌드는 살린다
+    # 파일 하나가 깨져도 나머지 뉴스와 사이트 전체 빌드는 살린다.
     def build_day(base_path, relative_path)
       year, month = relative_path.split('/')
       date = File.basename(relative_path, '.md')
@@ -60,15 +60,14 @@ module Jekyll
       nil
     end
 
-    # 외부 파이프라인이 스크래핑한 산출물이라 BOM·깨진 바이트가 섞일 수 있다.
-    # scrub 없이 정규식을 돌리면 ArgumentError로 빌드 전체가 죽는다
+    # 외부 파이프라인이 스크래핑한 산출물이라 BOM, 깨진 바이트가 섞일 수 있다.
+    # scrub 없이 정규식을 돌리면 ArgumentError로 빌드 전체가 죽는다.
     def read_content(file_path)
       File.read(file_path, encoding: 'bom|utf-8').scrub('')
     end
 
-    # 목록에 쓸 그날의 대표 기사 제목.
+    # 목록에 쓸 그날의 대표 기사 제목
     # 파이프라인이 중요도 순으로 번호를 매기므로 1번이 그날의 톱기사다.
-    # 원문이 영문이어도 '번역 제목'이 있으면 그쪽을 쓴다
     def first_headline(content)
       article = content.match(/^##\s+\d+\.\s*([^\n]+)\n(.*?)(?=^##\s|\z)/m)
       return '' unless article
@@ -95,7 +94,7 @@ module Jekyll
       months.sort_by { |month| month['label'] }.reverse
     end
 
-    # /news 인덱스의 연도 → 월 탭 구성용
+    # 뉴스의 연도 → 월 탭 구성용
     def group_by_year(months)
       grouped = months.group_by { |month| month['year'] }
 
@@ -112,7 +111,7 @@ module Jekyll
     end
 
     def build_page(site, day)
-      page = Jekyll::PageWithoutAFile.new(
+      page = NewsPage.new(
         site, site.source, File.join('news', day['dir']), "#{day['date']}.md"
       )
       page.content = day['content']
@@ -127,6 +126,13 @@ module Jekyll
         'summary' => day['headline'],
       )
       page
+    end
+  end
+
+  # 기사 본문의 '{{'·'{%'를 Liquid로 해석하지 않는다. (레이아웃은 그대로 렌더링)
+  class NewsPage < PageWithoutAFile
+    def render_with_liquid?
+      false
     end
   end
 end
