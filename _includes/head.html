@@ -5,12 +5,12 @@
 <title>{{ site.title }}{% if page.category %} | {{ page.category }}{% if page.title %} - {{ page.title }}{% endif %}{% endif %}</title>
 <meta name="robots" content="index, follow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="{% if page.summary %} {{ page.summary }} {% else %} {{ page.title }} {% endif %}">
+<meta name="description" content="{% if page.summary %} {{ page.summary | escape }} {% else %} {{ page.title | escape }} {% endif %}">
 <meta name="keywords" content="{% if page.keywords %}{{ page.keywords | join: ', ' }}{% elsif page.tags %}{{ page.tags | join: ', ' }}{% else %}{{ site.keyword }}{% endif %}">
 <meta name="google-site-verification" content="GfydRoSpDG65oJAnLYow1n9-upKTy-G1zP_C_CGXfX0">
 
 <meta property="og:title" content="{{ page.category }}">
-<meta property="og:description" content="{% if page.summary %}{{ page.summary }}{% else %}{{ page.title }}{% endif %}">
+<meta property="og:description" content="{% if page.summary %}{{ page.summary | escape }}{% else %}{{ page.title | escape }}{% endif %}">
 <meta property="og:url" content="{{ page.url }}">
 <meta property="og:type" content="website">
 
