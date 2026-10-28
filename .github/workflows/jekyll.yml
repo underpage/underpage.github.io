@@ -171,7 +171,8 @@ jobs:
       - name: -- Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.3.4'
+          # 패치까지 고정하면 러너 이미지가 바뀔 때 설치 실패 (ubuntu-26.04에는 계열별 최신 패치만 있음)
+          ruby-version: '3.3'
           bundler-cache: true
           rubygems: latest
           bundler: latest
