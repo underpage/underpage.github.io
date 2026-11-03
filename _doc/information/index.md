@@ -13,18 +13,21 @@ tags:
 - data
 - index
 created_time: 2025-10-02 04:14
-modified_time: 2026-04-27 20:29
+modified_time: 2026-11-03 22:22
 ---
 
 {::comment}
-ttl_tags: [information-theory, information-retrieval, information-behavior, information-processing, information-architecture, information-design, information-taxonomy, information-visualization, information-systems, multimedia, hci, ddux, ubiquitous, information-ecosystem]
+id: information
+ttl_tags: [information-theory, information-science, information-retrieval, information-behavior, information-ecosystem, information-processing, information-architecture, information-design, information-taxonomy, information-visualization, multimedia, information-systems, hci, ddux, ubiquitous, information-need, information-seeking, relevance, indexing, metadata, information-lifecycle]
 related:
 - id: data
   type: requires
 - id: computing
-  type: extends
-- id: program
-  type: references
+  type: requires
+- id: knowledge
+  type: influences
+- id: web
+  type: influences
 - id: ai
   type: references
 {:/comment}
@@ -34,29 +37,25 @@ related:
 : 정보는 의사결정이나 문제 해결이 가능하게 처리된 의미있는 데이터를 뜻함  
 : 정보 활용을 위해 체계적인 접근과 설계가 필요하며 이를 위해 다양한 이론과 방법론이 발전함  
 
-**정보 이론**
+**정보 기초**
 - [정보 이론](./information-theory.md)
-- [정보 검색](./information-retrieval.md)
-- [정보 이용](./information-behavior.md)
+- [정보학](./information-science.md)
+  - [정보 검색](./information-retrieval.md)
+  - [정보 행동](./information-behavior.md)
+- [정보 생태계](./information-ecosystem.md)
 
-**정보 조직 및 설계**
+**정보 방법론**
 - [정보 처리](./information-processing.md)
 - [정보 구조](./information-architecture.md)
 - [정보 설계](./information-design.md)
 - [정보 분류학](./information-taxonomy.md)
 - [정보 시각화](./information-visualization.md)
 
-**정보 시스템**
-- [정보 시스템](./information-systems.md)
-  - [엔터프라이즈 시스템](./information-systems#enterprise-systems)
-
-**정보 표현**  
+**정보 기술**  
 - [멀티미디어](./multimedia/index.md)
+- [정보 시스템](./information-systems.md)
 
 **정보 상호작용**
 - [인간-컴퓨터 상호작용 (HCI)](./hci/index.md)
-- [데이터 기반 사용자 경험](./ddux/index.md)
-
-**정보 환경**  
+- [데이터 기반 사용자 경험](./ddux/index.md) 
 - [유비쿼터스](./ubiquitous/index.md)
-- [정보 생태계](./information-ecosystem.md)
